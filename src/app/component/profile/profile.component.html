@@ -1,0 +1,66 @@
+<mat-card class="mat-elevation-z0 no-padding" fxFlex>
+  <mat-card-content>
+    <div *ngIf="!profileImage" fxLayout="row" class="mat-headline">
+      Profile
+    </div>
+    <div *ngIf="profileImage" fxLayout="row" class="mat-headline">
+      <img src="{{profileImage}}">
+      &nbsp;Profile
+    </div>
+    <div fxLayout="column">
+      <div fxLayout="row">
+        <ngx-dropzone class = "custom-dropzone"
+                      [accept] = "'image/png,image/jpeg,image/gif'"
+                      [multiple] = "false"
+                      [maxFileSize] = "20000"
+                      [showPreviews] = "true"
+                      (filesAdded) = "onFilesAdded($event)"
+                      (filesRejected) = "onFilesRejected($event)">
+        </ngx-dropzone>
+      </div>
+      <br>
+      <div fxLayoutAlign="end center">
+          <button mat-raised-button i18n color="primary" 
+                  [disabled]="!profileImage" 
+                  (click)="saveProfileImage()">
+            Upload Image
+          </button>
+      </div>
+    </div>
+    <br>
+    <form [formGroup]="profileForm" (ngSubmit)="update()">
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="first_name" required>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="last_name" required>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="end center" fxLayoutGap="20px">
+        <div>
+          <button mat-icon-button mat-dialog-close>
+            Close
+          </button>
+        </div>     
+        <div>
+          <button mat-raised-button i18n color="primary" type="submit"
+                  [disabled]="!profileForm.valid">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+      

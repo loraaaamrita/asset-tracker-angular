@@ -1,0 +1,54 @@
+<app-banner-external></app-banner-external>
+<div class="padding-card-60px" fxLayoutAlign="center center" fxLayoutAlign.lt-sm="none">
+  <mat-card class="mat-elevation-z8" fxFlex="50" fxFlex.md="40" fxFlex.gt-md="30" 
+            fxLayout.lt-sm="column">
+    <mat-card-content fxFlex="auto" fxLayout="column" fxLayoutAlign="space-between none">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h2 class="mat-h2">Register</h2>
+      </div>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div fxLayout="row">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name" required>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="last_name" required>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Enter Password</mat-label>
+            <input matInput type="password" [type]="hidePassword ? 'password' : 'text'" 
+                   #password formControlName="password" required>
+            <mat-icon class="cursor-hand" matSuffix (click)="hidePassword = !hidePassword">
+              {{hidePassword ? 'visibility' : 'visibility_off'}}
+            </mat-icon>
+          </mat-form-field>
+        </div>
+      </form>
+      <div fxLayout="column" fxLayoutGap="16px">
+        <div fxLayout="row" fxLayoutGap="16px" fxLayout.lt-md="column">
+          <button mat-raised-button i18n type="submit" fxFlex="50%" fxFlex.lt-md="none"
+                  color="primary" (click)="register()" [disabled]="!registerForm.valid">
+            Register
+          </button>
+          <a class="blue-link" mat-button i18n fxFlex="50%" fxFlex.lt-md="none" 
+             (click)="goLogin()">
+            Login
+          </a>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

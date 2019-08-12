@@ -1,0 +1,36 @@
+<app-banner-internal></app-banner-internal>
+<mat-drawer-container class="content-container">
+  <mat-drawer mode="side" opened>
+    <mat-list class="menu-container">
+      <mat-list-item *ngIf="isAssetMap" (click)="show('Asset Map')">
+        Asset Map
+      </mat-list-item>
+      <mat-list-item *ngIf="isAssets" (click)="show('Assets')">
+        Assets
+      </mat-list-item>
+      <mat-list-item *ngIf="isAssetLogs" (click)="show('Asset Logs')">
+        Asset Logs
+      </mat-list-item>
+      <mat-list-item *ngIf="isUsers" (click)="show('Users')">
+        Users
+      </mat-list-item>
+      <mat-list-item *ngIf="isMediaLibrary" (click)="show('Media Library')">
+        Media Library
+      </mat-list-item>
+      <mat-list-item *ngIf="isSettings" (click)="show('Settings')">
+        Settings
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="mat-title">{{ isMenu }}</div>
+    <app-asset-map *ngIf="isMenu === 'Asset Map'"></app-asset-map>
+    <app-assets *ngIf="isMenu === 'Assets'"></app-assets>
+    <app-log *ngIf="isMenu === 'Asset Logs'"></app-log>
+    <app-users *ngIf="isMenu === 'Users'"></app-users>
+    <app-media-library *ngIf="isMenu === 'Media Library'"></app-media-library>
+    <app-settings *ngIf="isMenu === 'Settings'"></app-settings>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

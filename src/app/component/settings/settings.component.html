@@ -1,0 +1,26 @@
+<div class="table-padding">
+  <mat-tab-group>
+    <mat-tab *ngIf="isCompany" label="Company">
+      <app-settings-company></app-settings-company>
+    </mat-tab>
+    <mat-tab *ngIf="isAssetSettings" label="Asset Settings">
+      <div class="table-padding" fxLayout="row" fxFlex>
+        <div fxLayout="column" fxFlex>
+          <br>
+          <div fxLayout="row" fxLayoutGap="30px">
+            <div *ngIf="isCategory" fxLayout="column" fxFlex="50">
+              <app-settings-category></app-settings-category>
+            </div>
+            <div *ngIf="isStatus" fxLayout="column" fxFlex="50">
+              <app-settings-status></app-settings-status>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab *ngIf="isRolesPermission" label="Roles & Permissions">
+      <app-settings-role></app-settings-role>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

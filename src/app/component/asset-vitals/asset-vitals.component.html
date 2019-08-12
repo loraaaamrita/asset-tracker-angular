@@ -1,0 +1,47 @@
+<br>
+<mat-card class="mat-elevation-z8" fxFlex>
+  <mat-card-content>
+    <div fxLayout="column" fxFlex>
+      <div fxLayout="row" class="headline" fxLayoutAlign="start" fxFlex>
+        Asset Vitals
+      </div>
+      <div class="close-detail cursor-hand" fxLayoutAlign="end">
+        <mat-icon (click)="close()">close</mat-icon>
+      </div>
+      <br>
+      <div fxLayout="row" fxLayoutGap="10px" fxFlex>
+        <div class="mat-h4" fxFlex="25">Purchase Date:</div>
+        <div class="mat-h4" fxFlex="25">Current Location: Lat/Long</div>
+        <div class="mat-h4" fxFlex="25">Current Address: street address</div>
+        <div class="mat-h4" fxFlex>Nearest Town/City:</div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px" fxFlex>
+        <div class="mat-h4" fxFlex="25">Capital Cost:</div>
+        <div class="mat-h4" fxFlex="25">Maintenance Costs:</div>
+        <div class="mat-h4" fxFlex="25">Hours Billed:</div>
+        <div class="mat-h4" fxFlex>Hours Worked:</div>
+      </div>
+       
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Asset Details
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-asset (cancelCreate)='cancelCreate($event)'></app-asset>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              History Log
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-log></app-log>
+        </mat-expansion-panel>
+      </mat-accordion> 
+    </div>     
+  </mat-card-content>
+</mat-card>
+
+    

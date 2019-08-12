@@ -1,0 +1,11 @@
+ngx-dropzone {
+
+  &.custom-dropzone {
+    height: 100px;
+    width: 100%;
+    background: #fff;
+    color: #8799AD;
+    border: 2px dashed;
+    border-radius: 2px;
+  }
+}

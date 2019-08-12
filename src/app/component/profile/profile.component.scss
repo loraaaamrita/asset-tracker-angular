@@ -1,0 +1,23 @@
+.top-4px {
+  padding-top: 4px;
+}
+
+.no-padding.mat-card{
+  padding: 0px;
+}
+
+ngx-dropzone {
+
+  &.custom-dropzone {
+    height: 100px;
+    width: 100%;
+    background: #fff;
+    color: #8799AD;
+    border: 2px dashed;
+    border-radius: 2px;
+  }
+}
+
+img {
+  width: 30px;
+}

@@ -1,0 +1,94 @@
+<div class="table-padding" fxLayout="row" fxFlex>
+    
+  <form fxLayout="column" [formGroup]="companyForm" fxFlex>
+    <br>
+    <mat-card class="mat-elevation-z8" fxFlex>
+      <mat-card-content>
+        <div *ngIf="company_image === null" fxLayout="row" class="mat-headline">
+          Company
+        </div>
+        <span *ngIf="company_id && isUpdate">
+          <div *ngIf="companyImage !== null" class="mat-headline">
+            <img src="{{baseUrl}}profiles/{{tenant_id}}/{{company.company_image}}">
+          </div> 
+          <div fxLayout="row" class="mat-headline">
+            <ngx-dropzone class = "custom-dropzone"
+                          [accept] = "'image/png,image/jpeg,image/gif'"
+                          [multiple] = "false"
+                          [maxFileSize] = "20000"
+                          [showPreviews] = "true"
+                          (filesAdded) = "onFilesAdded($event)"
+                          (filesRejected) = "onFilesRejected($event)">
+            </ngx-dropzone>     
+          </div>
+          <div fxLayoutAlign="end center">
+            <button mat-raised-button i18n color="primary" 
+                    [disabled]="!companyImage" 
+                    (click)="saveCompanyImage()">
+              Upload Image
+            </button>
+          </div>
+          <br>
+        </span>
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutGap="10px">
+            <mat-form-field appearance="outline" fxFlex="33"> 
+              <mat-label>Company Name</mat-label>
+              <input matInput formControlName="company_name" type="text" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="33">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="first_name" type="text" required>
+            </mat-form-field> 
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="last_name" type="text" required>
+            </mat-form-field> 
+          </div>   
+          <div fxLayout="row" fxLayoutGap="10px">
+            <mat-form-field appearance="outline" fxFlex="33"> 
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="text" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Billing Address</mat-label>
+              <input matInput formControlName="address_street" type="text" required>
+            </mat-form-field> 
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>City</mat-label>
+              <input matInput formControlName="address_city" type="text" required>
+            </mat-form-field> 
+          </div>
+          <div fxLayout="row" fxLayoutGap="10px">
+            <mat-form-field appearance="outline" fxFlex="33"> 
+              <mat-label>Province/State</mat-label>
+              <input matInput formControlName="address_prov_state" type="text" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Country</mat-label>
+              <input matInput formControlName="address_country" type="text" required>
+            </mat-form-field> 
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Zip/Postal Code</mat-label>
+              <input matInput formControlName="address_postal_zip" type="text" required>
+            </mat-form-field> 
+          </div>
+        </div>
+        <div *ngIf="company_id && isUpdate" fxLayoutAlign="end center">     
+          <button  mat-raised-button i18n color="primary" 
+                  (click)="update()"
+                  [disabled]="!companyForm.valid">
+            Save
+          </button>
+        </div>
+        <div *ngIf="!company_id && !isUpdate" fxLayoutAlign="end center">     
+          <button  mat-raised-button i18n color="primary" 
+                   (click)="create()"
+                   [disabled]="!companyForm.valid">
+            Save
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

@@ -1,0 +1,41 @@
+table {
+  width: 100%;
+}
+
+tr.custom-detail-row {
+  height: 0;
+}
+
+tr.custom-element-row:not(.custom-expanded-row):active {
+  background: #efefef;
+}
+
+.custom-element-row td {
+  border-bottom-width: 0;
+  cursor: pointer;
+  font-family: 'Roboto';
+  font-size: 13px;
+}
+
+.custom-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.custom-container {
+  position: relative;
+  min-height: 400px;
+}
+
+.custom-table-container {
+  position: relative;
+  max-height: 600px;
+  overflow: auto;
+}
+
+.table-icon-role {
+  font-size: 30px;
+  padding-left: 15px;
+  padding-top: 10px;
+  cursor: pointer;
+}

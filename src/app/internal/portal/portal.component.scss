@@ -1,0 +1,19 @@
+.menu-container {
+  width: 150px;
+  height: auto;
+}
+
+.content-container {
+  position: absolute;
+  right: 0px;
+  left: 20px;
+  bottom: 0px;
+  top: 50px;
+}
+
+.mat-list-item {
+  // color: #8799AD;	
+  font-family: "Roboto";	
+  font-size: 14px;
+  cursor: pointer;
+}

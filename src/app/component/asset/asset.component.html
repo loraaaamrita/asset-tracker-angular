@@ -1,0 +1,48 @@
+<form fxLayout="column" [formGroup]="assetForm" fxFlex>
+  <mat-card class="mat-elevation-z8" fxFlex>
+    <mat-card-content>
+      <div fxLayout="row" class=mat-title>Asset Card</div>
+      <div fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field appearance="outline" fxFlex="50"> 
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" type="text">
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Unit Number</mat-label>
+          <input matInput formControlName="unit_number" type="text">
+        </mat-form-field> 
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px">   
+        <mat-form-field appearance="outline" fxFlex="50">
+          <mat-label>Asset Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+              {{ category.category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Asset Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option *ngFor="let status of statuses" [value]="status.id">
+              {{ status.status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="end center" fxLayoutGap="10px">
+        <div>
+          <a class="blue-link" mat-button i18n (click)="close()">
+            Cancel
+          </a>
+        </div>     
+        <div>
+          <button mat-raised-button i18n color="primary" (click)="create()">
+            Save
+          </button>
+        </div>
+      </div> 
+    </mat-card-content>
+  </mat-card>
+</form>
+      

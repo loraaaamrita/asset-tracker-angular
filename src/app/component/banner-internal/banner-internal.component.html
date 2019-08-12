@@ -1,0 +1,18 @@
+<div class="banner-internal" fxLayout="row">
+  <div fxLayoutAlign="start center" fxFlex>
+    <img class="logo-banner" src="{{companyLogo}}"/>
+  </div>
+  <div class="banner-font" fxLayoutAlign="end center">
+    <div *ngIf="profileImage"class="nav-icon" (click)="profile()">
+      <img class="profile-image" src="{{profileImage}}">
+    </div>
+    <div class="nav-user" (click)="profile()">
+      {{user_email}}
+    </div>
+    <div class="nav-icon" (click)="logout()">
+      <mat-icon>forward</mat-icon>
+    </div>
+    <div class="nav-logout" (click)="logout()">Logout</div>
+  </div>
+</div>
+

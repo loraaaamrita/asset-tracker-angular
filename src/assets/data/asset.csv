@@ -1,0 +1,31 @@
+category,code,date_added,date_updated,name,status,unit_number,view_status
+15 - 25 KW Diesel,BRERA01,1472683976156,1476721846047,15 - 25KW Diesel Generator,Allocated,1,true
+15 - 25 KW Diesel,BRERA01,1472683976166,1477238490744,15 - 25KW Diesel Generator,Available,2,true
+15 - 25 KW Diesel,BRERA01,1472683976179,1476718970540,15 - 25KW Diesel Generator,Returned,3,true
+15 - 25 KW Diesel,BRERA01,1472683976180,1476676484591,15 - 25KW Diesel Generator,Available,4,true
+15 - 25 KW Diesel,BRERA01,1472683976181,1476676431147,15 - 25KW Diesel Generator,Available,5,true
+15 - 25 KW Diesel,BRERA01,1472683976211,1477238493950,15 - 25KW Diesel Generator,Available,6,true
+30 -45 KW Diesel,BRERA01,1472683976264,1476676554924,30 - 45KW Diesel Generator,Available,7,true
+30 -45 KW Diesel,BRERA01,1472683976274,1476676442910,30 - 45KW Diesel Generator,Available,8,true
+30 - 45 KW Diesel,BRERA01,1472683976299,1476677899841,30 - 45KW Diesel Generator,Available,9,true
+30 - 45 KW Diesel,BRERA01,1472683976314,1476677938873,30 - 45KW Diesel Generator,Available,10,true
+30 - 45 KW Diesel,BRERA01,1472683976317,1476678298844,30 - 45KW Diesel Generator,Available,11,true
+60 - 75 KW Diesel,BRERA01,1472683976320,1476678624594,60 - 75KW Diesel Generator,Available,12,true
+60 - 75 KW Diesel,BRERA02,1472683976350,1476678270524,60 - 75KW Diesel Generator,Available,13,true
+60 - 75 KW Diesel,BRERA02,1472683976351,1476676589401,60 - 75KW Diesel Generator,Available,14,true
+110 - 125 KW Diesel,BRERA02,1472683976360,,110 - 125KW Diesel Generator,Available,15,true
+110 - 125 KW Diesel,BRERA02,1472683976360,,110 - 125KW Diesel Generator,Available,16,true
+110 - 125 KW Diesel,BRERA02,1472683976373,,110 - 125KW Diesel Generator,Available,17,true
+6 - 8 KW Natural Gas,BRERA02,1472683976383,,6 - 8KW Natural Gas Generator,Available,18,true
+6 - 8 KW Natural Gas,BRERA02,1472683976393,1476676479785,6 - 8KW Natural Gas Generator,Available,19,true
+18 - 20 KW Natural Gas,BRERA02,1472683976401,,18 - 20KW Natural Gas Generator,Available,20,true
+18 - 20 KW Natural Gas,BRERA02,1472683976406,1476122991866,18 - 20KW Natural Gas Generator,Available,21,true
+30 KW Natural Gas,BRERA02,1472683976421,1476107403466,30KW Natural Gas Generator,Available,22,true
+30 KW Natural Gas,BRERA02,1472683976429,1476678837667,30KW Natural Gas Generator,Allocated,23,true
+80 -100 KW Natural Gas,BRERA02,1472683976434,1476676875497,80 - 100KW Natural Gas Generator,Available,24,true
+130 - 150 KW Natural Gas,BRERA02,1472683976438,,130 - 150KW Natural Gas Generator,Available,25,true
+190 - 240 Natural Gas,BRERA02,1472683976455,,190 - 240KW Natural Gas Generator,Available,26,true
+190 - 240 Natural Gas,BRERA02,1472683976467,,190 - 240KW Natural Gas Generator,Available,27,true
+15 - 20 KW Light Tower,BRERA02,1472683976470,,15 - 25KW Light Tower,Available,28,true
+30 - 45 KW Light Tower,BRERA02,1472683976488,,30 - 45KW Light Tower,Available,29,true
+60 - 75 KW Light Tower,BRERA02,1472683976493,1476680786146,60 - 75KW Light Tower,Available,30,true
