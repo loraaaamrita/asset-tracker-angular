@@ -10,26 +10,25 @@
       </div>
       <br>
       <div fxLayout="row" fxLayoutGap="10px" fxFlex>
-        <div class="mat-h4" fxFlex="25">Purchase Date:</div>
+        <div class="mat-h4" fxFlex="25">Purchase Date:  {{asset_vitals?.purchase_date | date}}</div>
         <div class="mat-h4" fxFlex="25">Current Location: Lat/Long</div>
         <div class="mat-h4" fxFlex="25">Current Address: street address</div>
-        <div class="mat-h4" fxFlex>Nearest Town/City:</div>
+        <div class="mat-h4" fxFlex="25">Nearest Town/City:</div>
       </div>
       <div fxLayout="row" fxLayoutGap="10px" fxFlex>
-        <div class="mat-h4" fxFlex="25">Capital Cost:</div>
-        <div class="mat-h4" fxFlex="25">Maintenance Costs:</div>
-        <div class="mat-h4" fxFlex="25">Hours Billed:</div>
-        <div class="mat-h4" fxFlex>Hours Worked:</div>
+        <div class="mat-h4" fxFlex="25">Capital Cost: ${{asset_vitals?.capital_cost}}</div>
+        <div class="mat-h4" fxFlex="25">Maintenance Costs: ${{asset_vitals?.maintenance_cost}}</div>
+        <div class="mat-h4" fxFlex="25">Hours Billed: ${{asset_vitals?.hours_billed}}</div>
+        <div class="mat-h4" fxFlex="25">Hours Worked: ${{asset_vitals?.hours_billed}}</div>
       </div>
-       
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <mat-panel-title>
+            <mat-panel-title >
               Asset Details
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <app-asset (cancelCreate)='cancelCreate($event)'></app-asset>
+          <app-asset (cancelSubmit)='cancelSubmit($event)'></app-asset>
         </mat-expansion-panel>
         <mat-expansion-panel>
           <mat-expansion-panel-header>

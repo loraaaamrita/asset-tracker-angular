@@ -1,10 +1,10 @@
 <div class="table-padding" fxLayout="column" fxFlex>
   <div fxLayout="row" fxLayoutGap="10px">
-    <mat-form-field fxFlex="33">
+    <!-- <mat-form-field fxFlex="33">
       <input matInput (keyup)="applyFilter($event.target.value)" 
              placeholder="Filter">
-    </mat-form-field>
-    <mat-form-field fxFlex="33">
+    </mat-form-field> -->
+    <mat-form-field fxFlex="50">
       <mat-label>Filter by Category</mat-label>
       <mat-select (selectionChange)="filterCategory($event)">
         <mat-option *ngFor="let category of categories" [value]="category.id">

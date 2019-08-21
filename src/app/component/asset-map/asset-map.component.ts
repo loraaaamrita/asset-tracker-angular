@@ -71,11 +71,13 @@ export class AssetMapComponent implements OnInit {
               name: element.name,
               category: element.category,
               status: element.status,
-              icon: this.icon
+              icon: this.icon,
+              asset_id: element.id
             })
           }
         });
         this.allMarkers.push({
+          asset_id: this.assets.id,
           id: this.yard.id,
           lat: this.yard.lat,
           lng: this.yard.lng,
@@ -125,7 +127,10 @@ export class AssetMapComponent implements OnInit {
 
   clickedMarker(marker, infoWindow) {
     infoWindow.content.textContent = "Company Yard"
-    if (marker.label) this.isAssetVitals = true;
+    if (marker.label) {
+      this.isAssetVitals = true;
+      this.assetService.asset_id = marker.asset_id;
+    } 
     else {
       this.yardId = marker.id;
       this.yardName = marker.name;

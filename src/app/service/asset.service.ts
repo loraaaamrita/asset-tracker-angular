@@ -15,9 +15,21 @@ export class AssetService {
     private _http: HttpClient
   ) { }
 
+  public asset_id: any;
+
   getAssets() {
     return this._http.get(this.baseUrl+'asset/read/', 
            {params: {tenant_id: this.tenant_id}});
+  }
+
+  getAsset(id) {
+    return this._http.get(this.baseUrl+'asset/', 
+      {params: {id: id}});
+  }
+
+  getAssetVitals(id) {
+    return this._http.get(this.baseUrl+'asset/vitals', 
+      {params: {id: id}});
   }
 
   getYardAssets(yard_id) {

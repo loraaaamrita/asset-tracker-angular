@@ -5,17 +5,26 @@
       <div fxLayout="row" fxLayoutGap="10px">
         <mat-form-field appearance="outline" fxFlex="50"> 
           <mat-label>Name</mat-label>
-          <input matInput formControlName="name" type="text">
+          <input matInput formControlName="name" type="text" required>
+          <mat-error>
+           Name required!
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Unit Number</mat-label>
-          <input matInput formControlName="unit_number" type="text">
+          <input matInput formControlName="unit_number" type="text" required>
+          <mat-error>
+            Unit number required!
+           </mat-error>
         </mat-form-field> 
       </div>
       <div fxLayout="row" fxLayoutGap="10px">   
         <mat-form-field appearance="outline" fxFlex="50">
           <mat-label>Asset Category</mat-label>
-          <mat-select formControlName="category">
+          <mat-error>
+            Category required!
+          </mat-error>
+          <mat-select formControlName="category" required>
             <mat-option *ngFor="let category of categories" [value]="category.id">
               {{ category.category }}
             </mat-option>
@@ -23,7 +32,10 @@
         </mat-form-field>
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Asset Status</mat-label>
-          <mat-select formControlName="status">
+          <mat-error>
+              Status required!
+          </mat-error>
+          <mat-select formControlName="status" required>
             <mat-option *ngFor="let status of statuses" [value]="status.id">
               {{ status.status }}
             </mat-option>
@@ -37,7 +49,7 @@
           </a>
         </div>     
         <div>
-          <button mat-raised-button i18n color="primary" (click)="create()">
+          <button [disabled]="!assetForm.valid" mat-raised-button i18n color="primary" (click)="submit()">
             Save
           </button>
         </div>
