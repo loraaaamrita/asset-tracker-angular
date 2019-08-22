@@ -45,7 +45,6 @@ export class AssetVitalsComponent implements OnInit {
     this.asset_id = this.assetService.asset_id;
     this.assetService.getAssetVitals(this.asset_id).subscribe(response => {
       this.asset_vitals = response;
-      console.log(this.asset_vitals)
     });
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;

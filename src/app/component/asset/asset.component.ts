@@ -60,8 +60,6 @@ export class AssetComponent implements OnInit {
         });
       });
     }
-   
-    
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
     }, error => {
@@ -77,6 +75,7 @@ export class AssetComponent implements OnInit {
     }, error => 
       this.snackBar.open(error.error, "Error:", {duration: 5000})
     );
+    
   }
 
   // create() {
@@ -109,7 +108,7 @@ export class AssetComponent implements OnInit {
     }
     else {
       let obj = this.assetForm.value;
-    obj.user_id = this.user_id;
+    obj.id= this.asset_id;
     this.assetService.updateAsset(obj).subscribe(response => {
       this.close();
       this.snackBar.open('Asset updated.', "Success:", {duration: 5000});

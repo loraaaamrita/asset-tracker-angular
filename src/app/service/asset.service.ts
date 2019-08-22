@@ -32,6 +32,16 @@ export class AssetService {
       {params: {id: id}});
   }
 
+  getAssetByStatusId(id){
+    return this._http.get(this.baseUrl+'asset/status', 
+    {params: {id: id}});
+  }
+
+  getAssetByCategoryId(id){
+    return this._http.get(this.baseUrl+'asset/category', 
+    {params: {id: id}});
+  }
+
   getYardAssets(yard_id) {
     return this._http.get(this.baseUrl+'asset/yard/read/', 
            {params: {tenant_id: this.tenant_id, yard_id: yard_id}});
