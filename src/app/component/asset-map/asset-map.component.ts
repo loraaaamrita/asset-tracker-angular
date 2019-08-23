@@ -72,9 +72,9 @@ export class AssetMapComponent implements OnInit {
 
   getMarkers(){
     this.assets.forEach(element => {
-      this.allMarkers = []
+      // this.allMarkers = []
       console.log(element)
-      // if (element.yard_id === null) {
+      if (element.yard_id === null) {
         if (element.status === 'Maintenance')
           this.icon = 'assets/images/orange.png';
         if (element.status === 'Booked')
@@ -91,17 +91,17 @@ export class AssetMapComponent implements OnInit {
           icon: this.icon,
           asset_id: element.id
         })
-      // }
+      }
     });
-    // this.allMarkers.push({
-    //   asset_id: this.assets.id,
-    //   id: this.yard.id,
-    //   lat: this.yard.lat,
-    //   lng: this.yard.lng,
-    //   label: '',
-    //   name: this.yard.name,
-    //   icon: 'assets/images/red-flag.png'
-    // })
+    this.allMarkers.push({
+      asset_id: this.assets.id,
+      id: this.yard.id,
+      lat: this.yard.lat,
+      lng: this.yard.lng,
+      label: '',
+      name: this.yard.name,
+      icon: 'assets/images/red-flag.png'
+    })
     this.filteredMarkers = this.allMarkers;
   }
 
