@@ -22,6 +22,8 @@ export class AssetMapComponent implements OnInit {
   yardName: string;
   categories: any;
   statuses: any;
+  status_id: any;
+  category_id: any;
   icon: string;
   isYard: boolean = false;
   isAssetVitals: boolean = false;
@@ -56,35 +58,7 @@ export class AssetMapComponent implements OnInit {
       this.assetService.getAssets().subscribe(assets => {
         this.assets = assets;
         console.log(this.assets)
-        this.assets.forEach(element => {
-          if (element.yard_id === null) {
-            if (element.status === 'Maintenance')
-              this.icon = 'assets/images/orange.png';
-            if (element.status === 'Booked')
-              this.icon = 'assets/images/blue.png';
-            if (element.status === 'Available')
-              this.icon = 'assets/images/green.png'
-            this.allMarkers.push({
-              lat: element.lat,
-              lng: element.lng,
-              label: element.unit_number,
-              name: element.name,
-              category: element.category,
-              status: element.status,
-              icon: this.icon
-            })
-          }
-        });
-        this.allMarkers.push({
-          id: this.yard.id,
-          lat: this.yard.lat,
-          lng: this.yard.lng,
-          label: '',
-          name: this.yard.name,
-          icon: 'assets/images/red-flag.png'
-        })
-        this.filteredMarkers = this.allMarkers;
-        console.log(this.allMarkers)
+        this.getMarkers()
       });
     });
     
@@ -94,6 +68,41 @@ export class AssetMapComponent implements OnInit {
     this.settingService.getStatuses().subscribe(response => {
       this.statuses = response;
     });
+  }
+
+  getMarkers(){
+    this.assets.forEach(element => {
+      this.allMarkers = []
+      console.log(element)
+      // if (element.yard_id === null) {
+        if (element.status === 'Maintenance')
+          this.icon = 'assets/images/orange.png';
+        if (element.status === 'Booked')
+          this.icon = 'assets/images/blue.png';
+        if (element.status === 'Available')
+          this.icon = 'assets/images/green.png'
+        this.allMarkers.push({
+          lat: element.lat,
+          lng: element.lng,
+          label: element.unit_number,
+          name: element.name,
+          category: element.category,
+          status: element.status,
+          icon: this.icon,
+          asset_id: element.id
+        })
+      // }
+    });
+    // this.allMarkers.push({
+    //   asset_id: this.assets.id,
+    //   id: this.yard.id,
+    //   lat: this.yard.lat,
+    //   lng: this.yard.lng,
+    //   label: '',
+    //   name: this.yard.name,
+    //   icon: 'assets/images/red-flag.png'
+    // })
+    this.filteredMarkers = this.allMarkers;
   }
 
   closePrevInfo() {
@@ -125,7 +134,10 @@ export class AssetMapComponent implements OnInit {
 
   clickedMarker(marker, infoWindow) {
     infoWindow.content.textContent = "Company Yard"
-    if (marker.label) this.isAssetVitals = true;
+    if (marker.label) {
+      this.isAssetVitals = true;
+      this.assetService.asset_id = marker.asset_id;
+    } 
     else {
       this.yardId = marker.id;
       this.yardName = marker.name;
@@ -133,22 +145,32 @@ export class AssetMapComponent implements OnInit {
     }
   }
 
-  filterCategory(e) {
+  filterCategory($event) {
+    this.assetService.getAssetByCategoryId($event.value).subscribe(response => {
+      this.assets = response;
+      console.log(this.assets)
+      this.getMarkers();
+    });
     this.isAssetVitals = false;
   }
 
-  filterStatus(e) {
+  filterStatus($event) {
+    this.assetService.getAssetByStatusId($event.value).subscribe(response => {
+      this.assets = response;
+      console.log(this.assets)
+      this.getMarkers();
+    });
     this.isAssetVitals = false;
   }
 
-  applyFilter(filterValue: string) {
-    console.log(filterValue)
-    if (filterValue) {
-      let value = filterValue.trim().toLowerCase();
-      this.filteredMarkers = _.filter(this.allMarkers, o => _.includes(_.values(o), value));  
-    }
-    else this.filteredMarkers = this.allMarkers;
-  }
+  // applyFilter(filterValue: string) {
+  //   console.log(filterValue)
+  //   if (filterValue) {
+  //     let value = filterValue.trim().toLowerCase();
+  //     this.filteredMarkers = _.filter(this.allMarkers, o => _.includes(_.values(o), value));  
+  //   }
+  //   else this.filteredMarkers = this.allMarkers;
+  // }
 
   cancelVitals() {
     this.isAssetVitals = false;

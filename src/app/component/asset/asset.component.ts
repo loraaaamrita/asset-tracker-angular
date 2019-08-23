@@ -25,6 +25,10 @@ export class AssetComponent implements OnInit {
   security: any;
   statuses: any;
   categories: any;
+  asset_id: any;
+  asset: any;
+
+  isAdd: boolean = true;
 
   assetForm: FormGroup;
 
@@ -37,12 +41,25 @@ export class AssetComponent implements OnInit {
     this.assetForm = this.fb.group({
       name:         [null, Validators.required],
       unit_number:  [null, Validators.required],
-      category:     [null],
-      status:       [null]
+      category:     [null, Validators.required],
+      status:       [null, Validators.required]
     })
   }
 
   ngOnInit() {
+    this.asset_id = this.assetService.asset_id;
+    if (this.asset_id) {
+      this.isAdd = false;
+      this.assetService.getAsset(this.asset_id).subscribe(response => {
+        this.asset = response;
+        this.assetForm.setValue({
+          name:        this.asset.name,
+          unit_number: this.asset.unit_number,
+          category:    this.asset.category_id,
+          status:      this.asset.status_id
+        });
+      });
+    }
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
     }, error => {
@@ -58,15 +75,45 @@ export class AssetComponent implements OnInit {
     }, error => 
       this.snackBar.open(error.error, "Error:", {duration: 5000})
     );
+    
   }
 
-  create() {
-    let obj = this.assetForm.value;
+  // create() {
+  //   let obj = this.assetForm.value;
+  //   obj.user_id = this.user_id;
+  //   this.assetService.createAsset(obj).subscribe(response => {
+  //     this.close();
+  //     this.snackBar.open('Asset created.', "Success:", {duration: 5000});
+  //   });
+  // }
+
+//search update Asset on other component
+  // update() {
+  //   let obj = this.assetForm.value;
+  //   obj.user_id = this.user_id;
+  //   this.assetService.updateAsset(obj).subscribe(response => {
+  //     this.close();
+  //     this.snackBar.open('Asset updated.', "Success:", {duration: 5000});
+  //   });
+  // }
+
+  submit(){
+    if (this.isAdd) {
+      let obj = this.assetForm.value;
     obj.user_id = this.user_id;
     this.assetService.createAsset(obj).subscribe(response => {
       this.close();
+      this.snackBar.open('Asset created.', "Success:", {duration: 5000});
+    });
+    }
+    else {
+      let obj = this.assetForm.value;
+    obj.id= this.asset_id;
+    this.assetService.updateAsset(obj).subscribe(response => {
+      this.close();
       this.snackBar.open('Asset updated.', "Success:", {duration: 5000});
     });
+    }
   }
 
   close() {

@@ -22,6 +22,8 @@ export class AssetVitalsComponent implements OnInit {
   security: any;
   statuses: any;
   categories: any;
+  asset_id: any;
+  asset_vitals: any;
 
   assetForm: FormGroup;
 
@@ -40,6 +42,10 @@ export class AssetVitalsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.asset_id = this.assetService.asset_id;
+    this.assetService.getAssetVitals(this.asset_id).subscribe(response => {
+      this.asset_vitals = response;
+    });
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
     });
