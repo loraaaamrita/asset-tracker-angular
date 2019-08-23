@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MouseEvent } from '@agm/core';
 
-import * as _ from 'lodash'; 
-
 import { YardService } from "../../service/yard.service";
 import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
@@ -26,7 +24,7 @@ export class AssetMapComponent implements OnInit {
   status_id: any;
   category_id: any;
   icon: string;
-  isYard: boolean = false;
+  isYard: boolean = true;
   isAssetVitals: boolean = false;
   allMarkers = [];
   filteredMarkers = [];
@@ -54,12 +52,15 @@ export class AssetMapComponent implements OnInit {
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
     });
+
     this.yardService.getYard().subscribe(yard => {
       this.yard = yard;
-      this.assetService.getAssets().subscribe(assets => {
-        this.assets = assets;
-        this.getMarkers();
-      });
+      this.yardName = this.yard.name;
+    });
+
+    this.assetService.getAssets().subscribe(assets => {
+      this.assets = assets;
+      this.getMarkers();
     });
     
     this.settingService.getCategories().subscribe(response => {
@@ -72,7 +73,6 @@ export class AssetMapComponent implements OnInit {
 
   getMarkers(){
     this.assets.forEach(element => {
-      console.log(element)
       if (element.yard_id === null) {
         if (element.status === 'Maintenance')
           this.icon = 'assets/images/orange.png';
@@ -92,22 +92,12 @@ export class AssetMapComponent implements OnInit {
         })
       }
     });
-    // this.allMarkers.push({
-    //   asset_id: this.assets.id,
-    //   id: this.yard.id,
-    //   lat: this.yard.lat,
-    //   lng: this.yard.lng,
-    //   label: '',
-    //   name: this.yard.name,
-    //   icon: 'assets/images/red-flag.png'
-    // })
     this.filteredMarkers = this.allMarkers;
   }
 
   closePrevInfo() {
     if (this.prevInfoWindow) this.prevInfoWindow.close();
     this.isAssetVitals = false;
-    this.isYard = false;
   }
 
   mouseOverMarker(marker, infoWindow) {
@@ -132,19 +122,8 @@ export class AssetMapComponent implements OnInit {
   }
 
   clickedMarker(marker, infoWindow) {
-   
-    // infoWindow.content.textContent = "Company Yard"
-    // if (marker.label) {
-      this.assetId = marker.asset_id
-      console.log(this.assetId)
-      this.isAssetVitals = true;
-      // this.assetService.asset_id = marker.asset_id;
-    // } 
-    // else {
-    //   this.yardId = marker.id;
-    //   this.yardName = marker.name;
-    //   this.isYard = true;
-    // }
+    this.assetId = marker.asset_id
+    this.isAssetVitals = true;
   }
 
   filterCategory($event) {

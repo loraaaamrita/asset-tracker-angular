@@ -2,9 +2,6 @@
   <div fxLayout="row" class="headline" fxLayoutAlign="start" fxFlex>
     {{yardName}} Yard
   </div>
-  <div class="close-detail cursor-hand" fxLayoutAlign="end">
-    <mat-icon (click)="close()">close</mat-icon>
-  </div>
   <div fxLayoutAlign="start center" fxFlex>
     <mat-form-field fxFlex>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
