@@ -18,7 +18,9 @@
     </mat-form-field>
   </div>
   <div *ngIf="isAssetVitals" fxLayout="row" fxFlex>
-    <app-asset-vitals (cancelVitals)="cancelVitals($event)" fxFlex></app-asset-vitals>
+    <app-asset-vitals (cancelVitals)="cancelVitals($event)" 
+                      [assetId]=assetId fxFlex>
+    </app-asset-vitals>
   </div>
   <br>
   <div fxLayout="row">

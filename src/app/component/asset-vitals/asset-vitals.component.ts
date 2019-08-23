@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, EventEmitter, Input } from '@angular/core';
 
 import { FormBuilder, Validators, FormGroup, FormControl } 
 from '@angular/forms';
@@ -14,8 +14,9 @@ import { SecurityService } from "../../service/security.service";
   templateUrl: './asset-vitals.component.html',
   styleUrls: ['./asset-vitals.component.scss']
 })
-export class AssetVitalsComponent implements OnInit {
+export class AssetVitalsComponent implements OnInit, OnChanges {
 
+  @Input()  assetId: number;
   @Output() cancelVitals = new EventEmitter();
 
   history: any;
@@ -41,11 +42,19 @@ export class AssetVitalsComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-    this.asset_id = this.assetService.asset_id;
-    this.assetService.getAssetVitals(this.asset_id).subscribe(response => {
+  ngOnChanges() {
+    console.log(this.assetId)
+    this.assetService.getAssetVitals(this.assetId).subscribe(response => {
       this.asset_vitals = response;
     });
+  }
+
+  ngOnInit() {
+    // this.asset_id = this.assetService.asset_id;
+    // console.log(this.assetId)
+    // this.assetService.getAssetVitals(this.assetId).subscribe(response => {
+    //   this.asset_vitals = response;
+    // });
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
     });

@@ -17,6 +17,7 @@ export class AssetMapComponent implements OnInit {
   
   security: any;
   assets: any;
+  assetId: number;
   yard: any;
   yardId: number;
   yardName: string;
@@ -57,8 +58,7 @@ export class AssetMapComponent implements OnInit {
       this.yard = yard;
       this.assetService.getAssets().subscribe(assets => {
         this.assets = assets;
-        console.log(this.assets)
-        this.getMarkers()
+        this.getMarkers();
       });
     });
     
@@ -72,7 +72,6 @@ export class AssetMapComponent implements OnInit {
 
   getMarkers(){
     this.assets.forEach(element => {
-      // this.allMarkers = []
       console.log(element)
       if (element.yard_id === null) {
         if (element.status === 'Maintenance')
@@ -93,15 +92,15 @@ export class AssetMapComponent implements OnInit {
         })
       }
     });
-    this.allMarkers.push({
-      asset_id: this.assets.id,
-      id: this.yard.id,
-      lat: this.yard.lat,
-      lng: this.yard.lng,
-      label: '',
-      name: this.yard.name,
-      icon: 'assets/images/red-flag.png'
-    })
+    // this.allMarkers.push({
+    //   asset_id: this.assets.id,
+    //   id: this.yard.id,
+    //   lat: this.yard.lat,
+    //   lng: this.yard.lng,
+    //   label: '',
+    //   name: this.yard.name,
+    //   icon: 'assets/images/red-flag.png'
+    // })
     this.filteredMarkers = this.allMarkers;
   }
 
@@ -133,44 +132,40 @@ export class AssetMapComponent implements OnInit {
   }
 
   clickedMarker(marker, infoWindow) {
-    infoWindow.content.textContent = "Company Yard"
-    if (marker.label) {
+   
+    // infoWindow.content.textContent = "Company Yard"
+    // if (marker.label) {
+      this.assetId = marker.asset_id
+      console.log(this.assetId)
       this.isAssetVitals = true;
-      this.assetService.asset_id = marker.asset_id;
-    } 
-    else {
-      this.yardId = marker.id;
-      this.yardName = marker.name;
-      this.isYard = true;
-    }
+      // this.assetService.asset_id = marker.asset_id;
+    // } 
+    // else {
+    //   this.yardId = marker.id;
+    //   this.yardName = marker.name;
+    //   this.isYard = true;
+    // }
   }
 
   filterCategory($event) {
-    this.assetService.getAssetByCategoryId($event.value).subscribe(response => {
-      this.assets = response;
-      console.log(this.assets)
+    this.assetService.getAssetByCategoryId($event.value)
+        .subscribe(assets => {
+      this.assets = assets;
+      this.allMarkers = [];
       this.getMarkers();
     });
     this.isAssetVitals = false;
   }
 
   filterStatus($event) {
-    this.assetService.getAssetByStatusId($event.value).subscribe(response => {
-      this.assets = response;
-      console.log(this.assets)
+    this.assetService.getAssetByStatusId($event.value)
+        .subscribe(assets => {
+      this.assets = assets;
+      this.allMarkers = [];
       this.getMarkers();
     });
     this.isAssetVitals = false;
   }
-
-  // applyFilter(filterValue: string) {
-  //   console.log(filterValue)
-  //   if (filterValue) {
-  //     let value = filterValue.trim().toLowerCase();
-  //     this.filteredMarkers = _.filter(this.allMarkers, o => _.includes(_.values(o), value));  
-  //   }
-  //   else this.filteredMarkers = this.allMarkers;
-  // }
 
   cancelVitals() {
     this.isAssetVitals = false;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, EventEmitter, Input } from '@angular/core';
 
 import { FormBuilder, Validators, FormGroup, FormControl } 
 from '@angular/forms';
@@ -14,10 +14,11 @@ import { SecurityService } from "../../service/security.service";
   templateUrl: './asset.component.html',
   styleUrls: ['./asset.component.scss']
 })
-export class AssetComponent implements OnInit {
+export class AssetComponent implements OnInit, OnChanges {
 
   user_id = localStorage.getItem('userId');
 
+  @Input()  assetId: number;
   @Output() cancelCreate = new EventEmitter();
 
   token: any;
@@ -25,7 +26,6 @@ export class AssetComponent implements OnInit {
   security: any;
   statuses: any;
   categories: any;
-  asset_id: any;
   asset: any;
 
   isAdd: boolean = true;
@@ -46,20 +46,20 @@ export class AssetComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-    this.asset_id = this.assetService.asset_id;
-    if (this.asset_id) {
-      this.isAdd = false;
-      this.assetService.getAsset(this.asset_id).subscribe(response => {
-        this.asset = response;
-        this.assetForm.setValue({
-          name:        this.asset.name,
-          unit_number: this.asset.unit_number,
-          category:    this.asset.category_id,
-          status:      this.asset.status_id
-        });
+  ngOnChanges() {
+    this.isAdd = false;
+    this.assetService.getAsset(this.assetId).subscribe(asset => {
+      this.asset = asset;
+      this.assetForm.setValue({
+        name:        this.asset.name,
+        unit_number: this.asset.unit_number,
+        category:    this.asset.category_id,
+        status:      this.asset.status_id
       });
-    }
+    });
+  }
+
+  ngOnInit() {
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
     }, error => {
@@ -75,44 +75,24 @@ export class AssetComponent implements OnInit {
     }, error => 
       this.snackBar.open(error.error, "Error:", {duration: 5000})
     );
-    
   }
-
-  // create() {
-  //   let obj = this.assetForm.value;
-  //   obj.user_id = this.user_id;
-  //   this.assetService.createAsset(obj).subscribe(response => {
-  //     this.close();
-  //     this.snackBar.open('Asset created.', "Success:", {duration: 5000});
-  //   });
-  // }
-
-//search update Asset on other component
-  // update() {
-  //   let obj = this.assetForm.value;
-  //   obj.user_id = this.user_id;
-  //   this.assetService.updateAsset(obj).subscribe(response => {
-  //     this.close();
-  //     this.snackBar.open('Asset updated.', "Success:", {duration: 5000});
-  //   });
-  // }
 
   submit(){
     if (this.isAdd) {
       let obj = this.assetForm.value;
-    obj.user_id = this.user_id;
-    this.assetService.createAsset(obj).subscribe(response => {
-      this.close();
-      this.snackBar.open('Asset created.', "Success:", {duration: 5000});
-    });
+      obj.user_id = this.user_id;
+      this.assetService.createAsset(obj).subscribe(response => {
+        this.close();
+        this.snackBar.open('Asset created.', "Success:", {duration: 5000});
+      });
     }
     else {
       let obj = this.assetForm.value;
-    obj.id= this.asset_id;
-    this.assetService.updateAsset(obj).subscribe(response => {
-      this.close();
-      this.snackBar.open('Asset updated.', "Success:", {duration: 5000});
-    });
+      obj.id = this.assetId;
+      this.assetService.updateAsset(obj).subscribe(response => {
+        this.close();
+        this.snackBar.open('Asset updated.', "Success:", {duration: 5000});
+      });
     }
   }
 
