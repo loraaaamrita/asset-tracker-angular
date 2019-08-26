@@ -21,7 +21,6 @@ export class AssetComponent implements OnInit, OnChanges {
   @Input()  assetId: number;
   @Output() cancelCreate = new EventEmitter();
 
-  token: any;
   history: any;
   security: any;
   statuses: any;
@@ -43,7 +42,7 @@ export class AssetComponent implements OnInit, OnChanges {
       unit_number:  [null, Validators.required],
       category:     [null, Validators.required],
       status:       [null, Validators.required]
-    })
+    });
   }
 
   ngOnChanges() {

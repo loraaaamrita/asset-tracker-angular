@@ -1,7 +1,14 @@
+
 <div fxLayout="column" fxFlex>
   <div fxLayout="row" class="headline" fxLayoutAlign="start" fxFlex>
     {{yardName}} Yard
   </div>
+  <div *ngIf="isDeploy" fxLayout="row" fxFlex>
+      <app-asset-deploy (cancelDeploy)="cancelDeploy($event)" 
+                  [assetId]=assetId fxFlex>
+      </app-asset-deploy>
+    </div>
+    <br>
   <div fxLayoutAlign="start center" fxFlex>
     <mat-form-field fxFlex>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -10,17 +17,27 @@
   <br>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="unit_number">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit </th>
+        <td mat-cell *matCellDef="let row">{{row.unit_number}}</td>
+      </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
         <td mat-cell *matCellDef="let row">{{row.name}}</td>
       </ng-container>
-      <ng-container matColumnDef="unit_number">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit </th>
-        <td mat-cell *matCellDef="let row"> {{row.unit_number}} </td>
-      </ng-container>
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.status}} </td>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color"> 
+          {{row.status}} 
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="deploy">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row"> 
+          <button mat-button color="primary" (click)="deploy(row)">
+            Deploy
+          </button>
+        </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr class="custom-element-row" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

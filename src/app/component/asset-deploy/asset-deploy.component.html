@@ -1,0 +1,27 @@
+<form fxLayout="column" [formGroup]="assetAddressForm" fxFlex>
+  <br>
+  <div fxLayout="row">
+    <mat-form-field fxFlex> 
+      <mat-label>Enter Deployment Address</mat-label>
+      <input matInput formControlName="address" type="text" required>
+      <mat-error>
+        Address required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div fxLayoutAlign="end center" fxLayoutGap="10px">
+    <div>
+      <a class="blue-link" mat-button i18n (click)="close()">
+        Cancel
+      </a>
+    </div>     
+    <div>
+      <button [disabled]="!assetAddressForm.valid" mat-raised-button 
+              i18n color="primary" (click)="submit()">
+        Add to Map
+      </button>
+    </div>
+  </div>
+</form>
+
+        
