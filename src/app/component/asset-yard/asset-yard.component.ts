@@ -49,7 +49,6 @@ export class AssetYardComponent implements OnInit {
   }
 
   deploy() {
-    console.log('got here')
     this.isDeploy = true;
   }
 

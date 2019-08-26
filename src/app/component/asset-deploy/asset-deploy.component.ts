@@ -5,7 +5,7 @@ from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material';
 
-import { AssetService } from "../../service/asset.service";
+import { GeocodeService } from "../../service/geocode.service";
 
 @Component({
   selector: 'app-asset-deploy',
@@ -17,12 +17,14 @@ export class AssetDeployComponent implements OnInit {
   @Input()  assetId: number;
   @Output() cancelDeploy = new EventEmitter();
 
+  location;
+
   assetAddressForm: FormGroup; 
 
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private assetService: AssetService) { 
+    private geocodeService: GeocodeService) { 
       this.assetAddressForm = this.fb.group({
         address: [null, Validators.required]
       });
@@ -32,6 +34,15 @@ export class AssetDeployComponent implements OnInit {
 
   close() {
     this.cancelDeploy.emit(false);
+  }
+
+  submit() {
+    console.log(this.assetAddressForm.value)
+    this.geocodeService.getAddress(this.assetAddressForm.value.address)
+        .subscribe((location) => {
+      this.location = location;
+      console.log(this.location)
+    });
   }
 
 }
