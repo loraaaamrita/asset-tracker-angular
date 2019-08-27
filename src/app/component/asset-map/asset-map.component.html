@@ -1,5 +1,15 @@
+<div class="yard" *ngIf="isYard" fxLayout="column" fxFlex="33">
+  <mat-card class="mat-elevation-z8" fxFlex>
+    <mat-card-content>
+      <app-asset-yard (cancelYard)="cancelYard($event)" 
+                      [yardId]=1 
+                      [yardName]=yardName fxFlex>
+       </app-asset-yard>
+    </mat-card-content>
+  </mat-card>
+</div>
 <div class="table-padding" fxLayout="column" fxFlex>
-  <div fxLayout="row" fxLayoutGap="10px">
+  <div *ngIf="!isAssetVitals" fxLayout="row" fxLayoutGap="10px">
     <mat-form-field fxFlex="50">
       <mat-label>Filter by Category</mat-label>
       <mat-select (selectionChange)="filterCategory($event)">
@@ -8,7 +18,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>  
-    <mat-form-field fxFlex>
+    <mat-form-field fxFlex="50">
       <mat-label>Filter by Status</mat-label>
       <mat-select (selectionChange)="filterStatus($event)">
         <mat-option *ngFor="let status of statuses" [value]="status.id">
@@ -26,16 +36,6 @@
   <div fxLayout="row">
     <br>
     <div fxLayout="row" fxLayoutGap="20px" fxFlex>
-      <div *ngIf="isYard" fxLayout="column" fxFlex="25">
-        <mat-card class="mat-elevation-z8" fxFlex>
-          <mat-card-content>
-            <app-asset-yard (cancelYard)="cancelYard($event)" 
-                            [yardId]=1 
-                            [yardName]=yardName fxFlex>
-            </app-asset-yard>
-          </mat-card-content>
-        </mat-card>
-      </div>
       <div fxLayout="column" fxFlex>
         <mat-card class="mat-elevation-z8" fxFlex>
           <mat-card-content>
@@ -45,7 +45,7 @@
                       [disableDefaultUI]="false"
                       [zoomControl]="false"
                       (mapClick)="closePrevInfo($event)">
-                  
+  
               <agm-marker *ngFor="let m of filteredMarkers"
                           (markerClick)="clickedMarker(m, infoWindow)"
                           (mouseOver)="mouseOverMarker(m, infoWindow)"
