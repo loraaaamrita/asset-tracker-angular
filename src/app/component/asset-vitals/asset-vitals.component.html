@@ -37,6 +37,7 @@
           <span class="mat-h4" >${{asset_vitals?.hours_billed}}</span>
         </div>
       </div>
+      <br>
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -57,6 +58,12 @@
           <app-log [assetId]=assetId></app-log>
         </mat-expansion-panel>
       </mat-accordion> 
+      <br>
+      <div fxLayoutAlign="end" >
+        <button mat-raised-button i18n color="primary" (click)="returnToYard()">
+          Return to Yard
+        </button>
+      </div>
     </div>     
   </mat-card-content>
 </mat-card>

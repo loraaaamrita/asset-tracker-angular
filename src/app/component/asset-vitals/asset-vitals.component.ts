@@ -28,6 +28,9 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
 
   assetForm: FormGroup;
 
+  lat: number = 52.64836;
+  lng: number = -114.246338;
+
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
@@ -63,6 +66,18 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
     });
     this.settingService.getStatuses().subscribe(statuses => {
       this.statuses = statuses;
+    });
+  }
+
+  returnToYard() {
+    let obj = {
+      id:  this.assetId,
+      lat: this.lat,
+      lng: this.lng
+    }
+    this.assetService.deleteFromMap(obj).subscribe(response => {
+      console.log(response)
+      this.snackBar.open('Asset returned to yard.', "Success:", {duration: 5000});
     });
   }
 
