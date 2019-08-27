@@ -5,6 +5,7 @@ from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material';
 
+import { AssetService } from "../../service/asset.service";
 import { GeocodeService } from "../../service/geocode.service";
 
 @Component({
@@ -23,26 +24,45 @@ export class AssetDeployComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private snackBar: MatSnackBar,
+    private assetService: AssetService,
     private geocodeService: GeocodeService) { 
       this.assetAddressForm = this.fb.group({
-        address: [null, Validators.required]
+        address: [null, Validators.compose([Validators.required])]
       });
     }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    console.log(this.assetId)
+  }
 
   close() {
     this.cancelDeploy.emit(false);
   }
 
-  submit() {
+  lookup() {
     console.log(this.assetAddressForm.value)
     this.geocodeService.getAddress(this.assetAddressForm.value.address)
         .subscribe((location) => {
       this.location = location;
       console.log(this.location)
+      if (this.location.length === 0)
+        this.assetAddressForm.patchValue({address: 'Location Not Found'});
+      else
+        this.addToMap(this.location)
     });
+  }
+
+  addToMap(location) {
+    let obj = {
+      id:  this.assetId,
+      lat: location.lat,
+      lng: location.lng
+    }
+    this.assetService.addToMap(obj).subscribe(response => {
+      console.log(response)
+      // this.snackBar.open('Asset updated.', "Success:", {duration: 5000});
+    });
+
   }
 
 }
