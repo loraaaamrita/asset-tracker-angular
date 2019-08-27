@@ -34,6 +34,7 @@ import { SettingsCompanyComponent } from './settings-company/settings-company.co
 import { SettingsCategoryComponent } from './settings-category/settings-category.component';
 import { SettingsPermissionComponent } from './settings-permission/settings-permission.component';
 import { AssetYardComponent } from './asset-yard/asset-yard.component';
+import { AssetDeployComponent } from './asset-deploy/asset-deploy.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { AssetYardComponent } from './asset-yard/asset-yard.component';
     SettingsCompanyComponent,
     SettingsCategoryComponent,
     SettingsPermissionComponent,
-    AssetYardComponent
+    AssetYardComponent,
+    AssetDeployComponent
   ],
   entryComponents: [
     ProfileComponent
@@ -68,6 +70,7 @@ import { AssetYardComponent } from './asset-yard/asset-yard.component';
     ProfileComponent,
     AssetMapComponent,
     SettingsComponent,
+    AssetDeployComponent,
     AssetVitalsComponent,
     MediaLibraryComponent,
     BannerInternalComponent

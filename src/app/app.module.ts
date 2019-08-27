@@ -19,6 +19,7 @@ import { ErrorService } from './service/error.service';
 import { AssetService } from './service/asset.service';
 import { MediaService } from './service/media.service';
 import { SettingService } from './service/setting.service';
+import { GeocodeService } from './service/geocode.service';
 import { BrandingService } from './service/branding.service';
 import { SecurityService } from './service/security.service';
 import { AuthGuardService } from './service/auth-guard.service';
@@ -41,6 +42,7 @@ import { HttpConfig} from './interceptor/httpconfig.interceptor';
     })
   ],
   providers: [
+    
     AuthService,
     UserService,
     YardService,
@@ -48,6 +50,7 @@ import { HttpConfig} from './interceptor/httpconfig.interceptor';
     ErrorService,
     AssetService,
     SettingService,
+    GeocodeService,
     BrandingService,
     SecurityService,
     AuthGuardService,

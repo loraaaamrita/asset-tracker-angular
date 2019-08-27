@@ -19,11 +19,13 @@ export class AssetYardComponent implements OnInit {
   @Input()  yardId: number;
   @Input()  yardName: string;
 
+  isDeploy: boolean = false;
+  assetId: number;
   assets: any;
 
   dataSource: MatTableDataSource<any>;
 
-  displayedColumns: string[] = ['name', 'unit_number', 'status'];
+  displayedColumns: string[] = ['name', 'unit_number', 'status', 'deploy'];
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -44,6 +46,14 @@ export class AssetYardComponent implements OnInit {
 
   close() {
     this.cancelYard.emit(false);
+  }
+
+  deploy() {
+    this.isDeploy = true;
+  }
+
+  cancelDeploy() {
+    this.isDeploy = false;
   }
 
 }
