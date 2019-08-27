@@ -12,7 +12,6 @@ import { InternalModule } from './internal/internal.module';
 
 import { AgmCoreModule } from '@agm/core';
 
-
 import { AuthService } from './service/auth.service';
 import { UserService } from './service/user.service';
 import { YardService } from './service/yard.service';
