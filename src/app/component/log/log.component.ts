@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewChild, AfterViewInit, Input } from '@angular/core';
 
 import { MatPaginator, MatSort, MatTableDataSource, MatSnackBar } 
 from '@angular/material';
@@ -14,8 +14,10 @@ import { SecurityService } from "../../service/security.service";
   templateUrl: './log.component.html',
   styleUrls: ['./log.component.scss']
 })
-export class LogComponent implements OnInit {
-  
+export class LogComponent implements OnInit, OnChanges {
+
+  @Input()  assetId: number;
+
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
@@ -33,6 +35,13 @@ export class LogComponent implements OnInit {
     private snackBar: MatSnackBar,
     private assetService: AssetService,
     private securityService: SecurityService) { }
+
+  ngOnChanges() {
+    this.assetService.getAssetHistory(this.assetId).subscribe(history => {
+      this.history = history;
+      this.dataSource = new MatTableDataSource(this.history);    
+      });
+  }
 
   ngOnInit() {
     this.securityService.getAssetSecurity().subscribe(security => {
@@ -57,6 +66,7 @@ export class LogComponent implements OnInit {
         );
       }),
       map(data => {
+        console.log(data)
         this.isLoader = false;
         return data;
       }),
@@ -66,6 +76,7 @@ export class LogComponent implements OnInit {
       })
     )
     .subscribe(log => {
+      console.log(log)
       this.history = log;
       this.dataSource = this.history;
     });
