@@ -2,7 +2,7 @@
   <br>
   <div fxLayout="row">
     <mat-form-field fxFlex> 
-      <mat-label>Enter Deployment Address</mat-label>
+      <mat-label>Enter Deployment Location</mat-label>
       <input matInput formControlName="address" type="text" required>
       <mat-error>
         Address required!
@@ -17,7 +17,7 @@
     </div>     
     <div>
       <button [disabled]="!assetAddressForm.valid" mat-raised-button 
-              i18n color="primary" (click)="submit()">
+              i18n color="primary" (click)="lookup()">
         Add to Map
       </button>
     </div>

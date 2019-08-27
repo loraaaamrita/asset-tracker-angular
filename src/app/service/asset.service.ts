@@ -73,4 +73,12 @@ export class AssetService {
     });
   }
 
+  addToMap(obj) {
+    return this._http.put(this.baseUrl+'asset/map/add', (obj));
+  }
+
+  deleteFromMap(obj) {
+    return this._http.put(this.baseUrl+'asset/map/delete', (obj));
+  }
+
 }

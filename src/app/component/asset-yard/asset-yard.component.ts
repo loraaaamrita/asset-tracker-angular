@@ -48,7 +48,8 @@ export class AssetYardComponent implements OnInit {
     this.cancelYard.emit(false);
   }
 
-  deploy() {
+  deploy(row) {
+    this.assetId = row.id;
     this.isDeploy = true;
   }
 

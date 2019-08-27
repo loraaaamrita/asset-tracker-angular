@@ -5,7 +5,7 @@
   </div>
   <div *ngIf="isDeploy" fxLayout="row" fxFlex>
       <app-asset-deploy (cancelDeploy)="cancelDeploy($event)" 
-                  [assetId]=assetId fxFlex>
+                        [assetId]=assetId fxFlex>
       </app-asset-deploy>
     </div>
     <br>
