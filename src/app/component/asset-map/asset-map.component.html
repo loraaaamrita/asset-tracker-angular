@@ -1,4 +1,4 @@
-<div *ngIf="isYard" fxLayout="column" fxFlex="33">
+<div class="yard" *ngIf="isYard" fxLayout="column" fxFlex="33">
   <mat-card class="mat-elevation-z8" fxFlex>
     <mat-card-content>
       <app-asset-yard (cancelYard)="cancelYard($event)" 
@@ -9,7 +9,7 @@
   </mat-card>
 </div>
 <div class="table-padding" fxLayout="column" fxFlex>
-  <div fxLayout="row" fxLayoutGap="10px">
+  <div *ngIf="!isAssetVitals" fxLayout="row" fxLayoutGap="10px">
     <mat-form-field fxFlex="50">
       <mat-label>Filter by Category</mat-label>
       <mat-select (selectionChange)="filterCategory($event)">
