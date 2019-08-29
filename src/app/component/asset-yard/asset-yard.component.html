@@ -9,7 +9,7 @@
       </app-asset-deploy>
     </div>
     <br>
-  <div fxLayoutAlign="start center" fxFlex>
+  <div *ngIf="!isDeploy" fxLayoutAlign="start center" fxFlex>
     <mat-form-field fxFlex>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
