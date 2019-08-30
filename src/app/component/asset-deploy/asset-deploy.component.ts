@@ -9,8 +9,7 @@ import { AssetService } from "../../service/asset.service";
 import { GeocodeService } from "../../service/geocode.service";
 
 import { CONSTANTS } from "../../model/constants";
-import { StateGroup } from "../../model/ProvinceState";
-
+import { StateGroup } from "../../model/provinceState";
 
 @Component({
   selector: 'app-asset-deploy',
