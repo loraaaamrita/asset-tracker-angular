@@ -76,6 +76,7 @@ export class AssetService {
   }
 
   addToMap(obj) {
+    console.log(obj)
     return this._http.put(this.baseUrl+'asset/map/add', (obj));
   }
 
