@@ -3,17 +3,28 @@ export const CONSTANTS = {
       {
         name: 'Canadian Provinces',
         states: [
-          {value:'AB'},{value:'BC'},{value:'MB'},{value:'NB'},{value:'NL'},{value:'NS'},
-          {value:'ON'},{value:'PE'},{value:'QC'},{value:'SK'},{value:'NT'},{value:'YT'},
-          {value:'NU'}
+          {value:'Alberta'},{value:'British Columbia'},{value:'Manitoba'},
+          {value:'New Brunswick'},{value:'Newfoundland and Labrador'},{value:'Nova Scotia'},
+          {value:'Ontario'},{value:'Prince Edward Island'},{value:'Quebec'},
+          {value:'Saskatchewan'},{value:'Northwest Territories'},{value:'Yukon'},
+          {value:'Nunavut'}
         ]
       },
       {
         name: 'American States',
         states: [
-          {value:'AL'},{value:'AK'},{value:'AZ'},{value:'AR'},{value:'CA'},{value:'CO'},{value:'CT'},{value:'DE'},{value:'FL'},{value:'GA'},{value:'HI'},{value:'ID'},{value:'IL'},{value:'IN'},{value:'IA'},{value:'KS'},{value:'KY'},{value:'LA'},{value:'ME'},{value:'MD'},{value:'MA'},
-          {value:'MI'},{value:'MN'},{value:'MS'},{value:'MO'},{value:'MT'},{value:'NE'},{value:'NV'},{value:'NH'},{value:'NJ'},{value:'NM'},{value:'NY'},{value:'NC'},{value:'ND'},{value:'OH'},{value:'OK'},{value:'OR'},{value:'PA'},{value:'RI'},{value:'SC'},{value:'SD'},{value:'TN'},{value:'TX'},{value:'UT'},
-          {value:'VT'},{value:'VA'},{value:'WA'},{value:'WV'},{value:'WI'},{value:'WY'}
+          {value:'Alabama'},{value:'Alaska'},{value:'Arizona'},{value:'Arkansas'},
+          {value:'California'},{value:'Colorado'},{value:'Connecticut'},{value:'Delaware'},
+          {value:'Florida'},{value:'Georgia'},{value:'Hawaii'},{value:'Idaho'},{value:'Illinos'},
+          {value:'Indiana'},{value:'Iowa'},{value:'Kansas'},{value:'Kentucky'},{value:'Louisiana'},
+          {value:'Maine'},{value:'Maryland'},{value:'Massachusetts'},{value:'Michigan'},
+          {value:'Minnesota'},{value:'Mississippi'},{value:'Missouri'},{value:'Montana'},
+          {value:'Nebraska'},{value:'Nevada'},{value:'New Hampshire'},{value:'New Jersey'},
+          {value:'New Mexico'},{value:'New York'},{value:'North Carolina'},{value:'North Dakota'},
+          {value:'Ohio'},{value:'Oklahoma'},{value:'Oregon'},{value:'Pennsylvania'},{value:'Rhode Island'},
+          {value:'South Carolina'},{value:'South Dakota'},{value:'Tennessee'},{value:'Texas'},
+          {value:'Utah'},{value:'Vermont'},{value:'Virginia'},{value:'Washington'},
+          {value:'West Virginia'},{value:'Wisconsin'},{value:'Wyoming'}
         ]
       }
     ]

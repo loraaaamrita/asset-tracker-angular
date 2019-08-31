@@ -46,18 +46,12 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log(this.assetId)
     this.assetService.getAssetVitals(this.assetId).subscribe(response => {
       this.asset_vitals = response;
     });
   }
 
   ngOnInit() {
-    // this.asset_id = this.assetService.asset_id;
-    // console.log(this.assetId)
-    // this.assetService.getAssetVitals(this.assetId).subscribe(response => {
-    //   this.asset_vitals = response;
-    // });
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
     });

@@ -38,7 +38,6 @@ export class AssetYardComponent implements OnInit {
   ngOnInit() {
     this.assetService.getYardAssets(this.yardId).subscribe(assets => {
       this.assets = assets;
-      console.log(assets)
       this.dataSource = new MatTableDataSource(this.assets);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

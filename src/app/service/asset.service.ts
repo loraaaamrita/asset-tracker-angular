@@ -67,7 +67,6 @@ export class AssetService {
   }
 
   getHistory(page_size, page_index) {
-    console.log(page_size, page_index)
     return this._http.get(this.baseUrl+'asset/history/read/', {params: { 
         page_size:  page_size,
         page_index: page_index

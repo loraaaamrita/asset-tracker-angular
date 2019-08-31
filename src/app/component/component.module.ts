@@ -35,6 +35,7 @@ import { SettingsCategoryComponent } from './settings-category/settings-category
 import { SettingsPermissionComponent } from './settings-permission/settings-permission.component';
 import { AssetYardComponent } from './asset-yard/asset-yard.component';
 import { AssetDeployComponent } from './asset-deploy/asset-deploy.component';
+import { AssetLogComponent } from './asset-log/asset-log.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { AssetDeployComponent } from './asset-deploy/asset-deploy.component';
     SettingsCategoryComponent,
     SettingsPermissionComponent,
     AssetYardComponent,
-    AssetDeployComponent
+    AssetDeployComponent,
+    AssetLogComponent
   ],
   entryComponents: [
     ProfileComponent

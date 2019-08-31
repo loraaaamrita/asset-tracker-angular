@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
 import { MatPaginator, MatSort, MatTableDataSource, MatSnackBar } 
 from '@angular/material';
@@ -14,46 +14,37 @@ import { SecurityService } from "../../service/security.service";
   templateUrl: './log.component.html',
   styleUrls: ['./log.component.scss']
 })
-export class LogComponent implements OnInit, OnChanges {
-
-  @Input()  assetId: number;
+export class LogComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   security: any;
   history: any;
-  isLoader: boolean = false;
   dataSource: MatTableDataSource<any>;
 
-  columnsToDisplay: string[] = ['unit_no', 'date', 'user', 'action'];
+  columnsToDisplay: string[] = ['unit_number', 'move_date', 'move_user_label', 'status_label'];
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
   constructor(
     private snackBar: MatSnackBar,
     private assetService: AssetService,
     private securityService: SecurityService) { }
 
-  ngOnChanges() {
-    this.assetService.getAssetHistory(this.assetId).subscribe(history => {
-      this.history = history;
-      this.dataSource = new MatTableDataSource(this.history);    
-      });
-  }
-
   ngOnInit() {
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
-    });
-    this.getData();
+    }); 
   }
 
   ngAfterViewInit() {
     merge(this.paginator.page).pipe(
       tap(() => this.loadNextPage())
     ).subscribe();
+    this.getData();
   }
 
   getData() {
@@ -66,24 +57,21 @@ export class LogComponent implements OnInit, OnChanges {
         );
       }),
       map(data => {
-        console.log(data)
-        this.isLoader = false;
         return data;
       }),
-      catchError(() => {
-        this.isLoader = false;
+      catchError((err) => {
         return observableOf([]);
       })
     )
-    .subscribe(log => {
-      console.log(log)
-      this.history = log;
+    .subscribe(history => {
+      this.history = history;
       this.dataSource = this.history;
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
   }
 
   loadNextPage() {
-    this.isLoader = true;
     this.getData();
   }
 
