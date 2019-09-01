@@ -25,6 +25,8 @@ import { AssetsComponent } from './assets/assets.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AssetMapComponent } from './asset-map/asset-map.component';
+import { AssetLogComponent } from './asset-log/asset-log.component';
+import { AssetYardComponent } from './asset-yard/asset-yard.component';
 import { AssetVitalsComponent } from './asset-vitals/asset-vitals.component';
 import { SettingsRoleComponent } from './settings-role/settings-role.component';
 import { MediaLibraryComponent } from './media-library/media-library.component';
@@ -33,9 +35,6 @@ import { SettingsStatusComponent } from './settings-status/settings-status.compo
 import { SettingsCompanyComponent } from './settings-company/settings-company.component';
 import { SettingsCategoryComponent } from './settings-category/settings-category.component';
 import { SettingsPermissionComponent } from './settings-permission/settings-permission.component';
-import { AssetYardComponent } from './asset-yard/asset-yard.component';
-import { AssetDeployComponent } from './asset-deploy/asset-deploy.component';
-import { AssetLogComponent } from './asset-log/asset-log.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +44,10 @@ import { AssetLogComponent } from './asset-log/asset-log.component';
     AssetComponent,
     AssetsComponent,
     ProfileComponent,
+    AssetLogComponent,
     SettingsComponent,
     AssetMapComponent,
+    AssetYardComponent,
     AssetVitalsComponent,
     SettingsRoleComponent,
     MediaLibraryComponent,
@@ -54,10 +55,7 @@ import { AssetLogComponent } from './asset-log/asset-log.component';
     SettingsStatusComponent,
     SettingsCompanyComponent,
     SettingsCategoryComponent,
-    SettingsPermissionComponent,
-    AssetYardComponent,
-    AssetDeployComponent,
-    AssetLogComponent
+    SettingsPermissionComponent
   ],
   entryComponents: [
     ProfileComponent
@@ -71,7 +69,6 @@ import { AssetLogComponent } from './asset-log/asset-log.component';
     ProfileComponent,
     AssetMapComponent,
     SettingsComponent,
-    AssetDeployComponent,
     AssetVitalsComponent,
     MediaLibraryComponent,
     BannerInternalComponent
