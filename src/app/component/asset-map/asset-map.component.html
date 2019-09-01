@@ -1,7 +1,7 @@
 <div class="yard" *ngIf="isYard" fxLayout="column" fxFlex="33">
   <mat-card class="mat-elevation-z8" fxFlex>
     <mat-card-content>
-      <app-asset-yard (cancelYard)="cancelYard($event)" 
+      <app-asset-yard (refreshMarkers)="refreshMarkers($event)"
                       [yardId]=1 
                       [yardName]=yardName fxFlex>
        </app-asset-yard>
@@ -28,7 +28,8 @@
     </mat-form-field>
   </div>
   <div *ngIf="isAssetVitals" fxLayout="row" fxFlex>
-    <app-asset-vitals (cancelVitals)="cancelVitals($event)" 
+    <app-asset-vitals (cancelVitals)="cancelVitals($event)"
+                      (refreshMarkers)="refreshMarkers($event)" 
                       [assetId]=assetId fxFlex>
     </app-asset-vitals>
   </div>
@@ -64,7 +65,7 @@
               </agm-marker>
             </agm-map>
           </mat-card-content>
-        </mat-card> 
+        </mat-card>
       </div>
     </div>
   </div>

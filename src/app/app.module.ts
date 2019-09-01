@@ -42,7 +42,6 @@ import { HttpConfig} from './interceptor/httpconfig.interceptor';
     })
   ],
   providers: [
-    
     AuthService,
     UserService,
     YardService,

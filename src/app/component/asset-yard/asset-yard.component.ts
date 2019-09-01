@@ -1,9 +1,16 @@
 import { Component, OnInit, ViewChild, Output, Input, EventEmitter } from '@angular/core';
 
+import { FormBuilder, Validators, FormGroup, FormControl } 
+from '@angular/forms';
+
 import { MatTableDataSource, MatSort, MatPaginator } 
 from '@angular/material';
 
 import { AssetService } from "../../service/asset.service";
+import { GeocodeService } from "../../service/geocode.service";
+
+import { CONSTANTS } from "../../model/constants";
+import { StateGroup } from "../../model/provinceState";
 
 @Component({
   selector: 'app-asset-yard',
@@ -15,13 +22,19 @@ export class AssetYardComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  @Output() cancelYard = new EventEmitter();
+  @Output() refreshMarkers = new EventEmitter();
   @Input()  yardId: number;
   @Input()  yardName: string;
 
   isDeploy: boolean = false;
+  isFound: boolean = false;
   assetId: number;
   assets: any;
+  location: any;
+
+  stateGroups: StateGroup[] = CONSTANTS.StateProvinces
+
+  assetAddressForm: FormGroup; 
 
   dataSource: MatTableDataSource<any>;
 
@@ -32,10 +45,22 @@ export class AssetYardComponent implements OnInit {
   }
 
   constructor(
-    private assetService: AssetService
-  ) { }
+    private fb: FormBuilder,
+    private assetService: AssetService,
+    private geocodeService: GeocodeService) { 
+      this.assetAddressForm = this.fb.group({
+        address:  [''],
+        city:     [''],
+        province: [''],
+        postal:   ['']
+      });
+    }
 
   ngOnInit() {
+    this.getAssets();
+  }
+
+  getAssets() {
     this.assetService.getYardAssets(this.yardId).subscribe(assets => {
       this.assets = assets;
       this.dataSource = new MatTableDataSource(this.assets);
@@ -43,9 +68,38 @@ export class AssetYardComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     });
   }
+  
+  lookup() {
+    let obj = { 
+      address:  this.assetAddressForm.value.address, 
+      city:     this.assetAddressForm.value.city,
+      province: this.assetAddressForm.value.province,
+      postal:   this.assetAddressForm.value.postal,
+    }
+    let address = JSON.stringify(obj);
+    this.geocodeService.getAddress(address).subscribe(location => {
+      this.location = location;
+      if (this.location.lat !== 0) {
+        this.isFound = true;
+        alert('The address is found at latitude '+this.location.lat+', longitude '+this.location.lng)
+      }
+      else
+        alert('The address is NOT found')
+    });
+  }
 
-  close() {
-    this.cancelYard.emit(false);
+  addToMap() {
+    let obj = {
+      id:  this.assetId,
+      lat: this.location.lat,
+      lng: this.location.lng
+    }
+    this.assetService.addToMap(obj).subscribe(response => {
+      this.getAssets();
+      this.refreshMarkers.emit();
+      this.cancelDeploy();
+    });
+
   }
 
   deploy(row) {
@@ -54,6 +108,12 @@ export class AssetYardComponent implements OnInit {
   }
 
   cancelDeploy() {
+    this.assetAddressForm.patchValue({
+      address:  '',
+      city:     '',
+      province: '',
+      postal:   ''
+    })
     this.isDeploy = false;
   }
 

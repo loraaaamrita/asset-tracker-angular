@@ -18,6 +18,7 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
 
   @Input()  assetId: number;
   @Output() cancelVitals = new EventEmitter();
+  @Output() refreshMarkers = new EventEmitter();
 
   history: any;
   security: any;
@@ -70,7 +71,8 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
       lng: this.lng
     }
     this.assetService.deleteFromMap(obj).subscribe(response => {
-      console.log(response)
+      this.close();
+      this.refreshMarkers.emit();
       this.snackBar.open('Asset returned to yard.', "Success:", {duration: 5000});
     });
   }
