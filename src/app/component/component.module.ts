@@ -37,7 +37,6 @@ import { AssetYardComponent } from './asset-yard/asset-yard.component';
 import { AssetDeployComponent } from './asset-deploy/asset-deploy.component';
 import { AssetLogComponent } from './asset-log/asset-log.component';
 
-
 @NgModule({
   declarations: [
     LogComponent,

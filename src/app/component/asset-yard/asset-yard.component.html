@@ -1,10 +1,10 @@
-
 <div fxLayout="column" fxFlex>
   <div fxLayout="row" class="headline" fxLayoutAlign="start" fxFlex>
     {{yardName}} Yard
   </div>
   <div *ngIf="isDeploy" fxLayout="row" fxFlex>
-      <app-asset-deploy (cancelDeploy)="cancelDeploy($event)" 
+      <app-asset-deploy (cancelDeploy)="cancelDeploy($event)"
+                        (refreshMarkers)="refreshMarkers($event)" 
                         [assetId]=assetId fxFlex>
       </app-asset-deploy>
     </div>

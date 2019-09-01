@@ -16,6 +16,7 @@ export class AssetYardComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   @Output() cancelYard = new EventEmitter();
+  @Input() refreshMarkers = new EventEmitter();
   @Input()  yardId: number;
   @Input()  yardName: string;
 

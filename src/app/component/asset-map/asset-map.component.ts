@@ -26,6 +26,7 @@ export class AssetMapComponent implements OnInit {
   icon: string;
   isYard: boolean = true;
   isAssetVitals: boolean = false;
+
   allMarkers = [];
   filteredMarkers = [];
 
@@ -71,6 +72,14 @@ export class AssetMapComponent implements OnInit {
     });
   }
 
+  refreshMarkers() {
+    this.allMarkers = [];
+    this.assetService.getAssets().subscribe(assets => {
+      this.assets = assets;
+      this.getMarkers();
+    });
+  }
+
   getMarkers(){
     this.assets.forEach(element => {
       if (element.yard_id === null) {
@@ -93,6 +102,7 @@ export class AssetMapComponent implements OnInit {
       }
     });
     this.filteredMarkers = this.allMarkers;
+    console.log(this.filteredMarkers)
   }
 
   closePrevInfo() {

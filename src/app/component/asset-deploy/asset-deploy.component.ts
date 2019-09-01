@@ -10,6 +10,7 @@ import { GeocodeService } from "../../service/geocode.service";
 
 import { CONSTANTS } from "../../model/constants";
 import { StateGroup } from "../../model/provinceState";
+import { isEmpty } from 'rxjs/operators';
 
 @Component({
   selector: 'app-asset-deploy',
@@ -20,8 +21,12 @@ export class AssetDeployComponent implements OnInit {
 
   @Input()  assetId: number;
   @Output() cancelDeploy = new EventEmitter();
+  @Output() refreshMarkers = new EventEmitter();
 
-  location;
+  location: any;
+  isFound: boolean = false;
+  // isLookup: boolean = false;
+  lookupString: string = '';
 
   stateGroups: StateGroup[] = CONSTANTS.StateProvinces
 
@@ -29,13 +34,14 @@ export class AssetDeployComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private assetService: AssetService,
     private geocodeService: GeocodeService) { 
       this.assetAddressForm = this.fb.group({
-        address:  [null, Validators.compose([Validators.required])],
-        city:     [null, Validators.compose([Validators.required])],
-        province: [null, Validators.compose([Validators.required])],
-        postal:   [null, Validators.compose([Validators.required])],
+        address:  [null],
+        city:     [null],
+        province: [null],
+        postal:   [null],
       });
     }
 
@@ -55,26 +61,27 @@ export class AssetDeployComponent implements OnInit {
       postal:   this.assetAddressForm.value.postal,
     }
     let address = JSON.stringify(obj);
-    console.log(address)
-    this.geocodeService.getAddress(address)
-        .subscribe((location) => {
+    this.geocodeService.getAddress(address).subscribe(location => {
       this.location = location;
-      console.log(this.location)
-      if (this.location.length === 0)
-        this.assetAddressForm.patchValue({address: 'Location Not Found'});
+      if (this.location.lat !== 0) {
+        this.isFound = true;
+        alert('The address is found at latitude '+this.location.lat+', longitude '+this.location.lng)
+      }
       else
-        this.addToMap(this.location)
+        alert('The address is NOT found')
     });
   }
 
-  addToMap(location) {
+  addToMap() {
     let obj = {
       id:  this.assetId,
-      lat: location.lat,
-      lng: location.lng
+      lat: this.location.lat,
+      lng: this.location.lng
     }
     this.assetService.addToMap(obj).subscribe(response => {
       console.log(response)
+      this.refreshMarkers.emit();
+      // window.location.reload();
       // this.snackBar.open('Asset updated.', "Success:", {duration: 5000});
     });
 
