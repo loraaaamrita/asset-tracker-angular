@@ -2,20 +2,22 @@ agm-map {
   height: 800px;
 }
 
-* {
-  font-family: Lato;
-}
-
 a {
   color: darkblue;
 }
 
 .card-margins {
   padding-top: 20px;
+  padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
 }
 
-.yard {
-margin-left:15px;
+.margin20px {
+  margin-left:20px;
+  margin-bottom:20px;
+}
+
+.margin-bottom20px {
+  margin-bottom:20px;
 }

@@ -1,4 +1,4 @@
-<div class="yard" *ngIf="isYard" fxLayout="column" fxFlex="33">
+<div class="margin20px" *ngIf="isYard" fxLayout="column" fxFlex="33">
   <mat-card class="mat-elevation-z8" fxFlex>
     <mat-card-content>
       <app-asset-yard (refreshMarkers)="refreshMarkers($event)"
@@ -11,7 +11,7 @@
 <div class="table-padding" fxLayout="column" fxFlex>
   <div *ngIf="!isAssetVitals" fxLayout="row" fxLayoutGap="10px">
     <mat-form-field fxFlex="50">
-      <mat-label>Filter by Category</mat-label>
+      <mat-label class="select-font">Filter by Category</mat-label>
       <mat-select (selectionChange)="filterCategory($event)">
         <mat-option *ngFor="let category of categories" [value]="category.id">
           {{ category.category }}
@@ -19,7 +19,7 @@
       </mat-select>
     </mat-form-field>  
     <mat-form-field fxFlex="50">
-      <mat-label>Filter by Status</mat-label>
+      <mat-label class="select-font">Filter by Status</mat-label>
       <mat-select (selectionChange)="filterStatus($event)">
         <mat-option *ngFor="let status of statuses" [value]="status.id">
           {{ status.status }}
@@ -27,15 +27,13 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div *ngIf="isAssetVitals" fxLayout="row" fxFlex>
+  <div *ngIf="isAssetVitals" class="margin-bottom20px" fxLayout="row" fxFlex>
     <app-asset-vitals (cancelVitals)="cancelVitals($event)"
                       (refreshMarkers)="refreshMarkers($event)" 
                       [assetId]=assetId fxFlex>
     </app-asset-vitals>
   </div>
-  <br>
   <div fxLayout="row">
-    <br>
     <div fxLayout="row" fxLayoutGap="20px" fxFlex>
       <div fxLayout="column" fxFlex>
         <mat-card class="mat-elevation-z8" fxFlex>
