@@ -102,7 +102,6 @@ export class AssetMapComponent implements OnInit {
       }
     });
     this.filteredMarkers = this.allMarkers;
-    console.log(this.filteredMarkers)
   }
 
   closePrevInfo() {

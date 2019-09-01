@@ -1,8 +1,7 @@
 <div class="yard" *ngIf="isYard" fxLayout="column" fxFlex="33">
   <mat-card class="mat-elevation-z8" fxFlex>
     <mat-card-content>
-      <app-asset-yard (cancelYard)="cancelYard($event)" 
-                      (refreshMarkers)="refreshMarkers($event)"
+      <app-asset-yard (refreshMarkers)="refreshMarkers($event)"
                       [yardId]=1 
                       [yardName]=yardName fxFlex>
        </app-asset-yard>

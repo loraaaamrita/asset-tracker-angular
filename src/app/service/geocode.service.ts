@@ -11,9 +11,13 @@ declare var google: any;
 })
 export class GeocodeService {
 
-  geocoder = new google.maps.Geocoder();
-
-  constructor() { }
+  private geocoder;
+  constructor(
+    private mapsAPILoader: MapsAPILoader) { 
+    this.mapsAPILoader.load().then(() => {
+      this.geocoder = new google.maps.Geocoder();  
+    });
+  }
 
   getAddress(address) {
     return new Observable(observer => {
