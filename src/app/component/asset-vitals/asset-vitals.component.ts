@@ -78,6 +78,7 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
   }
 
   close() {
+    this.refreshMarkers.emit();
     this.cancelVitals.emit(false);
   }
 
