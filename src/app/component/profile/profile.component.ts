@@ -45,7 +45,6 @@ export class ProfileComponent implements OnInit {
       this.profileImage = this.baseUrl+'profiles/'+
                           this.tenant_id+'/'+
                           this.user.profile_image;
-                          console.log(this.profileImage)
       this.profileForm.patchValue({
         first_name: this.user.first_name,
         last_name:  this.user.last_name,

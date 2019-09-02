@@ -61,7 +61,6 @@ export class AssetService {
   }
 
   getAssetHistory(id) {
-    console.log(id)
     return this._http.get(this.baseUrl+'asset/history/read/id', 
       {params: {id: id}});
   }
@@ -75,7 +74,6 @@ export class AssetService {
   }
 
   addToMap(obj) {
-    console.log(obj)
     return this._http.put(this.baseUrl+'asset/map/add', (obj));
   }
 
