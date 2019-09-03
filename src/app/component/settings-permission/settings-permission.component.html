@@ -6,6 +6,16 @@
         <div fxLayout="row" class="mat-headline">Permissions</div>
         <div fxLayout="row">
           <div fxLayout="column" fxFlex="50">
+            <div class="permission-section" fxLayout="row" fxFlex>Asset Map</div>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <div class="mat-body-1" fxFlex="25">
+                <mat-checkbox formControlName="asset_map_read">Read</mat-checkbox>
+              </div>
+              <div class="mat-body-1" fxFlex="25">
+                <mat-checkbox formControlName="asset_map_update">Update</mat-checkbox>
+              </div>
+            </div>
+            <br>
             <div class="permission-section" fxLayout="row" fxFlex>Assets</div>
             <div fxLayout="row" fxLayoutGap="10px">
               <div class="mat-body-1" fxFlex="25"> 
@@ -22,7 +32,57 @@
               </div>
             </div>
             <br> 
-            <br>          
+            <div class="permission-section" fxLayout="row" fxFlex>Asset Logs</div>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <div class="mat-body-1" fxFlex="25"> 
+                <mat-checkbox formControlName="asset_log_read">Read</mat-checkbox>
+              </div>          
+            </div>
+            <br>
+            <div class="permission-section" fxLayout="row" fxFlex>Users</div>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <div class="mat-body-1" fxFlex="25"> 
+                <mat-checkbox formControlName="user_create">Create</mat-checkbox>
+              </div>
+              <div class="mat-body-1" fxFlex="25"> 
+                <mat-checkbox formControlName="user_read">Read</mat-checkbox>
+              </div>
+              <div class="mat-body-1" fxFlex="25"> 
+                <mat-checkbox formControlName="user_update">Update</mat-checkbox>
+              </div>
+              <div class="mat-body-1" fxFlex> 
+                <mat-checkbox formControlName="user_delete">Delete</mat-checkbox>
+              </div>          
+            </div> 
+            <br>
+            <div class="permission-section" fxLayout="row" fxFlex>Media Library</div>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <div class="mat-body-1" fxFlex="25"> 
+                <mat-checkbox formControlName="media_create">Create</mat-checkbox>
+              </div>
+              <div class="mat-body-1" fxFlex="25"> 
+                <mat-checkbox formControlName="media_read">Read</mat-checkbox>
+              </div>
+              <div class="mat-body-1" fxFlex="25"> 
+                <mat-checkbox formControlName="media_update">Update</mat-checkbox>
+              </div>
+              <div class="mat-body-1" fxFlex> 
+                <mat-checkbox formControlName="media_delete">Delete</mat-checkbox>
+              </div>             
+            </div>
+          </div>
+          <div class="vertical-seprator"></div>
+          <div fxLayout="column" fxFlex>
+            <div class="permission-section" fxLayout="row" fxFlex>Permissions</div>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <div class="mat-body-1" fxFlex="25"> 
+                <mat-checkbox formControlName="permission_read">Read</mat-checkbox>
+              </div>
+              <div class="mat-body-1" fxFlex="25"> 
+                <mat-checkbox formControlName="permission_update">Update</mat-checkbox>
+              </div>          
+            </div> 
+            <br>
             <div class="permission-section" fxLayout="row" fxFlex>Categories</div>
             <div fxLayout="row" fxLayoutGap="10px">
               <div class="mat-body-1" fxFlex="25"> 
@@ -48,42 +108,6 @@
                 <mat-checkbox formControlName="company_update">Update</mat-checkbox>
               </div>        
             </div>
-            <br>
-            <div class="permission-section" fxLayout="row" fxFlex>History Logs</div>
-            <div fxLayout="row" fxLayoutGap="10px">
-              <div class="mat-body-1" fxFlex="25"> 
-                <mat-checkbox formControlName="asset_log_read">Read</mat-checkbox>
-              </div>          
-            </div>
-            <br>
-            <div class="permission-section" fxLayout="row" fxFlex>Media Library</div>
-            <div fxLayout="row" fxLayoutGap="10px">
-              <div class="mat-body-1" fxFlex="25"> 
-                <mat-checkbox formControlName="media_create">Create</mat-checkbox>
-              </div>
-              <div class="mat-body-1" fxFlex="25"> 
-                <mat-checkbox formControlName="media_read">Read</mat-checkbox>
-              </div>
-              <div class="mat-body-1" fxFlex="25"> 
-                <mat-checkbox formControlName="media_update">Update</mat-checkbox>
-              </div>
-              <div class="mat-body-1" fxFlex> 
-                <mat-checkbox formControlName="media_delete">Delete</mat-checkbox>
-              </div>             
-            </div>
-          </div>
-          <div class="vertical-seprator"></div>
-          <div fxLayout="column" fxFlex>
-            <br>
-            <div class="permission-section" fxLayout="row" fxFlex>Permissions</div>
-            <div fxLayout="row" fxLayoutGap="10px">
-              <div class="mat-body-1" fxFlex="25"> 
-                <mat-checkbox formControlName="permission_read">Read</mat-checkbox>
-              </div>
-              <div class="mat-body-1" fxFlex="25"> 
-                <mat-checkbox formControlName="permission_update">Update</mat-checkbox>
-              </div>          
-            </div> 
             <br>
             <div class="permission-section" fxLayout="row" fxFlex>Roles</div>
             <div fxLayout="row" fxLayoutGap="10px">
@@ -115,23 +139,7 @@
               <div class="mat-body-1" fxFlex> 
                 <mat-checkbox formControlName="status_delete">Delete</mat-checkbox>
               </div> 
-            </div>
-            <br>
-            <div class="permission-section" fxLayout="row" fxFlex>Users</div>
-            <div fxLayout="row" fxLayoutGap="10px">
-              <div class="mat-body-1" fxFlex="25"> 
-                <mat-checkbox formControlName="user_create">Create</mat-checkbox>
-              </div>
-              <div class="mat-body-1" fxFlex="25"> 
-                <mat-checkbox formControlName="user_read">Read</mat-checkbox>
-              </div>
-              <div class="mat-body-1" fxFlex="25"> 
-                <mat-checkbox formControlName="user_update">Update</mat-checkbox>
-              </div>
-              <div class="mat-body-1" fxFlex> 
-                <mat-checkbox formControlName="user_delete">Delete</mat-checkbox>
-              </div>          
-            </div>          
+            </div>         
           </div>
         </div>     
         <div class="bottom-padding" fxLayout="row" fxLayoutAlign="end center">

@@ -19,13 +19,14 @@ export class AssetComponent implements OnInit, OnChanges {
   user_id = localStorage.getItem('userId');
 
   @Input()  assetId: number;
+  @Input()  isUpdateAsset: boolean;
   @Output() cancelCreate = new EventEmitter();
 
-  history: any;
-  security: any;
-  statuses: any;
+  history:    any;
+  security:   any;
+  statuses:   any;
   categories: any;
-  asset: any;
+  asset:      any;
 
   isAdd: boolean = true;
 

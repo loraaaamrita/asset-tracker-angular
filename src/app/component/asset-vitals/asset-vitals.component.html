@@ -46,7 +46,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <app-asset (cancelSubmit)='cancelSubmit($event)' 
-                     [assetId]=assetId>
+                     [assetId]=assetId
+                     [isUpdateAsset]=isUpdateAsset>
           </app-asset>
         </mat-expansion-panel>
         <mat-expansion-panel>
@@ -59,10 +60,13 @@
         </mat-expansion-panel>
       </mat-accordion> 
       <br>
-      <div fxLayoutAlign="end" >
-        <button mat-raised-button i18n color="primary" (click)="returnToYard()">
-          Return to Yard
-        </button>
+      <div fxLayoutAlign="end">
+        <div *ngIf="isUpdateMap">
+          <button mat-raised-button i18n color="primary" (click)="returnToYard()">Return to Yard</button>
+        </div>
+        <div *ngIf="!isUpdateMap">
+          <button mat-raised-button i18n color="primary" disabled>Return to Yard</button>
+        </div>
       </div>
     </div>     
   </mat-card-content>

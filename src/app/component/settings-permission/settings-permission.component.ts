@@ -34,6 +34,8 @@ export class SettingsPermissionComponent implements OnInit, OnChanges {
       asset_read:         [null],
       asset_update:       [null],
       asset_delete:       [null],
+      asset_map_read:     [null],
+      asset_map_update:   [null],
       asset_log_read:     [null],
       category_create:    [null],
       category_read:      [null],
@@ -97,12 +99,15 @@ export class SettingsPermissionComponent implements OnInit, OnChanges {
   getPermissions() { 
     this.settingService.getPermissions(this.roleId).subscribe(permissions => {
       this.permissions = permissions;
+      console.log(permissions)
       if (this.permissions !== null) {
         this.permissionForm.setValue({
           asset_create:       this.permissions.asset_create,
           asset_read:         this.permissions.asset_read,
           asset_update:       this.permissions.asset_update,
           asset_delete:       this.permissions.asset_delete,
+          asset_map_read:     this.permissions.asset_map_read,
+          asset_map_update:   this.permissions.asset_map_update,
           asset_log_read:     this.permissions.asset_log_read,
           category_create:    this.permissions.category_create,
           category_read:      this.permissions.category_read,
@@ -139,6 +144,8 @@ export class SettingsPermissionComponent implements OnInit, OnChanges {
       asset_read:         false,
       asset_update:       false,
       asset_delete:       false,
+      asset_map_read:     false,
+      asset_map_update:   false,
       asset_log_read:     false,
       category_create:    false,
       category_read:      false,
@@ -173,6 +180,8 @@ export class SettingsPermissionComponent implements OnInit, OnChanges {
       asset_read:         true,
       asset_update:       true,
       asset_delete:       true,
+      asset_map_read:     true,
+      asset_map_update:   true,
       asset_log_read:     true,
       category_create:    true,
       category_read:      true,

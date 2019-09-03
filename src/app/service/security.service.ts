@@ -23,6 +23,11 @@ export class SecurityService {
       {params: {tenant_id: this.tenant_id, role_id: role_id }});
   }
 
+  getAssetMapSecurity() {
+    return this._http.get(this.baseUrl+'security/asset/map', 
+    {params: {tenant_id: this.tenant_id, role_id: this.role_id }});
+  }
+
   getAssetSecurity() {
     return this._http.get(this.baseUrl+'security/asset/', 
     {params: {tenant_id: this.tenant_id, role_id: this.role_id }});
