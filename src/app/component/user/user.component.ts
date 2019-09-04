@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material';
 
@@ -17,6 +17,8 @@ import { SecurityService } from "../../service/security.service";
 export class UserComponent implements OnInit {
 
   @Output() cancelCreate = new EventEmitter();
+  @Input()  isUpdate: boolean;
+
 
   user_id = localStorage.getItem('userId');
 
@@ -40,6 +42,8 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.isUpdate === false)
+    this.userForm.disable();
     this.settingService.getRoles().subscribe(roles => {
       this.roles = roles;
     });

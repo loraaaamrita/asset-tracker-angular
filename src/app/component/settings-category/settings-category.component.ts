@@ -65,7 +65,9 @@ export class SettingsCategoryComponent implements OnInit {
       this.categories = response;
       if (this.isDisabled === true)
         this.columnsToDisplay = ['category'];
-      else {
+        this.dataSource = new MatTableDataSource(this.categories);
+        this.dataSource.sort = this.sort;
+      if(this.isDisabled === false) {
         this.columnsToDisplay = ['category', 'delete', 'update'];
         this.dataSource = new MatTableDataSource(this.categories);
         this.dataSource.sort = this.sort;

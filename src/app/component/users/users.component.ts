@@ -32,9 +32,10 @@ export class UsersComponent implements OnInit {
 
   user_id = localStorage.getItem('userId');
 
-  isCreate: boolean = false;
-  isUpdate: boolean = false;
-  isDelete: boolean = false;
+  isCreate:   boolean = false;
+  isUpdate:   boolean = false;
+  isDelete:   boolean = false;
+  isSecurity: boolean = false;
 
   users: any;
   roles: any;
@@ -74,6 +75,7 @@ export class UsersComponent implements OnInit {
         this.isCreate = true;
       if (this.security.user_update === true)
         this.isUpdate = true;
+        this.isSecurity = true;
       if (this.security.user_delete === true)
         this.isDelete = true;
       if (this.security.user_create === false

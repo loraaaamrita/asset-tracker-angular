@@ -20,6 +20,7 @@ export class AssetComponent implements OnInit, OnChanges {
 
   @Input()  assetId: number;
   @Input()  isUpdateAsset: boolean;
+  @Input()  isUpdate: boolean;
   @Output() cancelCreate = new EventEmitter();
 
   history:    any;
@@ -60,6 +61,10 @@ export class AssetComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    if(this.isUpdateAsset === false)
+    this.assetForm.disable();
+    if(this.isUpdate === false)
+    this.assetForm.disable();
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
     }, error => {

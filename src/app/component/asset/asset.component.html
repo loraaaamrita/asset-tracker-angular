@@ -43,18 +43,18 @@
         </mat-form-field>
       </div>
       <div fxLayoutAlign="end center" fxLayoutGap="10px">
-        <!-- <div>
+        <div>
           <a class="blue-link" mat-button i18n (click)="close()">
             Cancel
           </a>
-        </div>      -->
+        </div>     
         <div>
-            <div>
-                <button *ngIf="isUpdateAsset" mat-raised-button i18n color="primary" (click)="submit()">Save</button>
-              </div>
-              <div>
-                <button *ngIf="!isUpdateAsset" mat-raised-button i18n color="primary" disabled>Save</button>
-              </div>
+          <div>
+            <button *ngIf="isUpdateAsset" mat-raised-button i18n color="primary" (click)="submit()">Save</button>
+          </div>
+          <div>
+            <button *ngIf="!isUpdateAsset" mat-raised-button i18n color="primary" disabled>Save</button>
+          </div>
         </div>
       </div> 
     </mat-card-content>
