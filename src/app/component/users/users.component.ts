@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  user_id = localStorage.getItem('userId');
+  user_id = sessionStorage.getItem('userId');
 
   isCreate:   boolean = false;
   isUpdate:   boolean = false;
@@ -73,9 +73,9 @@ export class UsersComponent implements OnInit {
       this.security = security;
       if (this.security.user_create === true)
         this.isCreate = true;
-      if (this.security.user_update === true)
+      if (this.security.user_update === true) 
         this.isUpdate = true;
-        this.isSecurity = true;
+        // this.isSecurity = true; 
       if (this.security.user_delete === true)
         this.isDelete = true;
       if (this.security.user_create === false

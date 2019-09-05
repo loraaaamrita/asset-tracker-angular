@@ -17,7 +17,7 @@ export class SettingsPermissionComponent implements OnInit, OnChanges {
 
   @Input() roleId: number;
 
-  user_id = localStorage.getItem('userId');
+  user_id = sessionStorage.getItem('userId');
 
   isUpdate: boolean = false;
 

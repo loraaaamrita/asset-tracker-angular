@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 export class SettingService {
   
   baseUrl = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
+  tenant_id = sessionStorage.getItem('tenantId');
  
   constructor(
     private _http: HttpClient

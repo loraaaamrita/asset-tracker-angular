@@ -10,9 +10,9 @@ import { environment } from '../../environments/environment';
 export class SecurityService {
 
   baseUrl = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
+  tenant_id = sessionStorage.getItem('tenantId');
 
-  role_id = localStorage.getItem('roleId');
+  role_id = sessionStorage.getItem('roleId');
 
   constructor(
     private _http: HttpClient

@@ -33,8 +33,8 @@ export class AssetsComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   baseUrl = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
-  user_id = localStorage.getItem('userId');
+  tenant_id = sessionStorage.getItem('tenantId');
+  user_id = sessionStorage.getItem('userId');
 
   isCreate: boolean = false;
   isUpdate: boolean = false;
@@ -81,10 +81,9 @@ export class AssetsComponent implements OnInit {
       console.log(this.security)
       if (this.security.asset_create === true)
         this.isCreate = true;
-      if (this.security.asset_update === true) {
+      if (this.security.asset_update === true) 
         this.isUpdate = true;
-        this.isSecurity = true;
-      } 
+        // this.isSecurity = true;
       if (this.security.asset_delete === true)
         this.isDelete = true;
       if (this.security.asset_delete === false

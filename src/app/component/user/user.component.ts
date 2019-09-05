@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   @Input()  isUpdate: boolean;
 
 
-  user_id = localStorage.getItem('userId');
+  user_id = sessionStorage.getItem('userId');
 
   roles: any;
   security: any;

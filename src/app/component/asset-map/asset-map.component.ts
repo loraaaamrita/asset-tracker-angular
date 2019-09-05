@@ -34,7 +34,6 @@ export class AssetMapComponent implements OnInit {
   isUpdateMap:   boolean = false;
   isSecurity:    boolean = false;
 
-
   allMarkers = [];
   filteredMarkers = [];
 
@@ -60,17 +59,19 @@ export class AssetMapComponent implements OnInit {
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
       console.log(security)
-    if (this.security.asset_update === true)
+    if (this.security.asset_update === true) 
       this.isUpdateAsset = true;
-      this.isSecurity = true;
+      // this.isSecurity = true;
+    
     });
 
     this.securityService.getAssetMapSecurity().subscribe(map_security => {
       this.map_security = map_security;
       console.log(this.map_security)
-    if (this.map_security.asset_map_update === true)
+    if (this.map_security.asset_map_update === true) 
       this.isUpdateMap = true; 
-      this.isSecurity = true;
+      // this.isSecurity = true;
+     
     });
 
     this.yardService.getYard().subscribe(yard => {

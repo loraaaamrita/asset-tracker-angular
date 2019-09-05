@@ -13,7 +13,7 @@
       </div>
     </div>
     <div *ngIf="isNewAsset">
-      <app-asset  *ngIf="isSecurity"
+      <app-asset  
                   (cancelCreate)='cancelCreate($event)'
                   [isUpdate]=isUpdate>
       </app-asset>

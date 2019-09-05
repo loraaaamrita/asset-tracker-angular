@@ -16,7 +16,7 @@ import { SecurityService } from "../../service/security.service";
 })
 export class AssetComponent implements OnInit, OnChanges {
 
-  user_id = localStorage.getItem('userId');
+  user_id = sessionStorage.getItem('userId');
 
   @Input()  assetId: number;
   @Input()  isUpdateAsset: boolean;
