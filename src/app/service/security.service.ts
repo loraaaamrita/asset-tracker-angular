@@ -29,6 +29,7 @@ export class SecurityService {
   }
 
   getAssetSecurity() {
+    console.log(this.role_id)
     return this._http.get(this.baseUrl+'security/asset/', 
     {params: {tenant_id: this.tenant_id, role_id: this.role_id }});
   }

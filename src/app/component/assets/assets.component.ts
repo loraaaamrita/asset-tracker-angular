@@ -78,11 +78,13 @@ export class AssetsComponent implements OnInit {
     this.getAssets();
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
+      console.log(this.security)
       if (this.security.asset_create === true)
         this.isCreate = true;
-      if (this.security.asset_update === true)
+      if (this.security.asset_update === true) {
         this.isUpdate = true;
         this.isSecurity = true;
+      } 
       if (this.security.asset_delete === true)
         this.isDelete = true;
       if (this.security.asset_delete === false
