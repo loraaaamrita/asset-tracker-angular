@@ -9,6 +9,8 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
+import { IAssets } from "../../model/asset";
+
 @Component({
   selector: 'app-asset',
   templateUrl: './asset.component.html',

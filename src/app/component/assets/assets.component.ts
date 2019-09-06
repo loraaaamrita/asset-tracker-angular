@@ -15,6 +15,8 @@ import { SecurityService } from "../../service/security.service";
 
 import { environment } from '../../../environments/environment';
 
+import { IAssets } from "../../model/asset";
+
 @Component({
   selector: 'app-assets',
   templateUrl: './assets.component.html',
@@ -113,7 +115,7 @@ export class AssetsComponent implements OnInit {
   }
 
   getAssets() {
-    this.assetService.getAssets().subscribe(assets => {
+    this.assetService.getAssets().subscribe((assets: IAssets) => {
       this.assets = assets;
       this.assets.forEach(element => {
         if (element.file_name !== null) {
