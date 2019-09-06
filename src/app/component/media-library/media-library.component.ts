@@ -8,6 +8,9 @@ import { MediaService } from "../../service/media.service";
 
 import { environment } from '../../../environments/environment';
 
+import { IMediaSecurity } from 'src/app/model/media-security';
+import { ICategories } from 'src/app/model/categories';
+
 @Component({
   selector: 'app-media-library',
   templateUrl: './media-library.component.html',
@@ -46,7 +49,7 @@ export class MediaLibraryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.securityService.getMediaSecurity().subscribe(security => {
+    this.securityService.getMediaSecurity().subscribe((security: IMediaSecurity) => {
       this.security = security;
       if (this.security.media_create === true)
         this.isCreate = true;
@@ -59,7 +62,7 @@ export class MediaLibraryComponent implements OnInit {
           && this.security.media_delete == false) 
         this.isDisabled = true;     
     });
-    this.settingService.getCategories().subscribe(response => {
+    this.settingService.getCategories().subscribe((response: ICategories) => {
       this.categories = response;
     });
     this.getMedia();

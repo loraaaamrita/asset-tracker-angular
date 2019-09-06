@@ -9,7 +9,10 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
-import { IAssets } from "../../model/asset";
+import { IAsset } from "../../model/asset";
+import { IAssetSecurity } from 'src/app/model/asset-security';
+import { ICategories } from 'src/app/model/categories';
+import { IStatuses } from 'src/app/model/statuses';
 
 @Component({
   selector: 'app-asset',
@@ -49,7 +52,7 @@ export class AssetComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.isAdd = false;
-    this.assetService.getAsset(this.assetId).subscribe(asset => {
+    this.assetService.getAsset(this.assetId).subscribe( (asset: IAsset) => {
       this.asset = asset;
       this.assetForm.setValue({
         name:        this.asset.name,
@@ -61,17 +64,17 @@ export class AssetComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.securityService.getAssetSecurity().subscribe(security => {
+    this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
     }, error => {
       this.snackBar.open(error, "Error:", {duration: 5000})
     });
-    this.settingService.getCategories().subscribe(response => {
+    this.settingService.getCategories().subscribe((response: ICategories) => {
       this.categories = response;
     }, error => 
       this.snackBar.open(error.error, "Error:", {duration: 5000})
     );
-    this.settingService.getStatuses().subscribe(response => {
+    this.settingService.getStatuses().subscribe((response: IStatuses) => {
       this.statuses = response;
     }, error => 
       this.snackBar.open(error.error, "Error:", {duration: 5000})

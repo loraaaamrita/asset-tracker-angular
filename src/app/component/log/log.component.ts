@@ -9,6 +9,8 @@ import {catchError, map, startWith, switchMap, tap} from 'rxjs/operators';
 import { AssetService } from "../../service/asset.service";
 import { SecurityService } from "../../service/security.service";
 
+import { IAssetSecurity } from 'src/app/model/asset-security';
+
 @Component({
   selector: 'app-log',
   templateUrl: './log.component.html',
@@ -35,7 +37,7 @@ export class LogComponent implements OnInit, AfterViewInit {
     private securityService: SecurityService) { }
 
   ngOnInit() {
-    this.securityService.getAssetSecurity().subscribe(security => {
+    this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
     }); 
   }

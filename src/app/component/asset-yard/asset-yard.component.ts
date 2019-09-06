@@ -12,6 +12,9 @@ import { GeocodeService } from "../../service/geocode.service";
 import { CONSTANTS } from "../../model/constants";
 import { StateGroup } from "../../model/provinceState";
 
+import { IAssetYard } from "../../model/asset-yard";
+
+
 @Component({
   selector: 'app-asset-yard',
   templateUrl: './asset-yard.component.html',
@@ -61,7 +64,7 @@ export class AssetYardComponent implements OnInit {
   }
 
   getAssets() {
-    this.assetService.getYardAssets(this.yardId).subscribe(assets => {
+    this.assetService.getYardAssets(this.yardId).subscribe((assets: IAssetYard) => {
       this.assets = assets;
       this.dataSource = new MatTableDataSource(this.assets);
       this.dataSource.sort = this.sort;

@@ -9,6 +9,11 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
+import { IAssetVitals } from "../../model/asset-vitals";
+import { IAssetSecurity } from "../../model/asset-security";
+import { ICategories } from 'src/app/model/categories';
+import { IStatuses } from 'src/app/model/statuses';
+
 @Component({
   selector: 'app-asset-vitals',
   templateUrl: './asset-vitals.component.html',
@@ -47,19 +52,19 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.assetService.getAssetVitals(this.assetId).subscribe(response => {
+    this.assetService.getAssetVitals(this.assetId).subscribe((response: IAssetVitals) => {
       this.asset_vitals = response;
     });
   }
 
   ngOnInit() {
-    this.securityService.getAssetSecurity().subscribe(security => {
+    this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
     });
-    this.settingService.getCategories().subscribe(categories => {
+    this.settingService.getCategories().subscribe((categories: ICategories) => {
       this.categories = categories;
     });
-    this.settingService.getStatuses().subscribe(statuses => {
+    this.settingService.getStatuses().subscribe((statuses: IStatuses) => {
       this.statuses = statuses;
     });
   }

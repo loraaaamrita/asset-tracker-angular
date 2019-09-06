@@ -11,6 +11,8 @@ import { SecurityService } from "../../service/security.service";
 
 import { environment } from '../../../environments/environment';
 
+import { ICompanySecurity } from 'src/app/model/company-security';
+
 @Component({
   selector: 'app-settings-company',
   templateUrl: './settings-company.component.html',
@@ -81,7 +83,7 @@ export class SettingsCompanyComponent implements OnInit {
   }
 
   getCompany() {
-    this.settingService.getCompany().subscribe(company => {
+    this.settingService.getCompany().subscribe((company: ICompanySecurity) => {
       this.company = company;
       this.company_id = this.company.id;
       this.company_image = this.company.company_image;

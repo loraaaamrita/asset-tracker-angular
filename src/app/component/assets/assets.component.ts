@@ -15,7 +15,12 @@ import { SecurityService } from "../../service/security.service";
 
 import { environment } from '../../../environments/environment';
 
-import { IAssets } from "../../model/asset";
+import { IAssets } from "../../model/assets";
+import { IAssetSecurity } from "../../model/asset-security";
+import { IAssetLog } from 'src/app/model/asset-log';
+import { ICategories } from 'src/app/model/categories';
+import { IStatuses } from 'src/app/model/statuses';
+
 
 @Component({
   selector: 'app-assets',
@@ -77,7 +82,7 @@ export class AssetsComponent implements OnInit {
 
   ngOnInit() {
     this.getAssets();
-    this.securityService.getAssetSecurity().subscribe(security => {
+    this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
       if (this.security.asset_create === true)
         this.isCreate = true;
@@ -90,10 +95,10 @@ export class AssetsComponent implements OnInit {
           && this.security.asset_delete == false)
         this.assetForm.disable()
     });
-    this.settingService.getCategories().subscribe(response => {
+    this.settingService.getCategories().subscribe((response: ICategories) => {
       this.categories = response;
     });
-    this.settingService.getStatuses().subscribe(response => {
+    this.settingService.getStatuses().subscribe((response: IStatuses) => {
       this.statuses = response;
     });
     
@@ -156,7 +161,7 @@ export class AssetsComponent implements OnInit {
 
   showHistory(element) {
     this.isHistory = true;
-    this.assetService.getAssetHistory(element.id).subscribe(response => {
+    this.assetService.getAssetHistory(element.id).subscribe((response: IAssetLog) => {
       this.history = response;
     });
   }

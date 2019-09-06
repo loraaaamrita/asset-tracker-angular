@@ -6,6 +6,12 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
+import { IAssets } from "../../model/assets";
+import { IAssetSecurity } from "../../model/asset-security";
+import { ICategories } from 'src/app/model/categories';
+import { IStatuses } from 'src/app/model/statuses';
+
+
 @Component({
   selector: 'app-asset-map',
   templateUrl: './asset-map.component.html',
@@ -50,7 +56,7 @@ export class AssetMapComponent implements OnInit {
     private securityService: SecurityService) { }
 
   ngOnInit() {
-    this.securityService.getAssetSecurity().subscribe(security => {
+    this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
     });
 
@@ -59,22 +65,22 @@ export class AssetMapComponent implements OnInit {
       this.yardName = this.yard.name;
     });
 
-    this.assetService.getAssets().subscribe(assets => {
+    this.assetService.getAssets().subscribe((assets: IAssets) => {
       this.assets = assets;
       this.getMarkers();
     });
     
-    this.settingService.getCategories().subscribe(response => {
+    this.settingService.getCategories().subscribe((response: ICategories) => {
       this.categories = response;
     });
-    this.settingService.getStatuses().subscribe(response => {
+    this.settingService.getStatuses().subscribe((response: IStatuses) => {
       this.statuses = response;
     });
   }
 
   refreshMarkers() {
     this.allMarkers = [];
-    this.assetService.getAssets().subscribe(assets => {
+    this.assetService.getAssets().subscribe((assets: IAssets) => {
       this.assets = assets;
       this.getMarkers();
     });

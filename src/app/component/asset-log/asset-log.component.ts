@@ -6,6 +6,11 @@ from '@angular/material';
 import { AssetService } from "../../service/asset.service";
 import { SecurityService } from "../../service/security.service";
 
+import { IAssetLog } from "../../model/asset-log";
+import { IAssetSecurity } from "../../model/asset-security";
+
+
+
 @Component({
   selector: 'app-asset-log',
   templateUrl: './asset-log.component.html',
@@ -34,10 +39,10 @@ export class AssetLogComponent implements OnInit {
     private securityService: SecurityService) { }
 
   ngOnInit() {
-    this.securityService.getAssetSecurity().subscribe(security => {
+    this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
     });
-    this.assetService.getAssetHistory(this.assetId).subscribe(history => {
+    this.assetService.getAssetHistory(this.assetId).subscribe((history: IAssetLog) => {
       this.history = history;
       this.dataSource = new MatTableDataSource(this.history);
       this.dataSource.sort = this.sort;
