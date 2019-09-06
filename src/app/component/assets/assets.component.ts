@@ -39,7 +39,6 @@ export class AssetsComponent implements OnInit {
   isCreate: boolean = false;
   isUpdate: boolean = false;
   isDelete: boolean = false;
-  isSecurity: boolean = false;
   
   assets: any;
   history: any;
@@ -83,7 +82,6 @@ export class AssetsComponent implements OnInit {
         this.isCreate = true;
       if (this.security.asset_update === true) 
         this.isUpdate = true;
-        // this.isSecurity = true;
       if (this.security.asset_delete === true)
         this.isDelete = true;
       if (this.security.asset_delete === false
