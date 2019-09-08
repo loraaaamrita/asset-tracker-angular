@@ -18,8 +18,8 @@ export class MediaLibraryComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   baseUrl = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
-  user_id = localStorage.getItem('userId');
+  tenant_id = sessionStorage.getItem('tenantId');
+  user_id = sessionStorage.getItem('userId');
 
   isCreate:   boolean = false;
   isUpdate:   boolean = false;

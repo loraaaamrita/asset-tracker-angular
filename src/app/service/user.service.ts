@@ -7,8 +7,8 @@ import { environment } from '../../environments/environment';
 export class UserService {
 
   baseUrl   = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
-  email     = localStorage.getItem('userEmail');
+  tenant_id = sessionStorage.getItem('tenantId');
+  email     = sessionStorage.getItem('userEmail');
  
   constructor(
     private _http: HttpClient

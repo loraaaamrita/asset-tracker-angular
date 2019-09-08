@@ -17,7 +17,7 @@ export class SettingsCategoryComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  user_id = localStorage.getItem('userId');
+  user_id = sessionStorage.getItem('userId');
 
   isCreate:   boolean = false;
   isUpdate:   boolean = false;
@@ -65,7 +65,9 @@ export class SettingsCategoryComponent implements OnInit {
       this.categories = response;
       if (this.isDisabled === true)
         this.columnsToDisplay = ['category'];
-      else {
+        this.dataSource = new MatTableDataSource(this.categories);
+        this.dataSource.sort = this.sort;
+      if(this.isDisabled === false) {
         this.columnsToDisplay = ['category', 'delete', 'update'];
         this.dataSource = new MatTableDataSource(this.categories);
         this.dataSource.sort = this.sort;

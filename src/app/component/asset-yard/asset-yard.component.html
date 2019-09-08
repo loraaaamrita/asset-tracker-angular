@@ -41,7 +41,10 @@
         <div *ngIf="!isFound">
           <button mat-raised-button i18n color="primary" (click)="lookup()">Lookup</button>
         </div>
-        <div *ngIf="isFound">
+        <div *ngIf="isFound && !isUpdateMap">
+          <button mat-raised-button i18n color="primary" disabled>Add to Map</button>
+        </div>
+        <div *ngIf="isFound && isUpdateMap">
           <button mat-raised-button i18n color="primary" (click)="addToMap()">Add to Map</button>
         </div>
       </div>

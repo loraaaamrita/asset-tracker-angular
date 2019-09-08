@@ -17,7 +17,7 @@ export class SettingsStatusComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  user_id = localStorage.getItem('userId');
+  user_id = sessionStorage.getItem('userId');
   
   isCreate:   boolean = false;
   isUpdate:   boolean = false;

@@ -18,7 +18,7 @@ import { environment } from '../../../environments/environment';
 export class ProfileComponent implements OnInit {
 
   baseUrl = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
+  tenant_id = sessionStorage.getItem('tenantId');
 
   user: any;
   profileFile: any;

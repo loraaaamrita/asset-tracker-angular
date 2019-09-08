@@ -6,14 +6,16 @@
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
       </div>
-      <div *ngIf="isCreate" fxLayoutAlign="end center" >
+      <div fxLayoutAlign="end center" >
         <button mat-mini-fab color="primary" (click)="newUser()">
           <mat-icon>add</mat-icon>
         </button>
       </div>
     </div>
     <div *ngIf="isNewUser">
-      <app-user (cancelCreate)='cancelCreate()'>
+      <app-user 
+                (cancelCreate)='cancelCreate()'
+                [isUpdate]=isUpdate>
       </app-user>
     </div>
     <br>

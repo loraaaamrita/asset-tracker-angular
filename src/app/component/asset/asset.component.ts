@@ -16,16 +16,18 @@ import { SecurityService } from "../../service/security.service";
 })
 export class AssetComponent implements OnInit, OnChanges {
 
-  user_id = localStorage.getItem('userId');
+  user_id = sessionStorage.getItem('userId');
 
   @Input()  assetId: number;
+  @Input()  isUpdateAsset: boolean;
+  @Input()  isUpdate: boolean;
   @Output() cancelCreate = new EventEmitter();
 
-  history: any;
-  security: any;
-  statuses: any;
+  history:    any;
+  security:   any;
+  statuses:   any;
   categories: any;
-  asset: any;
+  asset:      any;
 
   isAdd: boolean = true;
 
@@ -47,18 +49,23 @@ export class AssetComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.isAdd = false;
-    this.assetService.getAsset(this.assetId).subscribe(asset => {
-      this.asset = asset;
-      this.assetForm.setValue({
-        name:        this.asset.name,
-        unit_number: this.asset.unit_number,
-        category:    this.asset.category_id,
-        status:      this.asset.status_id
+    if (this.assetId)
+      this.assetService.getAsset(this.assetId).subscribe(asset => {
+        this.asset = asset;
+        this.assetForm.setValue({
+          name:        this.asset.name,
+          unit_number: this.asset.unit_number,
+          category:    this.asset.category_id,
+          status:      this.asset.status_id
+        });
       });
-    });
   }
 
   ngOnInit() {
+    if(this.isUpdateAsset === false)
+      this.assetForm.disable();
+    if(this.isUpdate === false)
+      this.assetForm.disable();
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
     }, error => {

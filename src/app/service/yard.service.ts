@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class YardService {
 
   baseUrl = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
+  tenant_id = sessionStorage.getItem('tenantId');
  
   constructor(
     private _http: HttpClient

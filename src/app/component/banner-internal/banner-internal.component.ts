@@ -20,7 +20,7 @@ import { environment } from '../../../environments/environment';
 export class BannerInternalComponent implements OnInit {
 
   baseUrl = environment.baseUrl;
-  user_email = localStorage.getItem('userEmail');
+  user_email = sessionStorage.getItem('userEmail');
   
   user: any;
   branding: any;
@@ -47,8 +47,8 @@ export class BannerInternalComponent implements OnInit {
       this.profileImage = this.baseUrl+'profiles/'+
                           this.branding.tenant_id+'/'+
                           this.user.profile_image;
-      localStorage.setItem('userId', this.user.id);
-      localStorage.setItem('roleId', this.user.role_id);
+      sessionStorage.setItem('userId', this.user.id);
+      sessionStorage.setItem('roleId', this.user.role_id);
     });
   }
 
@@ -60,11 +60,12 @@ export class BannerInternalComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('roleId');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('tenantId');
-    localStorage.removeItem('userEmail');
-    localStorage.removeItem('braToken');
+    sessionStorage.removeItem('roleId');
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('tenantId');
+    sessionStorage.removeItem('userEmail');
+    sessionStorage.removeItem('braToken');
+    console.log(sessionStorage.getItem('roleId'))
     this.router.navigate(['/login']);
   }
 

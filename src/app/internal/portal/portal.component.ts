@@ -29,7 +29,7 @@ export class PortalComponent implements OnInit {
 
   ngOnInit() { 
 
-    this.securityService.getNavigationSecurity(localStorage.getItem('roleId'))
+    this.securityService.getNavigationSecurity(sessionStorage.getItem('roleId'))
         .subscribe(security => {
       this.security = security;
       if (this.security.asset_read === true) {

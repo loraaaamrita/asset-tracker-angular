@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class MediaService {
   baseUrl = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
+  tenant_id = sessionStorage.getItem('tenantId');
  
   constructor(
     private _http: HttpClient

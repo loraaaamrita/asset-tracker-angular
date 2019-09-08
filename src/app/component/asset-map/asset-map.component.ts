@@ -13,30 +13,35 @@ import { SecurityService } from "../../service/security.service";
 })
 export class AssetMapComponent implements OnInit {
   
-  security: any;
-  assets: any;
+  
   assetId: number;
-  yard: any;
-  yardId: number;
-  yardName: string;
-  categories: any;
-  statuses: any;
-  status_id: any;
-  category_id: any;
-  icon: string;
-  isYard: boolean = true;
+  yardId:  number;
+
+  security:         any;
+  map_security:     any;
+  assets:           any;
+  yard:             any;
+  categories:       any;
+  statuses:         any;
+  status_id:        any;
+  category_id:      any;
+  infoWindowOpened: any;
+  prevInfoWindow:   any;
+  
+  isYard:        boolean = true;
   isAssetVitals: boolean = false;
+  isUpdateAsset: boolean = false;
+  isUpdateMap:   boolean = false;
 
   allMarkers = [];
   filteredMarkers = [];
 
-  infoWindowOpened: any;
-  prevInfoWindow: any;
-
-  selectedName: string;
-  selectedUnitNo: string;
+  selectedName:     string;
+  selectedUnitNo:   string;
   selectedCategory: string;
-  selectedStatus: string;
+  selectedStatus:   string;
+  icon:             string;
+  yardName:         string;
   
   zoom: number = 7;
   
@@ -52,6 +57,16 @@ export class AssetMapComponent implements OnInit {
   ngOnInit() {
     this.securityService.getAssetSecurity().subscribe(security => {
       this.security = security;
+      console.log(security)
+    if (this.security.asset_update === true) 
+      this.isUpdateAsset = true;    
+    });
+
+    this.securityService.getAssetMapSecurity().subscribe(map_security => {
+      this.map_security = map_security;
+      console.log(this.map_security)
+    if (this.map_security.asset_map_update === true) 
+      this.isUpdateMap = true;      
     });
 
     this.yardService.getYard().subscribe(yard => {

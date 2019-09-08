@@ -25,6 +25,8 @@ export class AssetYardComponent implements OnInit {
   @Output() refreshMarkers = new EventEmitter();
   @Input()  yardId: number;
   @Input()  yardName: string;
+  @Input()  isUpdateMap: boolean;
+
 
   isDeploy: boolean = false;
   isFound: boolean = false;
