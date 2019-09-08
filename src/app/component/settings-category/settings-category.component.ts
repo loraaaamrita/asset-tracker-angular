@@ -7,6 +7,7 @@ import { MatSnackBar, MatTableDataSource, MatSort } from '@angular/material';
 
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
+import { ICategories } from 'src/app/model/asset';
 
 @Component({
   selector: 'app-settings-category',
@@ -61,8 +62,8 @@ export class SettingsCategoryComponent implements OnInit {
   }
 
   getCategories() {
-    this.settingService.getCategories().subscribe(response => {
-      this.categories = response;
+    this.settingService.getCategories().subscribe((categories: ICategories) => {
+      this.categories = categories;
       if (this.isDisabled === true)
         this.columnsToDisplay = ['category'];
         this.dataSource = new MatTableDataSource(this.categories);

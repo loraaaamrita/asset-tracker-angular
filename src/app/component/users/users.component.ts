@@ -7,7 +7,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 
 import { MatSnackBar, MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
-import { USER_STATUSES } from '../../model/user';
+import { UserStatuses } from '../../constants/constants';
 
 import { UserService } from "../../service/user.service";
 import { SettingService } from "../../service/setting.service";
@@ -39,7 +39,7 @@ export class UsersComponent implements OnInit {
   users: any;
   roles: any;
   security: any;
-  statuses = USER_STATUSES;
+  statuses = UserStatuses;
   isNewUser: boolean = false;
   dataSource: MatTableDataSource<any>;
 

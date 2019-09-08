@@ -9,6 +9,9 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
+import { IAsset, ICategories, IStatuses } from "../../model/asset";
+import { IAssetSecurity } from 'src/app/model/security';
+
 @Component({
   selector: 'app-asset',
   templateUrl: './asset.component.html',
@@ -23,11 +26,10 @@ export class AssetComponent implements OnInit, OnChanges {
   @Input()  isUpdate: boolean;
   @Output() cancelCreate = new EventEmitter();
 
-  history:    any;
-  security:   any;
-  statuses:   any;
-  categories: any;
-  asset:      any;
+  security:   IAssetSecurity;
+  statuses:   IStatuses;
+  categories: ICategories;
+  asset:      IAsset;
 
   isAdd: boolean = true;
 
@@ -48,9 +50,9 @@ export class AssetComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.isAdd = false;
-    if (this.assetId)
-      this.assetService.getAsset(this.assetId).subscribe(asset => {
+    if (this.assetId) {
+      this.isAdd = false;
+      this.assetService.getAsset(this.assetId).subscribe((asset: IAsset) => {
         this.asset = asset;
         this.assetForm.setValue({
           name:        this.asset.name,
@@ -59,24 +61,21 @@ export class AssetComponent implements OnInit, OnChanges {
           status:      this.asset.status_id
         });
       });
+    }
   }
 
   ngOnInit() {
-    if(this.isUpdateAsset === false)
-      this.assetForm.disable();
-    if(this.isUpdate === false)
-      this.assetForm.disable();
-    this.securityService.getAssetSecurity().subscribe(security => {
+    this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
     }, error => {
       this.snackBar.open(error, "Error:", {duration: 5000})
     });
-    this.settingService.getCategories().subscribe(response => {
+    this.settingService.getCategories().subscribe((response: ICategories) => {
       this.categories = response;
     }, error => 
       this.snackBar.open(error.error, "Error:", {duration: 5000})
     );
-    this.settingService.getStatuses().subscribe(response => {
+    this.settingService.getStatuses().subscribe((response: IStatuses) => {
       this.statuses = response;
     }, error => 
       this.snackBar.open(error.error, "Error:", {duration: 5000})

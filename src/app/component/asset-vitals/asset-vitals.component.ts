@@ -9,6 +9,9 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
+import { IAssetVitals, ICategories, IStatuses } from "../../model/asset";
+import { IAssetSecurity } from "../../model/security";
+
 @Component({
   selector: 'app-asset-vitals',
   templateUrl: './asset-vitals.component.html',
@@ -22,12 +25,10 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
   @Output() cancelVitals = new EventEmitter();
   @Output() refreshMarkers = new EventEmitter();
 
-  history:      any;
-  security:     any;
-  statuses:     any;
-  categories:   any;
-  asset_id:     any;
-  asset_vitals: any;
+  security:     IAssetSecurity;
+  statuses:     IStatuses;
+  categories:   ICategories;
+  asset_vitals: IAssetVitals;
 
   assetForm: FormGroup;
 
@@ -49,19 +50,20 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.assetService.getAssetVitals(this.assetId).subscribe(response => {
-      this.asset_vitals = response;
+    this.assetService.getAssetVitals(this.assetId)
+        .subscribe((asset_vitals: IAssetVitals) => {
+      this.asset_vitals = asset_vitals;
     });
   }
 
   ngOnInit() {
-    this.securityService.getAssetSecurity().subscribe(security => {
+    this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
     });
-    this.settingService.getCategories().subscribe(categories => {
+    this.settingService.getCategories().subscribe((categories: ICategories) => {
       this.categories = categories;
     });
-    this.settingService.getStatuses().subscribe(statuses => {
+    this.settingService.getStatuses().subscribe((statuses: IStatuses) => {
       this.statuses = statuses;
     });
   }

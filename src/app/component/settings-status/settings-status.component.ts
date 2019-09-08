@@ -7,6 +7,7 @@ import { MatSnackBar, MatTableDataSource, MatSort } from '@angular/material';
 
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
+import { IStatuses } from 'src/app/model/statuses';
 
 @Component({
   selector: 'app-settings-status',
@@ -61,7 +62,7 @@ export class SettingsStatusComponent implements OnInit {
   } 
 
   getStatuses() {
-    this.settingService.getStatuses().subscribe(response => {
+    this.settingService.getStatuses().subscribe((response: IStatuses) => {
       this.statuses = response;
       if (this.isDisabled === true)
         this.columnsToDisplay = ['status'];

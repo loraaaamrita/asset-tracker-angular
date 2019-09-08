@@ -9,8 +9,11 @@ from '@angular/material';
 import { AssetService } from "../../service/asset.service";
 import { GeocodeService } from "../../service/geocode.service";
 
-import { CONSTANTS } from "../../model/constants";
+import { StateProvinces } from "../../constants/constants";
+
 import { StateGroup } from "../../model/provinceState";
+
+import { IAssetYard } from "../../model/asset";
 
 @Component({
   selector: 'app-asset-yard',
@@ -27,14 +30,13 @@ export class AssetYardComponent implements OnInit {
   @Input()  yardName: string;
   @Input()  isUpdateMap: boolean;
 
-
-  isDeploy: boolean = false;
-  isFound: boolean = false;
-  assetId: number;
-  assets: any;
+  assets:   any;
   location: any;
+  isDeploy: boolean = false;
+  isFound:  boolean = false;
+  assetId:  number;
 
-  stateGroups: StateGroup[] = CONSTANTS.StateProvinces
+  stateGroups: StateGroup[] = StateProvinces;
 
   assetAddressForm: FormGroup; 
 
@@ -63,7 +65,7 @@ export class AssetYardComponent implements OnInit {
   }
 
   getAssets() {
-    this.assetService.getYardAssets(this.yardId).subscribe(assets => {
+    this.assetService.getYardAssets(this.yardId).subscribe((assets: IAssetYard) => {
       this.assets = assets;
       this.dataSource = new MatTableDataSource(this.assets);
       this.dataSource.sort = this.sort;

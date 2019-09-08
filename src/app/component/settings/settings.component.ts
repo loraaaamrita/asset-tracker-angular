@@ -24,15 +24,13 @@ export class SettingsComponent implements OnInit {
       this.security = security;
       if (this.security.company_read === true)
         this.isCompany = true;
-      if (this.security.category_read === true 
-          ||  this.security.status_read === true)
+      if (this.security.category_read === true || this.security.status_read === true)
         this.isAssetSettings = true;
       if (this.security.category_read === true)
         this.isCategory = true;
       if (this.security.status_read === true)
         this.isStatus = true;
-      if (this.security.permission_read === true
-          || this.security.role_read === true)
+      if (this.security.permission_read === true || this.security.role_read === true)
         this.isRolesPermission = true;
     });
   }

@@ -6,6 +6,9 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
+import { IAssets, ICategories, IStatuses } from "../../model/asset";
+import { IAssetSecurity } from "../../model/security";
+
 @Component({
   selector: 'app-asset-map',
   templateUrl: './asset-map.component.html',
@@ -17,14 +20,14 @@ export class AssetMapComponent implements OnInit {
   assetId: number;
   yardId:  number;
 
-  security:         any;
+  security:         IAssetSecurity;
   map_security:     any;
+
   assets:           any;
   yard:             any;
-  categories:       any;
-  statuses:         any;
-  status_id:        any;
-  category_id:      any;
+  categories:       ICategories;
+  statuses:         IStatuses;
+  
   infoWindowOpened: any;
   prevInfoWindow:   any;
   
@@ -55,9 +58,8 @@ export class AssetMapComponent implements OnInit {
     private securityService: SecurityService) { }
 
   ngOnInit() {
-    this.securityService.getAssetSecurity().subscribe(security => {
+    this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
-      console.log(security)
     if (this.security.asset_update === true) 
       this.isUpdateAsset = true;    
     });
@@ -74,22 +76,22 @@ export class AssetMapComponent implements OnInit {
       this.yardName = this.yard.name;
     });
 
-    this.assetService.getAssets().subscribe(assets => {
+    this.assetService.getAssets().subscribe((assets: IAssets) => {
       this.assets = assets;
       this.getMarkers();
     });
     
-    this.settingService.getCategories().subscribe(response => {
-      this.categories = response;
+    this.settingService.getCategories().subscribe((categories: ICategories) => {
+      this.categories = categories;
     });
-    this.settingService.getStatuses().subscribe(response => {
-      this.statuses = response;
+    this.settingService.getStatuses().subscribe((statuses: IStatuses) => {
+      this.statuses = statuses;
     });
   }
 
   refreshMarkers() {
     this.allMarkers = [];
-    this.assetService.getAssets().subscribe(assets => {
+    this.assetService.getAssets().subscribe((assets: IAssets) => {
       this.assets = assets;
       this.getMarkers();
     });

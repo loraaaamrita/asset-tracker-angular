@@ -13,9 +13,8 @@
       </div>
     </div>
     <div *ngIf="isNewAsset">
-      <app-asset  
-                  (cancelCreate)='cancelCreate($event)'
-                  [isUpdate]=isUpdate>
+      <app-asset (cancelCreate)='cancelCreate($event)'
+                 [isUpdate]=isUpdate>
       </app-asset>
     </div>
     <br>
@@ -99,8 +98,8 @@
                       </div>
                     </div>                    
                   </div>
-                  <div *ngIf="isHistory" fxLayout="row" fxFlex>
-                    <app-log fxFlex></app-log>
+                  <div class="table-padding" *ngIf="isHistory" fxLayout="row">
+                    <app-asset-log [assetId]=assetId fxFlex></app-asset-log>
                   </div>
                 </div>
                 <br>
