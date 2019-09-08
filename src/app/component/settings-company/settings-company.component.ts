@@ -56,7 +56,6 @@ export class SettingsCompanyComponent implements OnInit {
   ngOnInit() {
     this.securityService.getCompanySecurity().subscribe(security => {
       this.security = security;
-      console.log(security)
       if (this.security.company_update === true)
         this.isUpdate = true;
       if (this.security.company_update === false)

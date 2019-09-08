@@ -66,7 +66,6 @@ export class AssetMapComponent implements OnInit {
 
     this.securityService.getAssetMapSecurity().subscribe(map_security => {
       this.map_security = map_security;
-      console.log(this.map_security)
     if (this.map_security.asset_map_update === true) 
       this.isUpdateMap = true;      
     });
