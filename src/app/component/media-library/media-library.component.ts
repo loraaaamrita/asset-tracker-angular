@@ -8,8 +8,8 @@ import { MediaService } from "../../service/media.service";
 
 import { environment } from '../../../environments/environment';
 
-import { IMediaSecurity } from 'src/app/model/media-security';
-import { ICategories } from 'src/app/model/categories';
+import { IMediaSecurity } from 'src/app/model/security';
+import { ICategories } from 'src/app/model/asset';
 
 @Component({
   selector: 'app-media-library',

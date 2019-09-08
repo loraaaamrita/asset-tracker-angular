@@ -6,10 +6,8 @@ from '@angular/material';
 import { AssetService } from "../../service/asset.service";
 import { SecurityService } from "../../service/security.service";
 
-import { IAssetLog } from "../../model/asset-log";
-import { IAssetSecurity } from "../../model/asset-security";
-
-
+import { IAssetLog } from "../../model/asset";
+import { IAssetSecurity } from "../../model/security";
 
 @Component({
   selector: 'app-asset-log',

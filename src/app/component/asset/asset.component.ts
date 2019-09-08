@@ -9,10 +9,8 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
-import { IAsset } from "../../model/asset";
-import { IAssetSecurity } from 'src/app/model/asset-security';
-import { ICategories } from 'src/app/model/categories';
-import { IStatuses } from 'src/app/model/statuses';
+import { IAsset, ICategories, IStatuses } from "../../model/asset";
+import { IAssetSecurity } from 'src/app/model/security';
 
 @Component({
   selector: 'app-asset',
@@ -28,11 +26,10 @@ export class AssetComponent implements OnInit, OnChanges {
   @Input()  isUpdate: boolean;
   @Output() cancelCreate = new EventEmitter();
 
-  history:    any;
-  security:   any;
-  statuses:   any;
-  categories: any;
-  asset:      any;
+  security:   IAssetSecurity;
+  statuses:   IStatuses;
+  categories: ICategories;
+  asset:      IAsset;
 
   isAdd: boolean = true;
 
@@ -53,15 +50,18 @@ export class AssetComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.isAdd = false;
-    this.assetService.getAsset(this.assetId).subscribe( (asset: IAsset) => {
-      this.asset = asset;
-      this.assetForm.setValue({
-        name:        this.asset.name,
-        unit_number: this.asset.unit_number,
-        category:    this.asset.category_id,
-        status:      this.asset.status_id
+    if (this.assetId) {
+      this.isAdd = false;
+      this.assetService.getAsset(this.assetId).subscribe((asset: IAsset) => {
+        this.asset = asset;
+        this.assetForm.setValue({
+          name:        this.asset.name,
+          unit_number: this.asset.unit_number,
+          category:    this.asset.category_id,
+          status:      this.asset.status_id
+        });
       });
+    }
   }
 
   ngOnInit() {

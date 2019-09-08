@@ -9,7 +9,7 @@ import {catchError, map, startWith, switchMap, tap} from 'rxjs/operators';
 import { AssetService } from "../../service/asset.service";
 import { SecurityService } from "../../service/security.service";
 
-import { IAssetSecurity } from 'src/app/model/asset-security';
+import { IAssetSecurity } from 'src/app/model/security';
 
 @Component({
   selector: 'app-log',

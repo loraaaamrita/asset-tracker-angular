@@ -15,12 +15,9 @@ import { SecurityService } from "../../service/security.service";
 
 import { environment } from '../../../environments/environment';
 
-import { IAssets } from "../../model/assets";
-import { IAssetSecurity } from "../../model/asset-security";
-import { IAssetLog } from 'src/app/model/asset-log';
-import { ICategories } from 'src/app/model/categories';
-import { IStatuses } from 'src/app/model/statuses';
-
+import { IAssets, IAssetLog, ICategories, IStatuses } 
+from "../../model/asset";
+import { IAssetSecurity } from "../../model/security";
 
 @Component({
   selector: 'app-assets',
@@ -48,10 +45,11 @@ export class AssetsComponent implements OnInit {
   isDelete: boolean = false;
   
   assets: any;
+  assetId: number;
   history: any;
   security: any;
-  statuses: any;
-  categories: any;
+  statuses: IStatuses;
+  categories: ICategories;
   isNewAsset: boolean = false;
   isHistory: boolean = false;
   dataSource: MatTableDataSource<any>;
@@ -84,7 +82,6 @@ export class AssetsComponent implements OnInit {
     this.getAssets();
     this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
-      console.log(this.security)
       if (this.security.asset_create === true)
         this.isCreate = true;
       if (this.security.asset_update === true) 
@@ -96,11 +93,11 @@ export class AssetsComponent implements OnInit {
           && this.security.asset_delete == false)
         this.assetForm.disable()
     });
-    this.settingService.getCategories().subscribe((response: ICategories) => {
-      this.categories = response;
+    this.settingService.getCategories().subscribe((categories: ICategories) => {
+      this.categories = categories;
     });
-    this.settingService.getStatuses().subscribe((response: IStatuses) => {
-      this.statuses = response;
+    this.settingService.getStatuses().subscribe((statuses: IStatuses) => {
+      this.statuses = statuses;
     });
     
   }
@@ -162,9 +159,7 @@ export class AssetsComponent implements OnInit {
 
   showHistory(element) {
     this.isHistory = true;
-    this.assetService.getAssetHistory(element.id).subscribe((response: IAssetLog) => {
-      this.history = response;
-    });
+    this.assetId = element.id;
   }
 
   hideHistory() {

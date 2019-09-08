@@ -61,7 +61,7 @@ export class AssetService {
   }
 
   getAssetHistory(id) {
-    return this._http.get(this.baseUrl+'asset/history/read/id', 
+    return this._http.get(this.baseUrl+'asset/history/read/id/', 
       {params: {id: id}});
   }
 

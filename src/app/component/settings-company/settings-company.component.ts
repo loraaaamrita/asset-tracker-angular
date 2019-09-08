@@ -11,7 +11,7 @@ import { SecurityService } from "../../service/security.service";
 
 import { environment } from '../../../environments/environment';
 
-import { ICompanySecurity } from 'src/app/model/company-security';
+import { ICompanySecurity } from 'src/app/model/security';
 
 @Component({
   selector: 'app-settings-company',

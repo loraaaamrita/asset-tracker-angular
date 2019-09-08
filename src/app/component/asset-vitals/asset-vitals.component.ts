@@ -9,10 +9,8 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
-import { IAssetVitals } from "../../model/asset-vitals";
-import { IAssetSecurity } from "../../model/asset-security";
-import { ICategories } from 'src/app/model/categories';
-import { IStatuses } from 'src/app/model/statuses';
+import { IAssetVitals, ICategories, IStatuses } from "../../model/asset";
+import { IAssetSecurity } from "../../model/security";
 
 @Component({
   selector: 'app-asset-vitals',
@@ -27,12 +25,10 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
   @Output() cancelVitals = new EventEmitter();
   @Output() refreshMarkers = new EventEmitter();
 
-  history:      any;
-  security:     any;
-  statuses:     any;
-  categories:   any;
-  asset_id:     any;
-  asset_vitals: any;
+  security:     IAssetSecurity;
+  statuses:     IStatuses;
+  categories:   ICategories;
+  asset_vitals: IAssetVitals;
 
   assetForm: FormGroup;
 
@@ -54,8 +50,9 @@ export class AssetVitalsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.assetService.getAssetVitals(this.assetId).subscribe((response: IAssetVitals) => {
-      this.asset_vitals = response;
+    this.assetService.getAssetVitals(this.assetId)
+        .subscribe((asset_vitals: IAssetVitals) => {
+      this.asset_vitals = asset_vitals;
     });
   }
 

@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
 export class BannerExternalComponent {
 
   constructor(
-    private router: Router,
-  ) { }
+    private router: Router) { }
 
   login() {
     this.router.navigate(['/login']);

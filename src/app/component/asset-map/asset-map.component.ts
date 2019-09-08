@@ -6,11 +6,8 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
-import { IAssets } from "../../model/assets";
-import { IAssetSecurity } from "../../model/asset-security";
-import { ICategories } from 'src/app/model/categories';
-import { IStatuses } from 'src/app/model/statuses';
-
+import { IAssets, ICategories, IStatuses } from "../../model/asset";
+import { IAssetSecurity } from "../../model/security";
 
 @Component({
   selector: 'app-asset-map',
@@ -23,14 +20,14 @@ export class AssetMapComponent implements OnInit {
   assetId: number;
   yardId:  number;
 
-  security:         any;
+  security:         IAssetSecurity;
   map_security:     any;
+
   assets:           any;
   yard:             any;
-  categories:       any;
-  statuses:         any;
-  status_id:        any;
-  category_id:      any;
+  categories:       ICategories;
+  statuses:         IStatuses;
+  
   infoWindowOpened: any;
   prevInfoWindow:   any;
   
@@ -63,7 +60,6 @@ export class AssetMapComponent implements OnInit {
   ngOnInit() {
     this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
-      console.log(security)
     if (this.security.asset_update === true) 
       this.isUpdateAsset = true;    
     });
@@ -85,11 +81,11 @@ export class AssetMapComponent implements OnInit {
       this.getMarkers();
     });
     
-    this.settingService.getCategories().subscribe((response: ICategories) => {
-      this.categories = response;
+    this.settingService.getCategories().subscribe((categories: ICategories) => {
+      this.categories = categories;
     });
-    this.settingService.getStatuses().subscribe((response: IStatuses) => {
-      this.statuses = response;
+    this.settingService.getStatuses().subscribe((statuses: IStatuses) => {
+      this.statuses = statuses;
     });
   }
 
