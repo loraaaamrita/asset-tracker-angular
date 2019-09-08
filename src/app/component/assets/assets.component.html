@@ -6,14 +6,17 @@
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
       </div>
-      <div *ngIf="isCreate" fxLayoutAlign="end center" >
+      <div fxLayoutAlign="end center" >
         <button mat-mini-fab color="primary" (click)="newAsset()">
           <mat-icon>add</mat-icon>
         </button>
       </div>
     </div>
     <div *ngIf="isNewAsset">
-      <app-asset (cancelCreate)='cancelCreate($event)'></app-asset>
+      <app-asset  
+                  (cancelCreate)='cancelCreate($event)'
+                  [isUpdate]=isUpdate>
+      </app-asset>
     </div>
     <br>
   </div>

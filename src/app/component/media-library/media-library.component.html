@@ -7,7 +7,7 @@
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
       </div>
-      <div *ngIf="isCreate" fxLayoutAlign="end center" >
+      <div fxLayoutAlign="end center" >
         <button mat-mini-fab color="primary" (click)="newMedia()">
           <mat-icon>add</mat-icon>
         </button>
@@ -31,8 +31,13 @@
                 Close
               </a>
             </div>     
-            <div>
+            <div *ngIf="!isDisabled">
               <button mat-raised-button i18n color="primary" (click)="create()">
+                Save
+              </button>
+            </div>
+            <div *ngIf="isDisabled">
+              <button mat-raised-button i18n color="primary" disabled>
                 Save
               </button>
             </div>
@@ -45,7 +50,6 @@
   <div *ngIf="!isNewMedia" class="custom-container mat-elevation-z8">
     <div class="custom-table-container">
       <table mat-table [dataSource]="dataSource" matSort>
-        
         <ng-container matColumnDef="thumbnail">
           <th mat-header-cell *matHeaderCellDef>IMAGE</th>
           <td mat-cell *matCellDef="let element">

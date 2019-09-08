@@ -22,14 +22,16 @@ import { IStatuses } from 'src/app/model/statuses';
 export class AssetVitalsComponent implements OnInit, OnChanges {
 
   @Input()  assetId: number;
+  @Input()  isUpdateMap: boolean;
+  @Input()  isUpdateAsset: boolean;
   @Output() cancelVitals = new EventEmitter();
   @Output() refreshMarkers = new EventEmitter();
 
-  history: any;
-  security: any;
-  statuses: any;
-  categories: any;
-  asset_id: any;
+  history:      any;
+  security:     any;
+  statuses:     any;
+  categories:   any;
+  asset_id:     any;
   asset_vitals: any;
 
   assetForm: FormGroup;

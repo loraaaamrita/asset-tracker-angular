@@ -21,16 +21,18 @@ import { IStatuses } from 'src/app/model/statuses';
 })
 export class AssetComponent implements OnInit, OnChanges {
 
-  user_id = localStorage.getItem('userId');
+  user_id = sessionStorage.getItem('userId');
 
   @Input()  assetId: number;
+  @Input()  isUpdateAsset: boolean;
+  @Input()  isUpdate: boolean;
   @Output() cancelCreate = new EventEmitter();
 
-  history: any;
-  security: any;
-  statuses: any;
+  history:    any;
+  security:   any;
+  statuses:   any;
   categories: any;
-  asset: any;
+  asset:      any;
 
   isAdd: boolean = true;
 
@@ -60,7 +62,6 @@ export class AssetComponent implements OnInit, OnChanges {
         category:    this.asset.category_id,
         status:      this.asset.status_id
       });
-    });
   }
 
   ngOnInit() {

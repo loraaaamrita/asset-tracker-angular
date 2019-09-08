@@ -21,8 +21,8 @@ import { ICompanySecurity } from 'src/app/model/company-security';
 export class SettingsCompanyComponent implements OnInit {
 
   baseUrl = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
-  user_id = localStorage.getItem('userId');
+  tenant_id = sessionStorage.getItem('tenantId');
+  user_id = sessionStorage.getItem('userId');
 
   isUpdate:   boolean = false;
   isDelete:   boolean = false;
@@ -56,6 +56,7 @@ export class SettingsCompanyComponent implements OnInit {
   ngOnInit() {
     this.securityService.getCompanySecurity().subscribe(security => {
       this.security = security;
+      console.log(security)
       if (this.security.company_update === true)
         this.isUpdate = true;
       if (this.security.company_update === false)

@@ -19,7 +19,7 @@ export class VerifyComponent {
   user: any;
   token: any;
   hidePassword = true;
-  tenant_id = localStorage.getItem('tenantId');
+  tenant_id = sessionStorage.getItem('tenantId');
    
   verifyForm: FormGroup;
 
@@ -37,8 +37,8 @@ export class VerifyComponent {
   verify() {
     let obj = this.verifyForm.value;
     this.authService.verify(obj).subscribe(token => {
-      localStorage.setItem('braToken', this.token);
-      localStorage.setItem('userEmail', this.verifyForm.value.email);
+      sessionStorage.setItem('braToken', this.token);
+      sessionStorage.setItem('userEmail', this.verifyForm.value.email);
       this.snackBar.open('Verification succeeded.', "Success:", {duration: 5000});
       this.router.navigate(['/portal']);
     });     

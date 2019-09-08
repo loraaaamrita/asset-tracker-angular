@@ -20,7 +20,7 @@ export class RegisterComponent {
   user: any;
   token: any;
   hidePassword = true;
-  tenant_id = localStorage.getItem('tenantId');
+  tenant_id = sessionStorage.getItem('tenantId');
    
   registerForm: FormGroup;
 
@@ -40,8 +40,8 @@ export class RegisterComponent {
   register() {
     let obj = this.registerForm.value;
     this.authService.register(obj).subscribe(token => {
-      localStorage.setItem('braToken', this.token);
-      localStorage.setItem('userEmail', this.registerForm['email'].value);
+      sessionStorage.setItem('braToken', this.token);
+      sessionStorage.setItem('userEmail', this.registerForm['email'].value);
       this.snackBar.open('Registration succeeded.', "Success:", {duration: 5000});
       this.router.navigate(['/portal']);
     });     

@@ -30,21 +30,22 @@ export class LoginComponent implements OnInit {
     }
 
   ngOnInit() {
-    localStorage.removeItem('roleId');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('tenantId');
-    localStorage.removeItem('userEmail');
-    localStorage.removeItem('braToken');
+    sessionStorage.removeItem('roleId');
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('tenantId');
+    sessionStorage.removeItem('userEmail');
+    sessionStorage.removeItem('braToken');
   }
   
   login() {
     this.authService.login(this.loginForm.value).subscribe(auth => {
       this.auth = auth;
-      localStorage.setItem('userId', this.auth.user.id);
-      localStorage.setItem('roleId', this.auth.user.role_id);
-      localStorage.setItem('tenantId', this.auth.user.tenant_id);
-      localStorage.setItem('braToken', this.auth.token);
-      localStorage.setItem('userEmail', this.loginForm.value.email);
+      console.log(this.auth)
+      sessionStorage.setItem('userId', this.auth.user.id);
+      sessionStorage.setItem('roleId', this.auth.user.role_id);
+      sessionStorage.setItem('tenantId', this.auth.user.tenant_id);
+      sessionStorage.setItem('braToken', this.auth.token);
+      sessionStorage.setItem('userEmail', this.loginForm.value.email);
       this.router.navigate(['/portal'])
     });
   }

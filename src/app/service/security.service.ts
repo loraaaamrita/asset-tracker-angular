@@ -10,9 +10,9 @@ import { environment } from '../../environments/environment';
 export class SecurityService {
 
   baseUrl = environment.baseUrl;
-  tenant_id = localStorage.getItem('tenantId');
+  tenant_id = sessionStorage.getItem('tenantId');
 
-  role_id = localStorage.getItem('roleId');
+  role_id = sessionStorage.getItem('roleId');
 
   constructor(
     private _http: HttpClient
@@ -23,7 +23,13 @@ export class SecurityService {
       {params: {tenant_id: this.tenant_id, role_id: role_id }});
   }
 
+  getAssetMapSecurity() {
+    return this._http.get(this.baseUrl+'security/asset/map', 
+    {params: {tenant_id: this.tenant_id, role_id: this.role_id }});
+  }
+
   getAssetSecurity() {
+    console.log(this.role_id)
     return this._http.get(this.baseUrl+'security/asset/', 
     {params: {tenant_id: this.tenant_id, role_id: this.role_id }});
   }
