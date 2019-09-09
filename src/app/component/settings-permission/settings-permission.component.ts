@@ -99,7 +99,6 @@ export class SettingsPermissionComponent implements OnInit, OnChanges {
   getPermissions() { 
     this.settingService.getPermissions(this.roleId).subscribe(permissions => {
       this.permissions = permissions;
-      console.log(permissions)
       if (this.permissions !== null) {
         this.permissionForm.setValue({
           asset_create:       this.permissions.asset_create,

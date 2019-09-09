@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } 
+import { Router, CanActivate } 
 from '@angular/router';
+
+import { AuthService } from "./auth.service";
  
 @Injectable()
 export class AuthGuardService implements CanActivate {
  
-  currentSession: any;
+  currentSession: string = sessionStorage.getItem('braToken');
+
   constructor(
     private router: Router,
-    // private amplifyService: AmplifyService
+    private authService: AuthService
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return true;
-  //   return this.amplifyService.auth().currentSession().then(session => {
-  //     if (session)
-  //       return true;
-  //     else
-  //       return false;
-  //   })
+  canActivate(): boolean {
+      if (this.currentSession)
+        return true;
+      else
+        return false;
   }
   
 }

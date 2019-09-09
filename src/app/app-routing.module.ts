@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { AuthGuardService }  from './service/auth-guard.service';
+import { AuthGuardService }  from './service/auth-guard.service';
 
 import { LoginComponent } from './external/login/login.component';
 import { VerifyComponent } from './external/verify/verify.component';
@@ -10,7 +10,7 @@ import { PasswordForgotComponent } from './external/password-forgot/password-for
 import { PortalComponent } from './internal/portal/portal.component';
 
 const routes: Routes = [{
-  path: '',
+  path: '**',
   redirectTo: '/login', 
   pathMatch: 'full'
   }, {  
@@ -27,7 +27,7 @@ const routes: Routes = [{
     component: VerifyComponent
   }, {
     path: 'portal',
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuardService],
     component: PortalComponent
 }];
 

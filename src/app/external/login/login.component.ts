@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.loginForm.value).subscribe(auth => {
       this.auth = auth;
-      console.log(this.auth)
       sessionStorage.setItem('userId', this.auth.user.id);
       sessionStorage.setItem('roleId', this.auth.user.role_id);
       sessionStorage.setItem('tenantId', this.auth.user.tenant_id);

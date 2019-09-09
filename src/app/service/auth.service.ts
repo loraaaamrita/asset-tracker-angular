@@ -27,4 +27,8 @@ export class AuthService {
     return this._http.post(this.baseUrl+'verify/', (obj));
   }
 
+  auth() {
+    return this._http.get(this.baseUrl+'auth/');
+  }
+
 }
