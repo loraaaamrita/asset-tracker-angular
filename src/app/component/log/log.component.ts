@@ -21,7 +21,7 @@ export class LogComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
-  security: any;
+  security: IAssetSecurity;
   history: any;
   dataSource: MatTableDataSource<any>;
 

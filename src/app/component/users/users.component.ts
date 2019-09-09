@@ -12,6 +12,9 @@ import { UserStatuses } from '../../constants/constants';
 import { UserService } from "../../service/user.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
+import { IUserSecurity } from 'src/app/model/security';
+import { IRoles } from 'src/app/model/setting';
+import { IUsers } from 'src/app/model/user';
 
 @Component({
   selector: 'app-users',
@@ -37,8 +40,9 @@ export class UsersComponent implements OnInit {
   isDelete:   boolean = false;
 
   users: any;
-  roles: any;
-  security: any;
+  
+  roles: IRoles;
+  security: IUserSecurity;
   statuses = UserStatuses;
   isNewUser: boolean = false;
   dataSource: MatTableDataSource<any>;
@@ -68,7 +72,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.securityService.getUserSecurity().subscribe(security => {
+    this.securityService.getUserSecurity().subscribe((security: IUserSecurity) => {
       this.security = security;
       if (this.security.user_create === true)
         this.isCreate = true;
@@ -94,7 +98,7 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe(users => {
+    this.userService.getUsers().subscribe((users: IUsers) => {
       this.users = users;
       this.dataSource = new MatTableDataSource(this.users);
       this.dataSource.sort = this.sort;
@@ -103,7 +107,7 @@ export class UsersComponent implements OnInit {
   }
 
   updateForm(element) {
-    this.settingService.getRoles().subscribe(roles => {
+    this.settingService.getRoles().subscribe((roles: IRoles) => {
       this.roles = roles;
     });
     this.userForm.controls['first_name']  .setValue(element.first_name);

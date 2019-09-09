@@ -8,6 +8,7 @@ import { MatSnackBar, MatTableDataSource, MatSort } from '@angular/material';
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 import { IStatuses } from 'src/app/model/statuses';
+import { ISettingsecurity, IStatusSecurity } from 'src/app/model/security';
 
 @Component({
   selector: 'app-settings-status',
@@ -25,8 +26,10 @@ export class SettingsStatusComponent implements OnInit {
   isDelete:   boolean = false;
   isDisabled: boolean = false;
 
-  security: any;
+  security: IStatusSecurity;
+  
   statuses: any
+  
   dataSource: MatTableDataSource<any>;
 
   columnsToDisplay: string[];
@@ -43,7 +46,7 @@ export class SettingsStatusComponent implements OnInit {
     })
   }
   ngOnInit() {
-    this.securityService.getStatusSecurity().subscribe(security => {
+    this.securityService.getStatusSecurity().subscribe((security: ISettingsecurity) => {
       this.security = security;
       if (this.security.status_create === true)
         this.isCreate = true;

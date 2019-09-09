@@ -9,6 +9,8 @@ import { MatSnackBar, MatTableDataSource, MatSort } from '@angular/material';
 
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
+import { IRoleSecurity } from 'src/app/model/security';
+import { IRoles } from 'src/app/model/setting';
 
 @Component({
   selector: 'app-settings-role',
@@ -33,8 +35,9 @@ export class SettingsRoleComponent implements OnInit {
   isDelete:   boolean = false;
   isDisabled: boolean = false;
 
-  security: any;
-  roles: any; 
+  security: IRoleSecurity;
+
+  roles:  any; 
   roleId: any;
 
   dataSource: MatTableDataSource<any>;
@@ -54,7 +57,7 @@ export class SettingsRoleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.securityService.getRoleSecurity().subscribe(security => {
+    this.securityService.getRoleSecurity().subscribe((security: IRoleSecurity) => {
       this.security = security;
       if (this.security.role_create === true)
         this.isCreate = true;
@@ -75,7 +78,7 @@ export class SettingsRoleComponent implements OnInit {
   }
 
   getRoles() {
-    this.settingService.getRoles().subscribe(roles => {
+    this.settingService.getRoles().subscribe((roles: IRoles) => {
       this.roles = roles;
       this.dataSource = new MatTableDataSource(this.roles);
       this.dataSource.sort = this.sort;

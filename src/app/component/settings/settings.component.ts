@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SecurityService } from "../../service/security.service";
+import { ISettingsecurity } from 'src/app/model/security';
 
 @Component({
   selector: 'app-settings',
@@ -9,7 +10,7 @@ import { SecurityService } from "../../service/security.service";
 })
 export class SettingsComponent implements OnInit {
 
-  security: any;
+  security: ISettingsecurity;
 
   isCompany:          boolean = false;
   isCategory:         boolean = false;
@@ -20,7 +21,7 @@ export class SettingsComponent implements OnInit {
   constructor(private securityService: SecurityService) { }
 
   ngOnInit() {
-    this.securityService.getSettingsSecurity().subscribe(security => {
+    this.securityService.getSettingsSecurity().subscribe((security: ISettingsecurity) => {
       this.security = security;
       if (this.security.company_read === true)
         this.isCompany = true;

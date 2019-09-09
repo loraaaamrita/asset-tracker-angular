@@ -10,6 +10,8 @@ import { environment } from '../../../environments/environment';
 
 import { IMediaSecurity } from 'src/app/model/security';
 import { ICategories } from 'src/app/model/asset';
+import { IMedia } from 'src/app/model/media';
+
 
 @Component({
   selector: 'app-media-library',
@@ -28,12 +30,15 @@ export class MediaLibraryComponent implements OnInit {
   isUpdate:   boolean = false;
   isDelete:   boolean = false;
   isDisabled: boolean = false;
+  isNewMedia: boolean = false;
 
   media: any;
+
   fileArray = [];
-  security: any;
-  categories: any;
-  isNewMedia: boolean = false;
+
+  security:   IMediaSecurity;
+  categories: ICategories;
+
   dataSource: MatTableDataSource<any>;
   columnsToDisplay: string[];
 
@@ -62,8 +67,8 @@ export class MediaLibraryComponent implements OnInit {
           && this.security.media_delete == false) 
         this.isDisabled = true;     
     });
-    this.settingService.getCategories().subscribe((response: ICategories) => {
-      this.categories = response;
+    this.settingService.getCategories().subscribe((categories: ICategories) => {
+      this.categories = categories;
     });
     this.getMedia();
   }
@@ -90,8 +95,8 @@ export class MediaLibraryComponent implements OnInit {
   }
 
   getMedia() {
-    this.mediaService.getMedia().subscribe(response => {
-      this.media = response;
+    this.mediaService.getMedia().subscribe((media: IMedia) => {
+      this.media = media;
       this.media.forEach(element => {
         let thumb = element.file_name.replace(/\.[^/.]+$/, "")
         let extension = element.file_name.split('.').pop();
@@ -112,7 +117,7 @@ export class MediaLibraryComponent implements OnInit {
 
   create() {
     this.fileArray.forEach(element => {
-      this.mediaService.createMedia(element).subscribe(response => {
+      this.mediaService.createMedia(element).subscribe(media => {
         this.close();
         this.getMedia();
       });

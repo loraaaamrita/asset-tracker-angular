@@ -70,3 +70,35 @@ export interface IStatuses {
   id: number;
   status: string;
 }
+
+export interface IAssetCategory {
+  id: number;
+  name: string;
+  unit_number: number;
+  lat: number;
+  lng: number;
+  date_created: string;
+  yard_id: number;
+  category: string;
+  status: string;
+  category_id: number;
+  image: number;
+  file_name: string;
+  status_id: number;
+}
+
+export interface IAssetStatus {
+  id: number;
+  name: string;
+  unit_number: number;
+  lat: number;
+  lng: number;
+  date_created: string;
+  yard_id: number;
+  category: string;
+  status: string;
+  category_id: number;
+  image: number;
+  file_name: string;
+  status_id: number;
+}
