@@ -1,5 +1,6 @@
 export interface IYard {
     id: number;
+    tenant_id: string;
     name: string;
     email: string;
     lat: number;
@@ -12,3 +13,5 @@ export interface IYard {
     date_created: string;
     user_created: string;
   }
+  
+

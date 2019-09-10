@@ -95,7 +95,7 @@ export class SettingsCategoryComponent implements OnInit {
   }
 
   delete(element) {
-    let obj = {id: element.id, user_id: this.user_id};
+    let obj = {id: element.id, user_id: parseInt(this.user_id)};
     this.settingService.deleteCategory(obj).subscribe(response => {
       this.snackBar.open('Category deleted.', "Success:", {duration: 5000});
       this.getCategories();

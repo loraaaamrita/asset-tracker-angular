@@ -103,7 +103,7 @@ export class SettingsRoleComponent implements OnInit {
   }
 
   delete(element) {
-    let obj = {id: element.id, user_id: this.user_id};
+    let obj = {id: element.id, user_id: parseInt(this.user_id)};
     this.settingService.deleteRole(obj).subscribe(response => {
       this.snackBar.open('Role deleted.', "Success:", {duration: 5000});
       this.getRoles();

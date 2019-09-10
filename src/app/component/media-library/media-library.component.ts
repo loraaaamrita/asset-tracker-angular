@@ -131,7 +131,7 @@ export class MediaLibraryComponent implements OnInit {
   }
 
   delete(element) {
-    let obj = {id: element.id, user_id: this.user_id};
+    let obj = {id: element.id, user_id: parseInt(this.user_id)};
     this.mediaService.deleteMedia(obj).subscribe(response => {
       this.snackBar.open('File deleted.', "Success:", {duration: 5000});
       this.getMedia();

@@ -1,6 +1,7 @@
 
 export interface ICompany {
     id: number;
+    tenant_id: string;
     company_name: string;
     first_name: string;
     last_name: string;
@@ -19,13 +20,20 @@ export interface ICompany {
 
   export interface IRoles {
     id: number;
+    tenant_id: string;
     role: string;
     date_created: string;
     user_created: string;
   }
 
+  export interface IDeleteRole {
+    id: number;
+    user_id: number;
+  }
+  
   export interface IPermissions{
     id: number;
+    tenant_id: string;
     role_id: number;
     asset_create: boolean;
     asset_read: boolean;

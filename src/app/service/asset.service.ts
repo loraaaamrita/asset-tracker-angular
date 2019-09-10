@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
+import { IAsset, ICategories, IStatuses, IDeleteAsset, IAddToMap, IDeleteFromMap } from "../model/asset";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -47,17 +49,17 @@ export class AssetService {
            {params: {tenant_id: this.tenant_id, yard_id: yard_id}});
   }
 
-  updateAsset(obj) {
-    return this._http.put(this.baseUrl+'asset/update/', (obj));
+  updateAsset(asset: IAsset) {
+    return this._http.put(this.baseUrl+'asset/update/', (asset));
   }
 
-  createAsset(obj) {
-    obj.tenant_id = this.tenant_id;
-    return this._http.post(this.baseUrl+'asset/create/', (obj))
+  createAsset(asset: IAsset) {
+    asset.tenant_id = this.tenant_id;
+    return this._http.post(this.baseUrl+'asset/create/', (asset))
   }
 
-  deleteAsset(obj) {
-    return this._http.put(this.baseUrl+'asset/delete/', (obj))
+  deleteAsset(asset: IDeleteAsset) {
+    return this._http.put(this.baseUrl+'asset/delete/', (asset))
   }
 
   getAssetHistory(id) {
@@ -73,11 +75,11 @@ export class AssetService {
     });
   }
 
-  addToMap(obj) {
+  addToMap(obj: IAddToMap) {
     return this._http.put(this.baseUrl+'asset/map/add', (obj));
   }
 
-  deleteFromMap(obj) {
+  deleteFromMap(obj: IDeleteFromMap) {
     return this._http.put(this.baseUrl+'asset/map/delete', (obj));
   }
 

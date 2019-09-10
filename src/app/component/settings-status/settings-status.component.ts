@@ -7,7 +7,7 @@ import { MatSnackBar, MatTableDataSource, MatSort } from '@angular/material';
 
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
-import { IStatuses } from 'src/app/model/statuses';
+import { IStatuses } from 'src/app/model/asset';
 import { ISettingsecurity, IStatusSecurity } from 'src/app/model/security';
 
 @Component({
@@ -93,7 +93,7 @@ export class SettingsStatusComponent implements OnInit {
   }
 
   delete(element) {
-    let obj = {id: element.id, user_id: this.user_id};
+    let obj = {id: element.id, user_id: parseInt(this.user_id)};
     this.settingService.deleteStatus(obj).subscribe(response => {
       this.snackBar.open('Status updated.', "Success:", {duration: 5000});
       this.getStatuses();

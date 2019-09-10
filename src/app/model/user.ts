@@ -17,3 +17,8 @@ export interface IUserEmail {
     role: string;
     date_created: string;
   }
+
+  export interface IDeleteUser {
+    id: number;
+    user_id: number;
+  }
