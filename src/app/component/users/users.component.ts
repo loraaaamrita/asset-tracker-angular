@@ -129,6 +129,7 @@ export class UsersComponent implements OnInit {
     let obj = {id: id, user_id: parseInt(this.user_id)};
     this.userService.deleteUser(obj).subscribe(response => {
       this.snackBar.open('User deleted.', "Success:", {duration: 5000});
+      this.getUsers();
     });
   }
 

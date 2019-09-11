@@ -23,9 +23,9 @@ export class UserService {
     return this._http.get(this.baseUrl+'user/read/', {params: {tenant_id: this.tenant_id }});
   }
 
-  createUser(obj) {
-    obj.tenant_id = this.tenant_id;
-    return this._http.post(this.baseUrl+'user/create/', (obj));
+  createUser(user: IUsers) {
+    user.tenant_id = this.tenant_id;
+    return this._http.post(this.baseUrl+'user/create/', (user));
   }
 
   updateUser(user: IUsers) {
