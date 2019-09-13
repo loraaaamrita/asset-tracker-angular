@@ -10,7 +10,7 @@ import { PasswordForgotComponent } from './external/password-forgot/password-for
 import { PortalComponent } from './internal/portal/portal.component';
 
 const routes: Routes = [{
-  path: '**',
+  path: '',
   redirectTo: '/login', 
   pathMatch: 'full'
   }, {  
