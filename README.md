@@ -1,4 +1,4 @@
-# FieldAssetPortal
+# Asset Tracker
 
 The project consists of a frontend, an API server and a database.
 
@@ -22,11 +22,17 @@ Token-based security and authentication is built into the app. Tokens are ditrib
 ​
 ## Deployment
 ​
-The project can be deployed on MAC, Linux, Windows or on a cloud platform including AWS, Azure, Predix or Cloud Foundry. For a list of all libraries used in the frontend please refer to the `package.json` file.
+The project can be deployed on MAC, Linux, Windows or on a cloud platform including AWS, Azure or a provider of your choice. 
 ​
 ## Running the project on your computer
 ​
-The project can be run locally by copying frontend and the API server files into distinct folders on your computer. In addition, a PostgreSQL database must be setup. There is a sql script located `/src/assets/asset-tracker.sql'. It can be run to setup the required database structure. Setting up a PostgreSQL database is outside the scope of this document, for further instructions please visit the https://www.postgresql.org
+The project can be run locally by copying frontend and the API server files into distinct folders on your computer. 
+
+
+In addition, a PostgreSQL database must be setup. There is a sql script located `/src/assets/asset-tracker.sql'. It can be run to setup the required database structure and configuration data. 
+
+
+Setting up a PostgreSQL database is outside the scope of this document, for further instructions please visit the https://www.postgresql.org
 
 ​
 NodeJS along with NPM (Node Package Manager) will need to be installed on your computer https://nodejs.org/en/. 
@@ -44,7 +50,7 @@ To start the frontend application run `ng serve` in the folder where the fronten
 To start the API server run `node server` in the folder where the API server files are.
 
 ​
-In order to properly run the entire application you must have both the frontend and API server running as well as have a valid username and password.
+In order to properly run the entire application you must have the fronten and the API server running and have the the PostgreSQL database installed and setup.
 
 ​
 Both the API server and the front end can be stopped by holding down the `CTRL` and pressing `c`.
@@ -56,3 +62,31 @@ The application is role-based. Currently, there are two roles: `Admin` and `User
 Users are associated with companies. When a `User` logs in they are only allowed to see their own sites that exist in their company. 
 ​
 Admin users can see all companies and all sites, as well as all application features.
+
+## File Structure
+
+The app folder is the root of the application. Files and folders are structured in a flat pattern, meaning components, modules, services and other associated files are nested no more then two folders deep.  This is done to simplify pathing requirements.
+
+
+The `component` folder is where all of the components used to run the app are located. There is a `component.module` file located in this folder as well, it contains all required dependancies for the components.
+
+
+The `constants` folder contains states and provinces used in the app.
+
+
+The `external` folder contains all the componets used to login to the app. There is also forgot password, register and verify componets, but they are only available for use when running our cloud service.
+
+
+The `interceptor` folder contains an http interceptor file that has two responsiblities.
+
+1. Adds the json token to secure http calls
+2. Provides error checking in case of network problems
+
+
+The `internal` folder is where the app runs from once logged in.
+
+
+The `model` folder houses typescript interface models used by the app.
+
+
+The `service` folder contains service components that are used to connect to the API service endpoints. Each componet name matches a module file located on the API server. Individual endpoints that are defined in the service components match endpoints that are defined in each assocated module located on the API server.
