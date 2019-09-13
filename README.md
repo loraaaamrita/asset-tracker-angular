@@ -3,7 +3,10 @@
 The project consists of a frontend, an API server and a database.
 
 ​
-The frontend is built with Angular version 8.0.3. <a href https://angular.io/ target="_blank">angular.io</a>. User interface and design is provided by Angular Material `https://material.angular.io/`.
+The frontend is built with Angular version 8.0.3. https://angular.io/.
+
+
+User interface and design is provided by Angular Material `https://material.angular.io/`.
 ​
 
 The API server is built with NodeJS `https://nodejs.org/en/`.
