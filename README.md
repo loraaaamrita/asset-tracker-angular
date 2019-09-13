@@ -59,11 +59,9 @@ Both the API server and the front end can be stopped by holding down the `CTRL` 
 ​
 The application is role-based. Currently, there are two roles: `Admin` and `User`. Others can be added. 
 
-
 Two users have been added for demo purposes, an admin user and a read-only user. New users can be created.
 
-Each user added to the system must have a unique email address. Once added, the newly created user must run the verify page to chnage the password, recieve and valid token and complete the setup of the user.
-
+Each user added to the system must have a unique email address. Once added, the newly created user must run the verify page to change the password, recieve and valid token and complete the setup of the user.
 
 The forgot password feature will only be available if the app has access to our backend email middleware server.
 
