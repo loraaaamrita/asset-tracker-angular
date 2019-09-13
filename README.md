@@ -6,19 +6,16 @@ The project consists of a frontend, an API server and a database.
 The frontend is built with Angular version 8.0.3. https://angular.io/.
 
 
-User interface and design is provided by Angular Material `https://material.angular.io/`.
+User interface and design is provided by Angular Material https://material.angular.io/.
 ​
 
-The API server is built with NodeJS `https://nodejs.org/en/`.
+The API server is built with NodeJS https://nodejs.org/en/.
 
 ​
-The database is postgreSQL `https://www.postgresql.org/`.
+The database is postgreSQL https://www.postgresql.org/.
 
 ​
-Communication from the frontend to the API is accomplished using Angular's HttpClient `https://angular.io/guide/http`.
-
-​
-The API server employs ExpressJS `https://expressjs.com/` to facilitate routes and http endpoints to connect the frontend to the database. The interface to the database is provided by node-postgres `https://node-postgres.com/`.
+The API server employs ExpressJS https://expressjs.com/ to facilitate routes and http endpoints to connect the frontend to the database. The interface to the database is provided by node-postgres https://node-postgres.com/.
 
 ​
 Token-based security and authentication is built into the app. Tokens are ditributed by the node server based on valid login credentials.
@@ -29,10 +26,10 @@ The project can be deployed on MAC, Linux, Windows or on a cloud platform includ
 ​
 ## Running the project on your computer
 ​
-The project can be run locally by copying frontend and the API server files into distinct folders on your computer. In addition, a PostgreSQL database must be setup. There is a sql script located `/src/assets/asset-tracker.sql'. It can be run to setup the required database structure. Setting up a PostgreSQL database is outside the scope of this document, for further instructions please visit the <a href https://www.postgresql.org target="_blank">PostgreSQL site</a> 
+The project can be run locally by copying frontend and the API server files into distinct folders on your computer. In addition, a PostgreSQL database must be setup. There is a sql script located `/src/assets/asset-tracker.sql'. It can be run to setup the required database structure. Setting up a PostgreSQL database is outside the scope of this document, for further instructions please visit the https://www.postgresql.org
 
 ​
-NodeJS along with NPM (Node Package Manager) will need to be installed on your computer `https://nodejs.org/en/`. 
+NodeJS along with NPM (Node Package Manager) will need to be installed on your computer https://nodejs.org/en/. 
 
 ​
 Dependant libraries will need to be installed for both the frontend and the API server. To do this, open a terminal session in each of the folders where the files are installed and type `npm install`.
