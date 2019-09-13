@@ -57,11 +57,10 @@ Both the API server and the front end can be stopped by holding down the `CTRL` 
 ​
 ## User Management
 ​
-The application is role-based. Currently, there are two roles: `Admin` and `User`. Others can be added. Users are created by administrators. Once a user is created by using the user management interface, the use will be able to login to the application.
-​
-Users are associated with companies. When a `User` logs in they are only allowed to see their own sites that exist in their company. 
-​
-Admin users can see all companies and all sites, as well as all application features.
+The application is role-based. Currently, there are two roles: `Admin` and `User`. Others can be added. 
+
+
+Two users have been added for demo purposes, an admin user and a read-only user. New users can be created.
 
 ## File Structure
 
