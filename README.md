@@ -62,6 +62,11 @@ The application is role-based. Currently, there are two roles: `Admin` and `User
 
 Two users have been added for demo purposes, an admin user and a read-only user. New users can be created.
 
+Each user added to the system must have a unique email address. Once added, the newly created user must run the verify page to chnage the password, recieve and valid token and complete the setup of the user.
+
+
+The forgot password feature will only be available if the app has access to our backend email middleware server.
+
 ## File Structure
 
 The app folder is the root of the application. Files and folders are structured in a flat pattern, meaning components, modules, services and other associated files are nested no more then two folders deep.  This is done to simplify pathing requirements.
