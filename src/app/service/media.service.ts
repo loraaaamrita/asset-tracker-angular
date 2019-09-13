@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
+import { IMedia, IDeleteMedia } from "../model/media";
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,17 +32,17 @@ export class MediaService {
            {params: {tenant_id: this.tenant_id }});
   }
 
-  createMedia(obj) {
-    obj.tenant_id = this.tenant_id;
-    return this._http.post(this.baseUrl+'media/create/', (obj));
+  createMedia(media: IMedia) {
+    media.tenant_id = this.tenant_id;
+    return this._http.post(this.baseUrl+'media/create/', (media));
   }
 
-  updateMedia(obj) {
-    return this._http.put(this.baseUrl+'media/update/', (obj));
+  updateMedia(media: IMedia) {
+    return this._http.put(this.baseUrl+'media/update/', (media));
   }
 
-  deleteMedia(obj) {
-    return this._http.put(this.baseUrl+'media/delete/', (obj));
+  deleteMedia(media: IDeleteMedia) {
+    return this._http.put(this.baseUrl+'media/delete/', (media));
   }
 
 }

@@ -150,7 +150,7 @@ export class AssetsComponent implements OnInit {
   }
 
   delete(id) {
-    let obj = {id: id, user_id: this.user_id};
+    let obj = {id: id, user_id: parseInt(this.user_id)};
     this.assetService.deleteAsset(obj).subscribe(response => {
       this.snackBar.open('Asset deleted.', "Success:", {duration: 5000});
       this.getAssets();

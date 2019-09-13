@@ -8,6 +8,7 @@ import { MatSnackBar, MatTableDataSource, MatSort } from '@angular/material';
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 import { ICategories } from 'src/app/model/asset';
+import { ICategorySecurity } from 'src/app/model/security';
 
 @Component({
   selector: 'app-settings-category',
@@ -25,8 +26,9 @@ export class SettingsCategoryComponent implements OnInit {
   isDelete:   boolean = false;
   isDisabled: boolean = false;
   
-  security: any;
+  security:   any;
   categories: any;
+
   dataSource: MatTableDataSource<any>;
   columnsToDisplay: string[];
 
@@ -43,7 +45,7 @@ export class SettingsCategoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.securityService.getCategorySecurity().subscribe(security => {
+    this.securityService.getCategorySecurity().subscribe((security: ICategorySecurity) => {
       this.security = security;
       if (this.security.category_create === true)
         this.isCreate = true;
@@ -93,7 +95,7 @@ export class SettingsCategoryComponent implements OnInit {
   }
 
   delete(element) {
-    let obj = {id: element.id, user_id: this.user_id};
+    let obj = {id: element.id, user_id: parseInt(this.user_id)};
     this.settingService.deleteCategory(obj).subscribe(response => {
       this.snackBar.open('Category deleted.', "Success:", {duration: 5000});
       this.getCategories();

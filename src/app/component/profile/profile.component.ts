@@ -9,6 +9,8 @@ import { UserService } from "../../service/user.service";
 import { MediaService } from "../../service/media.service";
 
 import { environment } from '../../../environments/environment';
+import { IUserEmail } from 'src/app/model/user';
+
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +22,7 @@ export class ProfileComponent implements OnInit {
   baseUrl = environment.baseUrl;
   tenant_id = sessionStorage.getItem('tenantId');
 
-  user: any;
+  user: IUserEmail;
   profileFile: any;
   profileImage: string;
   profile_image: string;
@@ -40,7 +42,7 @@ export class ProfileComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.userService.getUserEmail().subscribe(user => {
+    this.userService.getUserEmail().subscribe((user: IUserEmail) => {
       this.user = user;
       this.profileImage = this.baseUrl+'profiles/'+
                           this.tenant_id+'/'+

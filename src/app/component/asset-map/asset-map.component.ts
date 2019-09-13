@@ -6,8 +6,10 @@ import { AssetService } from "../../service/asset.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
 
-import { IAssets, ICategories, IStatuses } from "../../model/asset";
-import { IAssetSecurity } from "../../model/security";
+import { IAssets, ICategories, IStatuses, IAssetCategory, IAssetStatus } from "../../model/asset";
+import { IAssetSecurity, IAssetMapSecurity } from "../../model/security";
+import { IYard } from "../../model/yard";
+
 
 @Component({
   selector: 'app-asset-map',
@@ -16,18 +18,16 @@ import { IAssetSecurity } from "../../model/security";
 })
 export class AssetMapComponent implements OnInit {
   
-  
   assetId: number;
   yardId:  number;
 
   security:         IAssetSecurity;
-  map_security:     any;
-
-  assets:           any;
-  yard:             any;
+  map_security:     IAssetMapSecurity;
+  yard:             IYard;
   categories:       ICategories;
   statuses:         IStatuses;
   
+  assets:           any;
   infoWindowOpened: any;
   prevInfoWindow:   any;
   
@@ -64,13 +64,13 @@ export class AssetMapComponent implements OnInit {
       this.isUpdateAsset = true;    
     });
 
-    this.securityService.getAssetMapSecurity().subscribe(map_security => {
+    this.securityService.getAssetMapSecurity().subscribe((map_security: IAssetMapSecurity) => {
       this.map_security = map_security;
     if (this.map_security.asset_map_update === true) 
       this.isUpdateMap = true;      
     });
 
-    this.yardService.getYard().subscribe(yard => {
+    this.yardService.getYard().subscribe((yard: IYard) => {
       this.yard = yard;
       this.yardName = this.yard.name;
     });
@@ -153,7 +153,7 @@ export class AssetMapComponent implements OnInit {
 
   filterCategory($event) {
     this.assetService.getAssetByCategoryId($event.value)
-        .subscribe(assets => {
+        .subscribe((assets: IAssetCategory) => {
       this.assets = assets;
       this.allMarkers = [];
       this.getMarkers();
@@ -163,7 +163,7 @@ export class AssetMapComponent implements OnInit {
 
   filterStatus($event) {
     this.assetService.getAssetByStatusId($event.value)
-        .subscribe(assets => {
+        .subscribe((assets: IAssetStatus) => {
       this.assets = assets;
       this.allMarkers = [];
       this.getMarkers();

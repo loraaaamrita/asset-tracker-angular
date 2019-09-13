@@ -8,6 +8,7 @@ from '@angular/forms';
 import { UserService } from "../../service/user.service";
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
+import { IRoles } from 'src/app/model/setting';
 
 @Component({
   selector: 'app-user',
@@ -22,7 +23,8 @@ export class UserComponent implements OnInit {
 
   user_id = sessionStorage.getItem('userId');
 
-  roles: any;
+  roles: IRoles;
+  
   security: any;
   userForm: FormGroup;
 
@@ -44,7 +46,7 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     if (this.isUpdate === false)
     this.userForm.disable();
-    this.settingService.getRoles().subscribe(roles => {
+    this.settingService.getRoles().subscribe((roles: IRoles) => {
       this.roles = roles;
     });
   }

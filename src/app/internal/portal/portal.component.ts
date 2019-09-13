@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../service/user.service";
 import { BrandingService } from "../../service/branding.service";
 import { SecurityService } from "../../service/security.service";
+import { INavigationSecurity } from 'src/app/model/security';
 
 @Component({
   selector: 'app-portal',
@@ -11,7 +12,8 @@ import { SecurityService } from "../../service/security.service";
 })
 export class PortalComponent implements OnInit {
 
-  security: any;
+  security: INavigationSecurity;
+  
   isMenu: string;
 
   isAssetMap:     boolean = false;
@@ -30,7 +32,7 @@ export class PortalComponent implements OnInit {
   ngOnInit() { 
 
     this.securityService.getNavigationSecurity(sessionStorage.getItem('roleId'))
-        .subscribe(security => {
+        .subscribe((security: INavigationSecurity) => {
       this.security = security;
       if (this.security.asset_read === true) {
         this.isAssetMap   = true;

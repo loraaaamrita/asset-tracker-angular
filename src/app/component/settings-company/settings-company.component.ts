@@ -12,6 +12,8 @@ import { SecurityService } from "../../service/security.service";
 import { environment } from '../../../environments/environment';
 
 import { ICompanySecurity } from 'src/app/model/security';
+import { ICompany } from 'src/app/model/setting';
+
 
 @Component({
   selector: 'app-settings-company',
@@ -30,8 +32,10 @@ export class SettingsCompanyComponent implements OnInit {
   security:     any;
   company:      any;
   company_id:   any;
-  company_image: string;
   companyImage: any;
+
+  company_image: string;
+
   companyForm: FormGroup;
 
   constructor(
@@ -54,7 +58,7 @@ export class SettingsCompanyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.securityService.getCompanySecurity().subscribe(security => {
+    this.securityService.getCompanySecurity().subscribe((security: ICompanySecurity) => {
       this.security = security;
       if (this.security.company_update === true)
         this.isUpdate = true;
@@ -83,7 +87,7 @@ export class SettingsCompanyComponent implements OnInit {
   }
 
   getCompany() {
-    this.settingService.getCompany().subscribe((company: ICompanySecurity) => {
+    this.settingService.getCompany().subscribe((company: ICompany) => {
       this.company = company;
       this.company_id = this.company.id;
       this.company_image = this.company.company_image;

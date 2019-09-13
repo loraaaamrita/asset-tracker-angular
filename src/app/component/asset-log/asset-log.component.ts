@@ -21,7 +21,7 @@ export class AssetLogComponent implements OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
-  security: any;
+  security: IAssetSecurity;
   history: any;
   isLoader: boolean = false;
   dataSource: MatTableDataSource<any>;

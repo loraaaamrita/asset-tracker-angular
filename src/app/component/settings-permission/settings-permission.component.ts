@@ -7,6 +7,8 @@ import { MatSnackBar } from '@angular/material';
 
 import { SettingService } from "../../service/setting.service";
 import { SecurityService } from "../../service/security.service";
+import { IPermissionSecurity } from 'src/app/model/security';
+import { IPermissions } from 'src/app/model/setting';
 
 @Component({
   selector: 'app-settings-permission',
@@ -65,7 +67,7 @@ export class SettingsPermissionComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.securityService.getPermissionSecurity().subscribe(security => {
+    this.securityService.getPermissionSecurity().subscribe((security: IPermissionSecurity) => {
       this.security = security;
       if (this.security.role_update === true)
         this.isUpdate = true;
@@ -97,7 +99,7 @@ export class SettingsPermissionComponent implements OnInit, OnChanges {
   }
 
   getPermissions() { 
-    this.settingService.getPermissions(this.roleId).subscribe(permissions => {
+    this.settingService.getPermissions(this.roleId).subscribe((permissions: IPermissions) => {
       this.permissions = permissions;
       if (this.permissions !== null) {
         this.permissionForm.setValue({

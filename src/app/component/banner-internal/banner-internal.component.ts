@@ -12,6 +12,10 @@ import { BrandingService } from "../../service/branding.service";
 
 import { environment } from '../../../environments/environment';
 
+import { IBranding } from "../../model/branding";
+import { IUserEmail } from 'src/app/model/user';
+
+
 @Component({
   selector: 'app-banner-internal',
   templateUrl: './banner-internal.component.html',
@@ -22,9 +26,10 @@ export class BannerInternalComponent implements OnInit {
   baseUrl = environment.baseUrl;
   user_email = sessionStorage.getItem('userEmail');
   
-  user: any;
+  user:     any;
   branding: any;
-  companyLogo: string;
+
+  companyLogo:  string;
   profileImage: string;
 
   constructor(
@@ -36,13 +41,13 @@ export class BannerInternalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.brandingService.getCompanyLogo().subscribe(branding => {
+    this.brandingService.getCompanyLogo().subscribe((branding: IBranding) => {
       this.branding = branding;
       this.companyLogo = this.baseUrl+'profiles/'+
                          this.branding.tenant_id+'/'+
                          this.branding.company_image;
     });
-    this.userService.getUserEmail().subscribe(user => {
+    this.userService.getUserEmail().subscribe((user: IUserEmail) => {
       this.user = user;
       this.profileImage = this.baseUrl+'profiles/'+
                           this.branding.tenant_id+'/'+
