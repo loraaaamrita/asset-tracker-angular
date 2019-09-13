@@ -7,7 +7,7 @@ import { AuthService } from "./auth.service";
 @Injectable()
 export class AuthGuardService implements CanActivate {
  
-  currentSession: string = sessionStorage.getItem('braToken');
+  currentSession: string = sessionStorage.getItem('token');
 
   constructor(
     private router: Router,

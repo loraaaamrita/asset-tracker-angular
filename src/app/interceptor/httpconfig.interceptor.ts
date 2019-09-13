@@ -15,7 +15,7 @@ export class HttpConfig implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
-    const token: string = sessionStorage.getItem('braToken')
+    const token: string = sessionStorage.getItem('token')
     
     if (token)
       request = request.clone(

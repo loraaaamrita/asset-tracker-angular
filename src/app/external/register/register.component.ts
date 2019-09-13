@@ -40,7 +40,7 @@ export class RegisterComponent {
   register() {
     let obj = this.registerForm.value;
     this.authService.register(obj).subscribe(token => {
-      sessionStorage.setItem('braToken', this.token);
+      sessionStorage.setItem('token', this.token);
       sessionStorage.setItem('userEmail', this.registerForm['email'].value);
       this.snackBar.open('Registration succeeded.', "Success:", {duration: 5000});
       this.router.navigate(['/portal']);

@@ -69,7 +69,7 @@ export class BannerInternalComponent implements OnInit {
     sessionStorage.removeItem('userId');
     sessionStorage.removeItem('tenantId');
     sessionStorage.removeItem('userEmail');
-    sessionStorage.removeItem('braToken');
+    sessionStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     sessionStorage.removeItem('userId');
     sessionStorage.removeItem('tenantId');
     sessionStorage.removeItem('userEmail');
-    sessionStorage.removeItem('braToken');
+    sessionStorage.removeItem('token');
   }
   
   login() {
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('userId', this.auth.user.id);
       sessionStorage.setItem('roleId', this.auth.user.role_id);
       sessionStorage.setItem('tenantId', this.auth.user.tenant_id);
-      sessionStorage.setItem('braToken', this.auth.token);
+      sessionStorage.setItem('token', this.auth.token);
       sessionStorage.setItem('userEmail', this.loginForm.value.email);
       this.router.navigate(['/portal'])
     });

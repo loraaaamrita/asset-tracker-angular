@@ -37,7 +37,7 @@ export class VerifyComponent {
   verify() {
     let obj = this.verifyForm.value;
     this.authService.verify(obj).subscribe(token => {
-      sessionStorage.setItem('braToken', this.token);
+      sessionStorage.setItem('token', this.token);
       sessionStorage.setItem('userEmail', this.verifyForm.value.email);
       this.snackBar.open('Verification succeeded.', "Success:", {duration: 5000});
       this.router.navigate(['/portal']);
