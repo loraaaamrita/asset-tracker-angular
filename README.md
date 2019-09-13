@@ -4,6 +4,7 @@ The project consists of a frontend, an API server and a database.
 ​
 The frontend is built with Angular version 8.0.3. `https://angular.io/`. User interface and design is provided by Angular Material `https://material.angular.io/`.
 ​
+
 The API server is built with NodeJS `https://nodejs.org/en/`.
 ​
 The database is postgreSQL `https://www.postgresql.org/`.
@@ -12,7 +13,7 @@ Communication from the frontend to the API is accomplished using Angular's HttpC
 ​
 The API server employs ExpressJS `https://expressjs.com/`to facilitate routes and http endpoints to connect the frontend to the database. The interface to the database is provided by node-postgres `https://node-postgres.com/`.
 ​
-Security and authentication is provided by AWS Cognito `https://aws.amazon.com/cognito`.
+Token-based security and authentication is built into the app. Tokens are ditributed by the node server based on valid login credentials.
 ​
 ## Deployment
 ​
