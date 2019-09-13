@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
-import { IAsset, ICategories, IStatuses, IDeleteAsset, IAddToMap, IDeleteFromMap } from "../model/asset";
+import { IAsset, ICategories, IStatuses, IDeleteAsset, IAddToMap, IDeleteFromMap } 
+from "../model/asset";
 
 @Injectable({
   providedIn: 'root'

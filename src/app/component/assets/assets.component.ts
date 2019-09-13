@@ -79,7 +79,6 @@ export class AssetsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.user_id)
     this.getAssets();
     this.securityService.getAssetSecurity().subscribe((security: IAssetSecurity) => {
       this.security = security;
