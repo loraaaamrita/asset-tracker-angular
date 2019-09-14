@@ -45,9 +45,7 @@
               Asset Details
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <app-asset (cancelSubmit)='cancelSubmit($event)' 
-                     [assetId]=assetId
-                     [isUpdateAsset]=isUpdateAsset>
+          <app-asset [assetId]=assetId [isUpdateAsset]=isUpdateAsset>
           </app-asset>
         </mat-expansion-panel>
         <mat-expansion-panel>

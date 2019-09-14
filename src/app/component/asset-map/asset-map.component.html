@@ -48,7 +48,7 @@
                       [zoom]="zoom"
                       [disableDefaultUI]="false"
                       [zoomControl]="false"
-                      (mapClick)="closePrevInfo($event)">
+                      (mapClick)="closePrevInfo()">
   
               <agm-marker *ngFor="let m of filteredMarkers"
                           (markerClick)="clickedMarker(m, infoWindow)"

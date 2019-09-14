@@ -35,6 +35,7 @@ export class AssetYardComponent implements OnInit {
   isDeploy: boolean = false;
   isFound:  boolean = false;
   assetId:  number;
+  pageSize: number = 10;
 
   stateGroups: StateGroup[] = StateProvinces;
 
