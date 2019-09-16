@@ -22,7 +22,7 @@ Token-based security and authentication is built into the app. Tokens are ditrib
 
 ## Online demo
 
-You can see our app in acction at <a href="http://asset-tracker.bluerockapps.com">asset-tracker.bluerockapps.com</a>
+You can see our app in action at <a href="http://asset-tracker.bluerockapps.com" target="_blank">asset-tracker.bluerockapps.com</a>
 
 username: demo@bluerockapps.com
 password: password

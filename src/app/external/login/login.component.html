@@ -10,14 +10,14 @@
         <div fxLayout="row">
           <mat-form-field appearance="outline" fxFlex>
             <mat-label>Enter Email</mat-label>
-            <input matInput formControlName="email" required>
+            <input matInput formControlName="email" value="demo@bluerockapps.com" required>
           </mat-form-field>
         </div>
         <div fxLayout="row">
           <mat-form-field appearance="outline" fxFlex>
             <mat-label>Enter Password</mat-label>
             <input matInput type="password" [type]="hidePassword ? 'password' : 'text'" 
-                   #password formControlName="password" required>
+                   #password formControlName="password" value="password" required>
             <mat-icon class="cursor-hand" matSuffix (click)="hidePassword = !hidePassword">
               {{hidePassword ? 'visibility' : 'visibility_off'}}
             </mat-icon>
