@@ -19,6 +19,13 @@ The API server employs ExpressJS https://expressjs.com/ to facilitate routes and
 
 ​
 Token-based security and authentication is built into the app. Tokens are ditributed by the node server based on valid login credentials.
+
+## Online demo
+
+You can see our app in acction at <a href="http://asset-tracker.bluerockapps.com">asset-tracker.bluerockapps.com</a>
+
+username: demo@bluerockapps.com
+password: password
 ​
 ## Deployment
 ​
