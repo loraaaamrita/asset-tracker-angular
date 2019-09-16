@@ -99,3 +99,7 @@ The `model` folder houses typescript interface models used by the app.
 
 
 The `service` folder contains service components that are used to connect to the API service endpoints. Each componet name matches a module file located on the API server. Individual endpoints that are defined in the service components match endpoints that are defined in each assocated module located on the API server.
+
+## License & copyright
+
+Licensed under the [MIT License](LICENSE).
