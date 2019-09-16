@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to field-asset-portal!');
+    expect(page.getTitleText()).toEqual('Welcome to asset-tracker!');
   });
 
   afterEach(async () => {

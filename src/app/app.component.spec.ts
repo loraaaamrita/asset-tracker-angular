@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'field-asset-portal'`, () => {
+  it(`should have as title 'asset-tracker'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('field-asset-portal');
+    expect(app.title).toEqual('asset-tracker');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to field-asset-portal!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to asset-tracker!');
   });
 });
