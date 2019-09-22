@@ -29,7 +29,7 @@ password: password
 
 ## REST API Documentation
 
-API documentation is based on <a href="https://swagger.io/" target="_blank">Swagger</a>, in combination with <a href="https://github.com/scottie1984/swagger-ui-express" arget="_blank">swagger-ui-express and <a href="https://github.com/Surnet/swagger-jsdoc" target="_blank">swagger-jsdoc</a>.
+API documentation is based on <a href="https://swagger.io/" target="_blank">Swagger</a>, in combination with <a href="https://github.com/scottie1984/swagger-ui-express" target="_blank">swagger-ui-express and <a href="https://github.com/Surnet/swagger-jsdoc" target="_blank">swagger-jsdoc</a>.
 
 Visit our REST API documentation <a href="http://asset-tracker-api.bluerockapps.com:8000/docs" target="_blank">asset-tracker-api.bluerockapps.com:8000/docs</a>.
 ​
