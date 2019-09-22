@@ -26,6 +26,12 @@ You can see our app in action at <a href="http://asset-tracker.bluerockapps.com"
 
 username: demo@bluerockapps.com
 password: password
+
+## REST API Documentation
+
+API documentation is based on Swagger; https://swagger.io/ , in combination with swagger-ui-express; https://github.com/scottie1984/swagger-ui-express and swagger-jsdoc https://github.com/Surnet/swagger-jsdoc.
+
+Visit our REST API documentation here: http://asset-tracker-api.bluerockapps.com:8000/docs
 ​
 ## Deployment
 ​
