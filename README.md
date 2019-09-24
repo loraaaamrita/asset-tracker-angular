@@ -2,15 +2,15 @@
 
 The project consists of a frontend, an REST API server and a database.
 ​
-The frontend is built with Angular version 8.0.3. https://angular.io/.
+The frontend is built with <a href="https://angular.io/">Angular</a> version 8.0.3. .
 
-User interface and design is provided by Angular Material https://material.angular.io/.
+User interface and design is provided by <a href="https://material.angular.io/">Angular Material</a>.
 
-The REST API server is built on NodeJS https://nodejs.org/en/.
+The REST API server is built on <a href="https://nodejs.org/en/">NodeJS</a>.
 ​
-The database is postgreSQL https://www.postgresql.org/.
+The database is <a href="https://www.postgresql.org/">PostgreSQL</a>.
 
-The REST API server is built on NodeJS https://nodejs.org/en/. ExpressJS https://expressjs.com/ is used to facilitate routes and http endpoints. The interface to the database is provided by node-postgres https://node-postgres.com/.
+The REST API server is built on <a href="https://nodejs.org/en/">NodeJS.</a> <a href="https://expressjs.com/">ExpressJS</a> is used to facilitate routes and http endpoints. The interface to the database is provided by <a href="https://node-postgres.com/">node-postgres</a>.
 
 Token-based security and authentication is built into the app. Tokens are distributed by the node server based on valid login credentials.
 
