@@ -265,3 +265,29 @@ CREATE TABLE "public"."yard" (
     "user_archive" int4,
     PRIMARY KEY ("id")
 );
+
+--Insert to create data
+
+INSERT INTO "public"."asset_status" (tenant_id, status)
+VALUES ('0451fd27-02f5-4a00-b100-7f6e80b32e45', 'Available');
+
+INSERT INTO "public"."asset_status" (tenant_id, status)
+VALUES ('0451fd27-02f5-4a00-b100-7f6e80b32e45', 'Booked');
+
+INSERT INTO "public"."asset_status" (tenant_id, status)
+VALUES ('0451fd27-02f5-4a00-b100-7f6e80b32e45', 'Maintenance');
+
+INSERT INTO "public"."category" (tenant_id, category)
+VALUES ('0451fd27-02f5-4a00-b100-7f6e80b32e45', 'category 1');
+
+INSERT INTO "public"."category" (tenant_id, category)
+VALUES ('0451fd27-02f5-4a00-b100-7f6e80b32e45', 'category 2');
+
+INSERT INTO "public"."role" (tenant_id, role)
+VALUES ('0451fd27-02f5-4a00-b100-7f6e80b32e45', 'Admin');
+
+INSERT INTO "public"."permission" (tenant_id, role_id)
+VALUES ('0451fd27-02f5-4a00-b100-7f6e80b32e45', '1');
+
+INSERT INTO "public"."user" (tenant_id, role_id, first_name)
+VALUES ('0451fd27-02f5-4a00-b100-7f6e80b32e45', '1', 'robot');
